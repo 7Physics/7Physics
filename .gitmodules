@@ -1,0 +1,6 @@
+[submodule "Renderer"]
+	path = Renderer
+	url = https://github.com/7Physics/Renderer
+[submodule "Engine"]
+	path = Engine
+	url = https://github.com/7Physics/Engine
