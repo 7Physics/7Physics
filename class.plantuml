@@ -1,0 +1,43 @@
+@startuml
+
+title 7Physics
+
+package 7Physics {
+    class MainFrame {
+    
+    }
+}
+
+package Engine {
+    class World {
+    
+    }
+    
+    abstract PhysicObject {
+        + getPosition(): Position
+    }
+    
+    class Position {
+        - x: double
+        - y: double
+        - z: double
+        - angleH: double
+        - angleV: double
+    }
+    
+    PhysicObject *-- "1" Position
+    World --> "*" PhysicObject
+}
+
+package Renderer {
+    class WorldRenderer {
+        - world: World
+    }
+}
+
+WorldRenderer --> World
+MainFrame --> World
+MainFrame --> WorldRenderer
+
+
+@enduml
