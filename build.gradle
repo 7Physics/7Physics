@@ -2,7 +2,7 @@ plugins {
     id 'java'
 }
 
-group 'fr.7physics'
+group 'fr.setphysics'
 version '1.0-SNAPSHOT'
 
 repositories {
