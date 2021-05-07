@@ -13,31 +13,84 @@ package Engine {
     
     }
     
-    abstract PhysicObject {
+    abstract PhysicBody {
+        - shape: Shape
         + getPosition(): Position
     }
     
-    class Position {
-        - x: double
-        - y: double
-        - z: double
-        - angleH: double
-        - angleV: double
+    class Force {
+        - intensity: double
     }
     
-    PhysicObject *-- "1" Position
-    World --> "*" PhysicObject
+    World --> "*" PhysicBody
+    PhysicBody o- "*" Force
 }
 
 package Renderer {
     class WorldRenderer {
         - world: World
     }
+    
+    class RenderableShape {
+        + RenderableShape(shape: Shape)
+        + render()
+    }
+    
+    RenderableShape "*" -o WorldRenderer
 }
 
-WorldRenderer --> World
+package Common {
+    class Position<T> {
+        + setCoords(coords: Vec3<T>)
+        + getCoords(): Vec3<T>
+        + setAngles(angles: Vec2<T>)
+        + getAngles(): Vec2<T>
+    }
+    
+    class Shape {
+        + Shape(vertices: List<Vec3>)
+    }
+    
+    class Vec3<T> {
+        - x: T
+        - y: T
+        - z: T
+        + Vec3<T>(x: T, y: T, z: T)
+    }
+    
+    class Vec2<T> {
+        - x: T
+        - y: T
+        + Vec2<T>(x: T, y: T)
+    }
+    
+    class Logger {
+        + warn(warning: String)
+        + error(error: String)
+        + info(info: String)
+    }
+    
+    enum LoggerMode {
+        File
+        Console
+        Complete
+    }
+
+    Logger --> LoggerMode: mode
+    Position o-- "*" Vec3: coords
+    Position o-- "*" Vec2: angles
+    Shape "*" o-- Vec3: vertices
+
+}
+
+PhysicBody *-- "1" Position
+PhysicBody *-- "1" Shape
+Force --> "1" Vec3: direction
+
 MainFrame --> World
 MainFrame --> WorldRenderer
+WorldRenderer -> World
+
 
 
 @enduml
