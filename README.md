@@ -37,7 +37,7 @@ Puisque le moteur physique se voudra une simulation aussi proche de la réalité
 
 
 
-Découpage du projet avec un repository principale et deux sous-repository :
+Découpage du projet avec un répertoire principal et deux sous-répertoires :
 
 - *7Physics*
   - *Engine* : moteur physique
@@ -96,4 +96,4 @@ Utilisation de Gradle :
 > - Pour build : `.\gradlew build`
 > - Pour run : `.\gradlew run`
 >
-> En cas d'erreur `/usr/bin/env: 'sh\r': No such file or directory` il faut utiliser `dos2unix` (à cause de retours chariots de Windows).
+> En cas d'erreur `/usr/bin/env: 'sh\r': No such file or directory` il faut utiliser `dos2unix` (à cause des retours chariots de Windows).
