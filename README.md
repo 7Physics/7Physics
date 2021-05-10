@@ -45,7 +45,7 @@ Découpage du projet avec un repository principale et deux sous-repository :
 
 
 
-## Diagramme de UML
+## Diagramme UML
 
 ![UML](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/7Physics/7Physics/master/class.plantuml)
 
@@ -96,4 +96,4 @@ Utilisation de Gradle :
 > - Pour build : `.\gradlew build`
 > - Pour run : `.\gradlew run`
 >
-> En cas d'erreur `/usr/bin/env: ‘sh\r’: No such file or directory` il faut utiliser `dos2unix` (à cause de retours chariots de Windows).
+> En cas d'erreur `/usr/bin/env: 'sh\r': No such file or directory` il faut utiliser `dos2unix` (à cause de retours chariots de Windows).
