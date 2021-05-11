@@ -16,12 +16,11 @@
 
 
 ## Table des matières
-- [7Physics](#7physics)
-  * [Description](#description)
-  * [Diagramme UML](#diagramme-uml)
-  * [Installation](#installation)
-    + [Git](#git)
-    + [Projet](#projet)
+- [Description](#description)
+- [Diagramme UML](#diagramme-uml)
+- [Installation](#installation)
+  * [Git](#git)
+  * [Projet](#projet)
 
 
 
