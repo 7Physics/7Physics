@@ -87,18 +87,18 @@ Procédure installation Gradle v7.0 (PC de l'école) :
 > - Ouvrir le fichier `.profile` et ajouter : `export PATH="/opt/gradle/gradle-7.0/bin:$PATH"`
 > - Mettre à jour avec la commande : `source .profile`
 > - Vérifier l'installation de Gradle : `gradle -v`
+>
+> 
+>
+> A noter qu'il est possible de se passer de cette étape en utilisant le *wrapper gradle* (*gradlew*) contenu dans chaque projet *Gradle*.
+>
+> - Pour build : `.\gradlew build`
+> - Pour run : `.\gradlew run`
+>
+> En cas d'erreur `/usr/bin/env: 'sh\r': No such file or directory` il faut utiliser `dos2unix` (à cause des retours chariots de Windows).
 
 Utilisation de Gradle :
 
 > - Dans le repo git clôné (7Physics/) :
 >   - `gradle build` : permet de "*builder*" le projet (compilation + import des librairies dans le projet)
 >   - `gradle run` : permet de lancer l'application
->
-> 
->
-> A noter qu'il est possible de se passer de l'étape 2 en utilisant le *wrapper gradle* (*gradlew*) contenu dans chaque projet *Gradle*.
->
-> - Pour build : `.\gradlew build`
-> - Pour run : `.\gradlew run`
->
-> En cas d'erreur `/usr/bin/env: 'sh\r': No such file or directory` il faut utiliser `dos2unix` (à cause des retours chariots de Windows).
