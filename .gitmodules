@@ -4,3 +4,6 @@
 [submodule "Engine"]
 	path = Engine
 	url = https://github.com/7Physics/Engine
+[submodule "Common"]
+	path = Common
+	url = https://github.com/7Physics/Common

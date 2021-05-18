@@ -1,4 +1,4 @@
-package fr.sethysics.setphysics;
+package fr.setphysics.setphysics;
 
 import java.awt.DisplayMode;
 import com.jogamp.opengl.GL2;
