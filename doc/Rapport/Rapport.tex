@@ -1,0 +1,93 @@
+\documentclass[11pt]{report}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[explicit]{titlesec}
+\usepackage{times}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage{awesomebox}
+\usepackage{fontawesome5}
+\setmainfont{Liberation Serif}
+
+\titleformat{\chapter}[display]{\Huge}{\thechapter. #1}{20pt}{\small}
+
+\titlespacing{\chapter}{0pt}{.1cm}{.1cm}
+
+\lhead[\rightmark]{\rightmark}
+\chead[]{}
+\rhead[\thepage]{\thepage}
+
+\lfoot[]{}
+\cfoot[\thepage]{\thepage}
+\rfoot[]{}
+
+\renewcommand{\headrulewidth}{0.5pt}
+
+\pagestyle{fancy}
+
+\begin{document}
+\input{titlepage.tex}
+
+\tableofcontents
+
+
+\chapter{Introduction}
+
+L'idée de ce projet est de réaliser un moteur 3D permettant de réaliser des simulations de notions de 
+physique élémentaires telles que la gravité, les collisions etc.
+
+\section{....}
+
+\notebox{...}
+
+
+
+
+\chapter{Principales fonctionnalités}
+
+\section{Sprint 0}
+
+\subsection{Afficher une scène 3D}
+Une des premières fonctionnalités à implanter a été la création d'une scène 3D. 
+Cette scène 3D est constituée d'un sol et d'un ciel afin de permettre à l'utilisateur d'avoir les notions
+d'espace et de profondeur.
+
+
+\section{Sprint 1}
+\subsection{Manipuler des objets 3D}
+\subsubsection{Ajouter un objet 3D}
+\subsubsection{Supprimer un objet 3D}
+
+\chapter{Découpage de l'application}
+
+
+\chapter{Diagramme de classe}
+
+
+\chapter{Principaux choix}
+
+\subsection{Mise en place du projet}
+L'objectif du sprint 0 à été de mettre en place le projet. Pour cela, il a tout d'abord fallu 
+déterminer les différents objectifs et les différents besoins utilisateur. Ensuite, l'équipe a défini
+les outils à utiliser concernant la gestion de projet. Pour finir, le projet a été structuré en différents répertoires 
+et l'environnement de travail a été configuré pour chaque membre de l'équipe.
+
+\subsection{Création de la maquette IHM}
+A l'aide de l'outil Figma, une maquette IHM a été réalisée afin de concrétiser les idées des membres de l'équipe
+et de représenter concrètement le concept à construire.
+
+\subsection{Création d'un diagramme de classe}
+
+\section{Conception}
+
+\section{Réalisation}
+
+\section{Problèmes rencontrés et solutions apportées}
+
+
+\chapter{Organisation de l'équipe et mise en oeuvre des méthodes agiles}
+
+\end{document}

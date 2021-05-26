@@ -1,0 +1,10 @@
+\babel@toc {french}{}
+\contentsline {chapter}{\numberline {1}Manipuler des objets 3D}{2}
+\contentsline {section}{\numberline {1.1}Ajouter un objet 3D}{2}
+\contentsline {section}{\numberline {1.2}Supprimer un objet 3D}{2}
+\contentsline {chapter}{\numberline {2}Déplacer la caméra}{3}
+\contentsline {section}{\numberline {2.1}Zoomer}{3}
+\contentsline {section}{\numberline {2.2}Dezoomer}{3}
+\contentsline {section}{\numberline {2.3}Avancer sur la scène}{3}
+\contentsline {section}{\numberline {2.4}Reculer sur la scène}{4}
+\contentsline {section}{\numberline {2.5}Tourner}{4}
