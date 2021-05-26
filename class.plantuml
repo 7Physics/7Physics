@@ -6,80 +6,136 @@ package 7Physics {
     class MainFrame {
     
     }
+
+    class GUI {
+    }
 }
 
 package Engine {
     class World {
-    
+
     }
-    
+
     abstract PhysicBody {
         - shape: Shape
         + getPosition(): Position
     }
-    
+
     class Force {
         - intensity: double
     }
-    
+
     World --> "*" PhysicBody
     PhysicBody o- "*" Force
 }
 
 package Renderer {
-    class WorldRenderer {
-        - world: World
+    class Scene3D {
+        - glu: GLU
+        - rotateZ: float
+        + Scene3D(camera: Camera)
+        + init(drawable: GLAutoDrawable)
+        + dispose(drawable: GLAutoDrawable)
+        + display(drawable: GLAutoDrawable)
+        + reshape(drawable: GLAutoDrawable, x: int, y: int, width: int, height: int)
+        + keyPressed(e: KeyEvent)
+        + keyReleased(e: KeyEvent)
+        + keyTyped(e: KeyEvent)
+        + addObject(object3D: Object3D)
     }
-    
-    class RenderableShape {
-        + RenderableShape(shape: Shape)
-        + render()
+
+    interface Renderable {
+        + render(gl: GL2)
     }
-    
-    RenderableShape "*" -o WorldRenderer
+
+    class Object3D {
+        - color: Color
+        - edgeColor: Color
+        + getShape(): Shape
+        + getColor(): Color
+        + render(gl: GL2)
+        + Object3D(position: Position, shape: Shape, color: Color, edgeColor: Color)
+        + Object3D(position: Position, shape: Shape)
+    }
+
+    class Ground {
+        - width: double
+        - lineGap: double
+        + Ground(width: double, lineGap: double)
+        + render(gl: GL2)
+    }
+
+    class Camera {
+        - zoomFactor: double
+        + getPosition(): Position
+        + zoom()
+        + dezoom()
+        + setZoomFactor(zoomFactor: double)
+        + getZoomFactor(): double
+    }
+    Object3D "*" --o Scene3D
+    Renderable <|.. Object3D
+    Renderable <|.. Ground
+    Scene3D o--"*" Renderable: renderables
+    Scene3D --> "1" Camera: camera
 }
 
 package Common {
-    class Position<T> {
-        + setCoords(coords: Vec3<T>)
-        + getCoords(): Vec3<T>
-        + setAngles(angles: Vec2<T>)
-        + getAngles(): Vec2<T>
+    class Position {
+        - horizontalAngle: double
+        - verticalAngle: double
+        + setCoords(coords: Vec3)
+        + getCoords(): Vec3
+        + setAngles(horizontalAngle: double, verticalAngle: double)
+        + getHorizontalAngle(): double
+        + getVerticalAngle(): double
+        + translate(translation: Vec3)
+        + rotate(hAngle: double, vAngle: double)
+        + Position(coords: Vec3, horizontalAngle: double, verticalAngle: double)
+        + Position(coords: Vec3)
+        + Position(x: double, y: double, z: double)
+        + Position(x: double, y: double, z: double, horizontalAngle: double, verticalAngle: double)
     }
-    
+
     class Shape {
+        + addVertex(vertex: Vec3)
+        + getVertices(): List<Vec3>
+        + Shape()
         + Shape(vertices: List<Vec3>)
     }
-    
-    class Vec3<T> {
-        - x: T
-        - y: T
-        - z: T
-        + Vec3<T>(x: T, y: T, z: T)
+
+    class Vec3 {
+        - x: double
+        - y: double
+        - z: double
+        + add(vec3: Vec3): Vec3
+        + scale(factor: double): Vec3
+        + clone(): Vec3
+        + Vec3(x: double, y: double, z: double)
     }
-    
-    class Vec2<T> {
-        - x: T
-        - y: T
-        + Vec2<T>(x: T, y: T)
-    }
-    
+
     class Logger {
         + warn(warning: String)
+        + debug(debug: String)
         + error(error: String)
         + info(info: String)
     }
-    
-    enum LoggerMode {
-        File
-        Console
-        Complete
+
+    class Cuboid {
+        + Cuboid(width: double, length: double, height: double)
     }
 
-    Logger --> LoggerMode: mode
+    class Sphere {
+        - radius: double
+        - pointOnSphere(pointOnCube: Vec3): Vec3
+        - findPoints(a: Vec3, b: Vec3, c: Vec3, d: Vec3, nbIt: int): List<Vec3>
+        + Sphere(radius: double, nbIt:int)
+    }
+
     Position o-- "*" Vec3: coords
-    Position o-- "*" Vec2: angles
     Shape "*" o-- Vec3: vertices
+    Shape  <|-- Cuboid
+    Shape  <|-- Sphere
 
 }
 
@@ -88,9 +144,11 @@ PhysicBody *-- "1" Shape
 Force --> "1" Vec3: direction
 
 MainFrame --> World
-MainFrame --> WorldRenderer
-WorldRenderer -> World
-
-
+MainFrame --> Scene3D
+Scene3D -> World
+Object3D --> "1" Shape: shape
+Object3D --> "1" Position: position
+Scene3D --> "1" Position: cameraPosition
+Camera --> "1" Position: position
 
 @enduml
