@@ -4,6 +4,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[explicit]{titlesec}
 \usepackage{times}
+\usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage{graphicx}
 \usepackage{ucs}
@@ -37,42 +38,84 @@
 \chapter{Manipuler des objets 3D}
 
 \section{Ajouter un objet 3D}
-Pour pouvoir ajouter un objet 3D sur la scène 3D, il faut sur la partie droite de l'interface, sélectionner en haut la forme souhaitée.
+Pour pouvoir ajouter un objet 3D sur la scène 3D, il faut sur la partie supérieur droite de l'interface, sélectionner la forme souhaitée.
 \newline
+
 \begin{center}
     \includegraphics[width=5cm]{ajoutFormes}
 \end{center}
 \notebox{Pour afficher un \textbf{cube} sur la scène 3D, il faut sélectionner le bouton : \includegraphics[width=0.4cm]{./btn_cube.png}\newline
 Pour afficher d'autres formes, il suffit de sélectionner les boutons adjacents. }
 
-\section{Supprimer un objet 3D}
+
+\chapter{Gestion de la caméra}
+
+\warningbox{Afin de manipuler la caméra au clavier il est important de cliquer sur la scène en premier lieu. Sans cela, la caméra ne bougera pas.}
+
+Afin d'observer la scène sous plusieurs angles, il est possible de manipuler la caméra. Les opérations possibles sont:
+\begin{itemize}
+        \item \hyperlink{zoom}{Zoomer}/\hyperlink{dezoom}{Dézoomer}
+        \item \hyperlink{move}{Déplacements basiques (Gauche, droite, avant, arrière)}
+        \item \hyperlink{moveV}{Se déplacer verticalement}
+        \item \hyperlink{rotate}{Faire tourner la caméra.}
+\end{itemize}
+
+\section{Gestion du zoom}
+
+Lors de la visualisation de la scène que vous avez créé, il vous est possible de régler le niveau de zoom utilisé afin de voir un objet plus en détail ou bien encore de voir une scène de taille importante en intégralité. Afin de réaliser ces actions, référez-vous aux explications suivantes.
+
+\awesomebox{\faMousePointer}{3pt}{teal}{Attention, la gestion du zoom ne peut s'effectuer qu'à la souris.}
+
+\subsection{Zoomer}
+
+\hypertarget{zoom}{Il existe 2 possibilités pour zoomer sur la scène.}
+\begin{itemize}
+        \item La première est d'utiliser le bouton prévu à cet effet présent sur la gauche de votre écran représenté par ce symbole:.
+        \item La seconde est d'utiliser la molette de votre souris en la faisant glisser vers le haut.
+\end{itemize}
+
+\subsection{Dezoomer}
+
+\hypertarget{dezoom}{Il existe 2 possibilités pour dezoomer la scène.}
+
+\begin{itemize}
+        \item La première est d'utiliser le bouton prévu à cet effet présent sur la gauche de votre écran représenté par ce symbole:.
+        \item La seconde est d'utiliser la molette de votre souris en la faisant glisser vers le bas.
+\end{itemize}
+
+\notebox{Afin de mieux maitriser votre environnement et de bénéficier d'une précision accrue, veuillez privilégier l'utilisation de la molette. En effet, les boutons latéraux sont limités à une manipulation prédéfinie du zoom et ne sont pas réglables.}
 
 
-\chapter{Déplacer la caméra}
+\section{Se déplacer sur la scène}
 
-\section{Zoomer}
-\awesomebox{\faKeyboard}{5pt}{cyan}{ Il est possible de zoomer à l'aide du clavier grâce aux commandes ...}
-\newline
-\awesomebox{\faMousePointer}{5pt}{teal}{Il est possible de zoomer avec la souris ...}
+Afin de vous balader au sein de la scène pour visualiser celle-ci sous différents points de vue, il vous est possible de déplacer la caméra. Vous pourrez ainsi déplacer la caméra sur 3 axes différents que nous allons voir.
 
-\section{Dezoomer}
-\awesomebox{\faKeyboard}{5pt}{lightgray}{Test de couleurs ...}
-\newline
-\awesomebox{\faMousePointer}{5pt}{lime}{...}
+\awesomebox{\faKeyboard}{3pt}{teal}{Attention, les déplacememnts sur la scène ne peuvent être effectués que via le clavier et les raccourcis présentés.}
 
-\section{Avancer sur la scène}
-\awesomebox{\faKeyboard}{5pt}{blue}{...}
-\newline
-\awesomebox{\faMousePointer}{5pt}{pink}{...}
+\subsection{Déplacements basiques}
 
-\section{Reculer sur la scène}
-\awesomebox{\faKeyboard}{5pt}{violet}{...}
-\newline
-\awesomebox{\faMousePointer}{5pt}{orange}{...}
+\hypertarget{move}{Les premiers déplacement que nous allons voir sont les déplacements basiques gauche, droite, avant et arrière.} Ces déplacements se feront à l'aide des touches ZQSD du clavier.
 
-\section{Tourner}
-\awesomebox{\faKeyboard}{5pt}{brown}{...}
-\newline
-\awesomebox{\faMousePointer}{5pt}{darkgray}{...}
+\begin{itemize}
+  \item \textbf{Z}: Avancer.
+  \item \textbf{Q}: Se déplacer vers la gauche.
+  \item \textbf{S}: Reculer.
+  \item \textbf{D}: Se déplacer vers la droite.
+\end{itemize}
+
+\subsection{Déplacement vertical}
+
+\hypertarget{moveV}{Ensuite, il peut être utile de bouger la caméra verticalement.} Pour cela, nous utiliserons les touches Espace et Shift.
+
+\begin{itemize}
+  \item \textbf{ESPACE}: Monter la caméra.
+  \item \textbf{SHIFT}: Descendre la caméra.
+\end{itemize}
+
+\section{Tourner la caméra}
+
+\hypertarget{rotate}{Enfin, pour finir, le dernier mouvement possible est la rotation de la caméra.} Pour cela, il suffit simplement de cliquer sur la scène 3D puis de glisser la souris vers l'endroit où vous souhaitez tourner la caméra en maintenant le clic de la souris.
+
+\awesomebox{\faMousePointer}{3pt}{teal}{Attention, la rotation de la caméra ne peut se faire que via la souris.}
 
 \end{document}

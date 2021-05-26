@@ -1,6 +1,5 @@
 \babel@toc {french}{}
 \contentsline {chapter}{\numberline {1}Introduction}{2}
-\contentsline {section}{\numberline {1.1}....}{2}
 \contentsline {chapter}{\numberline {2}Principales fonctionnalités}{3}
 \contentsline {section}{\numberline {2.1}Sprint 0}{3}
 \contentsline {subsection}{\numberline {2.1.1}Afficher une scène 3D}{3}
@@ -11,10 +10,15 @@
 \contentsline {chapter}{\numberline {3}Découpage de l'application}{4}
 \contentsline {chapter}{\numberline {4}Diagramme de classe}{5}
 \contentsline {chapter}{\numberline {5}Principaux choix}{6}
-\contentsline {subsection}{\numberline {5.0.1}Mise en place du projet}{6}
-\contentsline {subsection}{\numberline {5.0.2}Création de la maquette IHM}{6}
-\contentsline {subsection}{\numberline {5.0.3}Création d'un diagramme de classe}{6}
-\contentsline {section}{\numberline {5.1}Conception}{6}
-\contentsline {section}{\numberline {5.2}Réalisation}{6}
-\contentsline {section}{\numberline {5.3}Problèmes rencontrés et solutions apportées}{6}
+\contentsline {section}{\numberline {5.1}Création de la maquette IHM}{6}
+\contentsline {section}{\numberline {5.2}Création d'un diagramme de classe}{6}
+\contentsline {section}{\numberline {5.3}Conception}{6}
+\contentsline {section}{\numberline {5.4}Réalisation}{6}
+\contentsline {section}{\numberline {5.5}Problèmes rencontrés et solutions apportées}{6}
 \contentsline {chapter}{\numberline {6}Organisation de l'équipe et mise en oeuvre des méthodes agiles}{7}
+\contentsline {section}{\numberline {6.1}Mise en place du projet}{7}
+\contentsline {section}{\numberline {6.2}Utilisation des cérémonies agiles}{7}
+\contentsline {subsection}{\numberline {6.2.1}Sprint planning}{7}
+\contentsline {subsection}{\numberline {6.2.2}Daily scrum}{7}
+\contentsline {subsection}{\numberline {6.2.3}Mid-sprint review}{7}
+\contentsline {subsection}{\numberline {6.2.4}Sprint Review}{8}

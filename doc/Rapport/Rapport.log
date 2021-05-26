@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  26 MAY 2021 15:49
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  26 MAY 2021 21:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -885,11 +885,11 @@ File: ./enseeiht.jpeg Graphic file (type bmp)
 
 ]) (./Rapport.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 3.
+(Font)              <10.95> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 3.
+(Font)              <8> on input line 4.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 3.
+(Font)              <6> on input line 4.
 )
 \tf@toc=\write3
 \openout3 = `Rapport.toc'.
@@ -906,6 +906,36 @@ Chapitre 2.
 
 ]
 Chapitre 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 60--63
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 64--65
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--70
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--73
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--77
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--80
+
+ []
+
 [4
 
 ]
@@ -918,16 +948,33 @@ Chapitre 5.
 
 ]
 Chapitre 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 102--107
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--122
+
+ []
+
 [7
 
-] (./Rapport.aux) ) 
-Here is how much of TeX's memory you used:
- 14702 strings out of 493007
- 302458 string characters out of 6136719
- 402186 words of memory out of 5000000
- 18525 multiletter control sequences out of 15000+600000
- 536193 words of font info for 56 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 53i,12n,65p,10483b,278s stack positions out of 5000i,500n,10000p,200000b,80000s
+]
 
-Output written on Rapport.pdf (8 pages).
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[8] (./Rapport.aux) ) 
+Here is how much of TeX's memory you used:
+ 14701 strings out of 493007
+ 302431 string characters out of 6136719
+ 406185 words of memory out of 5000000
+ 18525 multiletter control sequences out of 15000+600000
+ 536185 words of font info for 55 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 53i,11n,65p,10483b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on Rapport.pdf (9 pages).

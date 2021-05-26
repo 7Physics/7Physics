@@ -39,47 +39,56 @@
 L'idée de ce projet est de réaliser un moteur 3D permettant de réaliser des simulations de notions de 
 physique élémentaires telles que la gravité, les collisions etc.
 
-\section{....}
-
-\notebox{...}
-
-
-
-
 \chapter{Principales fonctionnalités}
 
 \section{Sprint 0}
 
 \subsection{Afficher une scène 3D}
 Une des premières fonctionnalités à implanter a été la création d'une scène 3D. 
-Cette scène 3D est constituée d'un sol et d'un ciel afin de permettre à l'utilisateur d'avoir les notions
-d'espace et de profondeur.
-
+Cette scène 3D est constituée d'un sol représentant une grille blanche sur fond gris et d'un ciel bleu.
+Cette scène a pour but de permettre à l'utilisateur de mieux comprendre l'orientation des objets,le placement
+de sa caméra, etc. Cela permettra alors, lors de simulation physiques, de mieux comprendre les résultats de celles-ci.
 
 \section{Sprint 1}
 \subsection{Manipuler des objets 3D}
 \subsubsection{Ajouter un objet 3D}
+
 \subsubsection{Supprimer un objet 3D}
 
 \chapter{Découpage de l'application}
 
+Afin de séparer les rôles le plus possibles et permettre l'utilisation, à termes, de parties de l'application
+indépendamment, nous avons commencer par créer 4 répertoires git différent. Cela permet alors de n'utiliser que
+les fonctions de rendus dans une librairie minimaliste si besoin et de même pour la partie simulation physique.\newline
+
+Dans chaque répertoire était alors développée une des 4 briques de l'application finale:\newline
+
+\begin{itemize}
+  \item \textbf{7Physics}: Répertoire contenant le code de l'interface graphique. Ce répertoire se base sur les 3 autres
+        et contient l'exécutable final. Son seul rôle est d'articuler les différentes fonctionnalités du moteur et ce
+        dans une interface graphique agréable à utiliser.\newline
+  \item\textbf{Common}: Répertoire contenant tout le code commun est nécessaire au fonctionnement des autres. Dans ce
+        répertoire, nous pouvons trouver la représentation des formes, la définition d'une classe représentant la position,
+        un logger permettant de tracer les appels systèmes, etc.\newline
+  \item \textbf{Renderer}: Répertoire contenant uniquement les interactions avec le contexte OpenGL. Afin de fonctionner,
+        ce répertoire ne nécessite que l'utilisation du répertoire Common. Il est alors tout à fait pensable de n'utiliser
+        que cette partie de l'application et de lui demander de fournir un affichage en 3 dimensions à partir de classes
+        créées par l'utilisateur.\newline
+  \item \textbf{Engine}: Répertoire permettant la simulation physique. Ce répertoire ne nécessite que l'utilsiation
+        de Common pour fonctionner. En effet, tout comme Renderer, il est tout à fait pensable de n'utiliser que ce répertoire
+        comme une librairie de calcul physique simple.\newline
+\end{itemize}
 
 \chapter{Diagramme de classe}
 
 
 \chapter{Principaux choix}
 
-\subsection{Mise en place du projet}
-L'objectif du sprint 0 à été de mettre en place le projet. Pour cela, il a tout d'abord fallu 
-déterminer les différents objectifs et les différents besoins utilisateur. Ensuite, l'équipe a défini
-les outils à utiliser concernant la gestion de projet. Pour finir, le projet a été structuré en différents répertoires 
-et l'environnement de travail a été configuré pour chaque membre de l'équipe.
-
-\subsection{Création de la maquette IHM}
+\section{Création de la maquette IHM}
 A l'aide de l'outil Figma, une maquette IHM a été réalisée afin de concrétiser les idées des membres de l'équipe
 et de représenter concrètement le concept à construire.
 
-\subsection{Création d'un diagramme de classe}
+\section{Création d'un diagramme de classe}
 
 \section{Conception}
 
@@ -87,7 +96,54 @@ et de représenter concrètement le concept à construire.
 
 \section{Problèmes rencontrés et solutions apportées}
 
-
 \chapter{Organisation de l'équipe et mise en oeuvre des méthodes agiles}
+
+\section{Mise en place du projet}
+L'objectif du sprint 0 à été de mettre en place le projet. Pour cela, il a tout d'abord fallu
+déterminer les différents objectifs et les différents besoins utilisateur au travers de User stories. Ensuite, l'équipe a défini
+les outils à utiliser concernant la gestion de projet, la gestion du code et la communication au sein de l'équipe.
+Pour finir, le projet a été structuré en différents répertoires au sein de l'organsation GitHub créée pour le projet long
+et l'environnement de travail a été configuré pour chaque membre de l'équipe.\newline
+
+Une fois cela fait, nous avons pu commencer à réaliser les premières User Stories.
+
+\section{Utilisation des cérémonies agiles}
+
+Lors du déroulement du projet, nous avons mis en place 4 types de cérémonies des méthodes agiles.
+
+\subsection{Sprint planning}
+
+Au début de chaque sprint nous avons commencé par se réunir tous ensemble pour faire un point sur l'état d'esprit de tout le monde.
+Nous échangions alors sur le ressenti par rapport au projet et l'état d'avancement de celui-ci, les difficultés eprouvées, etc. Cette première étape
+nous permettait alors de s'assurer de la bonne entente entre les membres de l'équipe et du fait que personne ne se sente seul ou isolé du groupe.
+
+Une fois cela fait, nous continuions par choisir les prochaines User Stories à implémenter au sein de l'application en se basant sur la vélocité
+de l'équipe lors du sprint précédent.\newline
+
+Le sprint était alors prêt à commencer.
+
+\subsection{Daily scrum}
+
+Lors du déroulement de chaque Sprint, nous avions des réunions régulières. Qui malgrés ce que le nom
+laisse penser, n'avait lieu que 2 à 3 fois par semaine. En effet, ayant d'autres matières demandant du travail
+nous n'avions pas toujours le temps d'avancer chaque jour. Nous avons donc décider de nous réunir tous les 2 à 3 jours
+pour faire le point sur l'avancement de chacun depuis le dernier daily scrum, les choix de conception et d'implémentation que
+nous devions revoir en cours de projet, etc.
+
+\subsection{Mid-sprint review}
+
+Au milieu de chaque sprint, nous nous réunissions afin de discuter de l'état courant du sprint. Le but était alors, dans le cas
+où tout avait déjà été fait, d'ajouter de nouvelles User Stories à réaliser, ou, dans le cas contraire, d'alléger la charge
+de travail prévue.
+
+Cette cérémonie nous permettait alros d'être sûr que notre charge de travail était réalisable lors du temps imparti
+et de s'assurer que tout se déroulait comme prévu
+
+\subsection{Sprint Review}
+
+Enfin, pour clôturer le sprint, nous organisions une réunion ayant pour but de revenir sur les évènements du sprint.
+Cette cérémonie était cruciale car elle nous permettait notamment de calculer la vélocité à utiliser pour le prochain sprint,
+discuter des difficultés rencontrées et définir les défauts du sprint réalisé que nous devrons corriger lors du prochain.
+
 
 \end{document}

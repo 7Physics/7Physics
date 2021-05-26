@@ -1,10 +1,11 @@
 \babel@toc {french}{}
-\contentsline {chapter}{\numberline {1}Manipuler des objets 3D}{2}
-\contentsline {section}{\numberline {1.1}Ajouter un objet 3D}{2}
-\contentsline {section}{\numberline {1.2}Supprimer un objet 3D}{2}
-\contentsline {chapter}{\numberline {2}Déplacer la caméra}{3}
-\contentsline {section}{\numberline {2.1}Zoomer}{3}
-\contentsline {section}{\numberline {2.2}Dezoomer}{3}
-\contentsline {section}{\numberline {2.3}Avancer sur la scène}{3}
-\contentsline {section}{\numberline {2.4}Reculer sur la scène}{4}
-\contentsline {section}{\numberline {2.5}Tourner}{4}
+\contentsline {chapter}{\numberline {1}Manipuler des objets 3D}{2}{chapter.1}
+\contentsline {section}{\numberline {1.1}Ajouter un objet 3D}{2}{section.1.1}
+\contentsline {chapter}{\numberline {2}Gestion de la caméra}{3}{chapter.2}
+\contentsline {section}{\numberline {2.1}Gestion du zoom}{3}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Zoomer}{3}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}Dezoomer}{3}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Se déplacer sur la scène}{4}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}Déplacements basiques}{4}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Déplacement vertical}{4}{subsection.2.2.2}
+\contentsline {section}{\numberline {2.3}Tourner la caméra}{4}{section.2.3}
