@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  25 MAY 2021 22:35
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  26 MAY 2021 15:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**template.tex
-(./template.tex
+**Rapport.tex
+(./Rapport.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
@@ -753,8 +753,8 @@ put line 60.
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
 LaTeX Info: Redefining \rmfamily on input line 13.
-(./template.aux)
-\openout1 = `template.aux'.
+(./Rapport.aux)
+\openout1 = `Rapport.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
 LaTeX Font Info:    ... okay on input line 31.
@@ -883,7 +883,7 @@ File: ./enseeiht.jpeg Graphic file (type bmp)
 
 [1
 
-]) (./template.toc
+]) (./Rapport.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 3.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -892,94 +892,42 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 3.
 )
 \tf@toc=\write3
-\openout3 = `template.toc'.
+\openout3 = `Rapport.toc'.
 
  [1
 
 ]
 Chapitre 1.
-File: ./btn_cube.png Graphic file (type bmp)
-<./btn_cube.png>
-
-Underfull \hbox (badness 10000) in paragraph at lines 40--43
-
- []
-
-
-Overfull \hbox (1.82501pt too wide) in paragraph at lines 40--43
- []
- []
-
 [2
 
 ]
 Chapitre 2.
-
-Overfull \hbox (2.38254pt too wide) in paragraph at lines 50--50
-[]|[]| 
- []
-
-
-Overfull \hbox (1.82501pt too wide) in paragraph at lines 50--53
- []
- []
-
-
-Overfull \hbox (2.38254pt too wide) in paragraph at lines 55--55
-[]|[]| 
- []
-
-
-Overfull \hbox (1.82501pt too wide) in paragraph at lines 55--58
- []
- []
-
-
-Overfull \hbox (2.38254pt too wide) in paragraph at lines 60--60
-[]|[]| 
- []
-
-
-Overfull \hbox (1.82501pt too wide) in paragraph at lines 60--63
- []
- []
-
-
-Overfull \hbox (2.38254pt too wide) in paragraph at lines 65--65
-[]|[]| 
- []
-
-
-Overfull \hbox (1.82501pt too wide) in paragraph at lines 65--68
- []
- []
-
 [3
 
 ]
-Overfull \hbox (2.38254pt too wide) in paragraph at lines 70--70
-[]|[]| 
- []
+Chapitre 3.
+[4
 
+]
+Chapitre 4.
+[5
 
-Overfull \hbox (1.82501pt too wide) in paragraph at lines 70--73
- []
- []
+]
+Chapitre 5.
+[6
 
+]
+Chapitre 6.
+[7
 
-Package Fancyhdr Warning: \headheight is too small (12.0pt): 
- Make it at least 13.59999pt.
- We now make it that large for the rest of the document.
- This may cause the page layout to be inconsistent, however.
-
-[4] (./template.aux) ) 
+] (./Rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 14701 strings out of 493007
- 302468 string characters out of 6136719
- 403189 words of memory out of 5000000
- 18520 multiletter control sequences out of 15000+600000
- 536201 words of font info for 57 fonts, out of 8000000 for 9000
+ 14702 strings out of 493007
+ 302458 string characters out of 6136719
+ 402186 words of memory out of 5000000
+ 18525 multiletter control sequences out of 15000+600000
+ 536193 words of font info for 56 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 53i,12n,65p,10484b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,12n,65p,10483b,278s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on template.pdf (5 pages).
+Output written on Rapport.pdf (8 pages).
