@@ -1,22 +1,31 @@
-package fr.setphysics.setphysics.ihm;
+package fr.setphysics.setphysics.gui;
 
 import javax.swing.*;
-import javax.swing.event.*;
+
+import com.jogamp.opengl.GLCapabilities;
+import com.jogamp.opengl.GLProfile;
+import com.jogamp.opengl.awt.GLCanvas;
+import com.jogamp.opengl.util.FPSAnimator;
+
+import fr.setphysics.common.geom.Position;
+import fr.setphysics.renderer.Camera;
+import fr.setphysics.renderer.Scene3D;
+
 import java.awt.*;
 import java.awt.event.*;
 
-public class ihm {
+public class GUI {
 
     /* *********************************** *
      * Définition des variables/constantes *
      * *********************************** */
     // Définition des ImageIcon
-    private static final ImageIcon ICONPROJET = new ImageIcon("src/main/java/fr/setphysics/setphysics/ihm/resources/projet.png");
-    private static final ImageIcon PLAY = new ImageIcon("src/main/java/fr/setphysics/setphysics/ihm/resources/play.png");
-    private static final ImageIcon CUBE = new ImageIcon("src/main/java/fr/setphysics/setphysics/ihm/resources/cube.png");
-    private static final ImageIcon SPHERE = new ImageIcon("src/main/java/fr/setphysics/setphysics/ihm/resources/sphere.png");
-    private static final ImageIcon PYRAMID = new ImageIcon("src/main/java/fr/setphysics/setphysics/ihm/resources/pyramid.png");
-    private static final ImageIcon CONE = new ImageIcon("src/main/java/fr/setphysics/setphysics/ihm/resources/cone.png");
+	private static final ImageIcon ICONPROJET = new ImageIcon(GUI.class.getResource("/images/projet.png"));
+    private static final ImageIcon PLAY = new ImageIcon(GUI.class.getResource("/images/play.png"));
+    private static final ImageIcon CUBE = new ImageIcon(GUI.class.getResource("/images/cube.png"));
+    private static final ImageIcon SPHERE = new ImageIcon(GUI.class.getResource("/images/sphere.png"));
+    private static final ImageIcon PYRAMID = new ImageIcon(GUI.class.getResource("/images/pyramid.png"));
+    private static final ImageIcon CONE = new ImageIcon(GUI.class.getResource("/images/cone.png"));
 
 
     /* ************************************* *
@@ -55,7 +64,7 @@ public class ihm {
     /**
      * Construction de la fenêtre
      */
-    public ihm() {
+    public GUI() {
         /* *********************************** *
          * Définition de la fenêtre principale *
          * *********************************** */
@@ -91,7 +100,6 @@ public class ihm {
         /* ******************** *
          * Gestion des couleurs *
          * ******************** */
-        topPanelLeft.setBackground(new Color(46, 76, 143));
         bottomPanelLeft.setBackground(new Color(85, 130, 139));
         topPanelRight.setBackground(new Color(87, 115, 153));
         bottomPanelRight.setBackground(new Color(78, 104, 138));
@@ -125,9 +133,25 @@ public class ihm {
          * Gestion du contenu du Panel en haut à gauche *
          * La scene de rendu 3D                         *
          * ******************************************** */
-        JLabel descScene = new JLabel("Scene 3D");
-        topPanelLeft.setLayout(new GridBagLayout());
-        topPanelLeft.add(descScene);
+		final GLProfile profile = GLProfile.get( GLProfile.GL2 );
+		GLCapabilities capabilities = new GLCapabilities( profile );
+
+		// The canvas
+		final GLCanvas glcanvas = new GLCanvas( capabilities );
+		Position position = new Position(-2,0,0);
+		Camera cam = new Camera(position);
+		final Scene3D scene = new Scene3D(cam);
+
+		glcanvas.addGLEventListener( scene );
+		glcanvas.addKeyListener(scene.getKeyListener());
+		glcanvas.addMouseMotionListener(scene);
+		glcanvas.addMouseWheelListener(scene);
+
+		final FPSAnimator animator = new FPSAnimator(glcanvas, 300,true);
+
+		animator.start();
+        topPanelLeft.setLayout(new BorderLayout());
+		topPanelLeft.add(glcanvas);
 
 
 
@@ -261,9 +285,6 @@ public class ihm {
         /* ******************** *
          * Gestion de la caméra *
          * ******************** */
-        /*JButton testButton = new JButton("test");
-        fenetre.add(testButton);
-        testButton.setBounds(1000, 400, 80, 80);*/
 
 
 
@@ -323,19 +344,5 @@ public class ihm {
     public void close() {
         System.out.println("Fermeture de l'application...");
         System.exit(0);
-    }
-
-    public static void main(String [] args){
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (ClassNotFoundException | InstantiationException
-                | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ihm();
-            }
-        });
     }
 }
