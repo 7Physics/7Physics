@@ -8,7 +8,11 @@ import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.FPSAnimator;
 
 import fr.setphysics.common.geom.Position;
+import fr.setphysics.common.geom.shape.Cuboid;
+import fr.setphysics.common.geom.shape.Sphere;
+import fr.setphysics.common.logger.Logger;
 import fr.setphysics.renderer.Camera;
+import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 
 import java.awt.*;
@@ -237,19 +241,19 @@ public class GUI {
         paramCubeZ.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeZ);
         // Paramètre "width"
-        JLabel textParamCubeWidth = new JLabel("width :", SwingConstants.RIGHT);
+        JLabel textParamCubeWidth = new JLabel("Largeur :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeWidth);
         JTextField paramCubeWidth = new JTextField();
         paramCubeWidth.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeWidth);
         // Paramètre "length"
-        JLabel textParamCubeLength = new JLabel("length :", SwingConstants.RIGHT);
+        JLabel textParamCubeLength = new JLabel("Longueur :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeLength);
         JTextField paramCubeLength = new JTextField();
         paramCubeLength.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeLength);
         // Paramètre "height"
-        JLabel textParamCubeHeight = new JLabel("height :", SwingConstants.RIGHT);
+        JLabel textParamCubeHeight = new JLabel("Hauteur :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeHeight);
         JTextField paramCubeHeight = new JTextField();
         paramCubeHeight.setPreferredSize(new Dimension(50, 20));
@@ -268,15 +272,24 @@ public class GUI {
         JButton addCubeButton = new JButton(PLUS);
         addCubeButtonPanel.add(addCubeEmptyPanel, BorderLayout.CENTER);
         addCubeButtonPanel.add(addCubeButton, BorderLayout.EAST);
+
         // Gestion du bouton "+"
         addCubeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                System.out.println("x : " + paramCubeX.getText() + "\n"
-                        + "y : " + paramCubeY.getText() + "\n"
-                        + "z : " + paramCubeZ.getText() + "\n"
-                        + "width : " + paramCubeWidth.getText() + "\n"
-                        + "length : " + paramCubeLength.getText() + "\n"
-                        + "height : " + paramCubeHeight.getText());
+                double x = Double.parseDouble(paramCubeX.getText());
+                double y = Double.parseDouble(paramCubeY.getText());
+                double z = Double.parseDouble(paramCubeZ.getText());
+                double w = Double.parseDouble(paramCubeWidth.getText());
+                double l = Double.parseDouble(paramCubeLength.getText());
+                double h = Double.parseDouble(paramCubeHeight.getText());
+                
+                Logger.info("Création d'un cube. X: " + x + ", Y: " + y + ", Z: " + z
+                		+ ", Width: " + w + ", Length: " + l + ", Height: " + h);
+                
+                scene.addObject(new Object3D(new Position(x, y, z),
+                		new Cuboid(w, l, h),
+                		new Color(128,128,128,128),
+                		Color.WHITE));
             }
         });
 
@@ -320,7 +333,7 @@ public class GUI {
         paramSphereZ.setPreferredSize(new Dimension(50, 20));
         spherePaneLeft.add(paramSphereZ);
         // Paramètre "width"
-        JLabel textParamSphereRadius = new JLabel("radius :", SwingConstants.RIGHT);
+        JLabel textParamSphereRadius = new JLabel("Rayon :", SwingConstants.RIGHT);
         spherePaneLeft.add(textParamSphereRadius);
         JTextField paramSphereRadius = new JTextField();
         paramSphereRadius.setPreferredSize(new Dimension(50, 20));
@@ -342,10 +355,18 @@ public class GUI {
         // Gestion du bouton "+"
         addSphereButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                System.out.println("x : " + paramSphereX.getText() + "\n"
-                        + "y : " + paramSphereY.getText() + "\n"
-                        + "z : " + paramSphereZ.getText() + "\n"
-                        + "radius : " + paramSphereRadius.getText());
+                double x = Double.parseDouble(paramSphereX.getText());
+                double y = Double.parseDouble(paramSphereY.getText());
+                double z = Double.parseDouble(paramSphereZ.getText());
+                double r = Double.parseDouble(paramSphereRadius.getText());
+
+                Logger.info("Création d'une sphere. X: " + x + ", Y: " + y + ", Z: " + z
+                		+ ", Rayon: " + r);
+                
+                scene.addObject(new Object3D(new Position(x, y, z),
+                		new Sphere(r, 3),
+                		new Color(0,128,128,128),
+                		new Color(0,0,0,0)));
             }
         });
 
@@ -413,7 +434,7 @@ public class GUI {
         cameraPanel.add(zoomInButton);
         zoomInButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                cam.zoom();
+                cam.zoom(-2.0);
             }
         });
 
