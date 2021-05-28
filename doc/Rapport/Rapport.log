@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  26 MAY 2021 21:49
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  28 MAY 2021 13:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -898,67 +898,31 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 ]
 Chapitre 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 39--40
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 41--42
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 44--45
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
+
+ []
+
 [2
 
 ]
 Chapitre 2.
 [3
-
-]
-Chapitre 3.
-
-Underfull \hbox (badness 10000) in paragraph at lines 60--63
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 64--65
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 67--70
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 70--73
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--77
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 77--80
-
- []
-
-[4
-
-]
-Chapitre 4.
-[5
-
-]
-Chapitre 5.
-[6
-
-]
-Chapitre 6.
-
-Underfull \hbox (badness 10000) in paragraph at lines 102--107
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 120--122
-
- []
-
-[7
 
 ]
 
@@ -967,14 +931,77 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[8] (./Rapport.aux) ) 
-Here is how much of TeX's memory you used:
- 14701 strings out of 493007
- 302431 string characters out of 6136719
- 406185 words of memory out of 5000000
- 18525 multiletter control sequences out of 15000+600000
- 536185 words of font info for 55 fonts, out of 8000000 for 9000
- 1348 hyphenation exceptions out of 8191
- 53i,11n,65p,10483b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
+[4]
+Chapitre 3.
 
-Output written on Rapport.pdf (9 pages).
+Underfull \hbox (badness 10000) in paragraph at lines 107--110
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--117
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 117--120
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--124
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 124--127
+
+ []
+
+[5
+
+]
+Chapitre 4.
+File: ./diagramme_classe.png Graphic file (type bmp)
+<./diagramme_classe.png>
+
+Overfull \hbox (40.11836pt too wide) in paragraph at lines 132--133
+ [] 
+ []
+
+[6
+
+]
+Chapitre 5.
+[7
+
+]
+Chapitre 6.
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--159
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 172--174
+
+ []
+
+[8
+
+] [9] (./Rapport.aux) ) 
+Here is how much of TeX's memory you used:
+ 14706 strings out of 493007
+ 302580 string characters out of 6136719
+ 406185 words of memory out of 5000000
+ 18526 multiletter control sequences out of 15000+600000
+ 536201 words of font info for 57 fonts, out of 8000000 for 9000
+ 1348 hyphenation exceptions out of 8191
+ 53i,12n,65p,10483b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on Rapport.pdf (10 pages).

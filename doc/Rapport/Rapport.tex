@@ -36,24 +36,71 @@
 
 \chapter{Introduction}
 
-L'idée de ce projet est de réaliser un moteur 3D permettant de réaliser des simulations de notions de 
-physique élémentaires telles que la gravité, les collisions etc.
+L'idée de ce projet est de réaliser un moteur 3D permettant de réaliser des simulations de notions de physique élémentaires telles que la gravité, les collisions, etc.\newline
+
+Ce projet pourrait alors se séparer en 2 objectifs principaux qui sont aussi les 2 briques principales nécessaire à sa réalisation :\newline
+
+\begin{itemize}
+  \item Créer une bibliothèque de rendu des formes tri-dimensionnelles basiques telles que des cubes, sphères, pyramides, etc. Tout cela avec possibilité de changer le point de vue de l'utilisateur en se déplaçant dans l'espace (concept de caméra à la première personne). Ajouté à cela, il est possible de créer plusieurs fonctionnalités visuelles telles que la présence d'ombre et de lumière, de texture, etc. Afin de créer des objets 3D réalistes.\newline
+
+  \item Créer un moteur physique responsable de la simulation des concepts évoqués plus tôt (gravité, collisions, etc.). Tous ces concepts pourront alors être manipulés à souhait grâce à des notions de vélocité, de poids, etc. Qui sont autant de paramètre influant sur ces phénomènes physiques.\newline
+\end{itemize}
+
 
 \chapter{Principales fonctionnalités}
 
 \section{Sprint 0}
 
+Puisque nous avions du temps après la mise en place du projet, nous avons pu
+mettre en place des fonctionnalités basiques permettant la compréhension
+de ce que nous allions développé par la suite. Nous avons donc cherché à pouvoir nous repérer dans l'espace.
+
 \subsection{Afficher une scène 3D}
+
 Une des premières fonctionnalités à implanter a été la création d'une scène 3D. 
 Cette scène 3D est constituée d'un sol représentant une grille blanche sur fond gris et d'un ciel bleu.
 Cette scène a pour but de permettre à l'utilisateur de mieux comprendre l'orientation des objets,le placement
 de sa caméra, etc. Cela permettra alors, lors de simulation physiques, de mieux comprendre les résultats de celles-ci.
 
-\section{Sprint 1}
-\subsection{Manipuler des objets 3D}
-\subsubsection{Ajouter un objet 3D}
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
 
-\subsubsection{Supprimer un objet 3D}
+\subsection{Manipulation de la caméra}
+
+Par la suite, et dans l'objectif de pouvoir observer la scène sous plusieurs angles, nous avons implanté une première
+version de gestion de la caméra. Grâce à cela, il nous était alors possible de nous déplacer dans la scène grâce
+aux raccourcis clavier que nous avions définis.
+
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
+
+\section{Sprint 1}
+
+L'objectif du sprint 1 a été de fournir une première version de l'interface utilisateur lui permettant
+d'ajouter des formes 3D prédéfinies à la scène et de les visualiser sous différents angles facilement et intuitivement.
+
+\subsection{Ajouter un objet 3D}
+
+Tout d'abord, nous avons rendu possible l'ajout de 2 formes prédéfinies que sont le cube et la sphère.
+
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
+
+\subsection{Amélioration de la caméra}
+
+Nous nous sommes aperçus que les raccourcis claviers mis en place lors du sprint 0 étaient difficilement utilisables.
+De plus, la première version ne consistait pas vraiment à faire bouger la caméra mais plutôt à faire tourner la scène
+sur elle-même. Nous avons donc décidé de changer de manière d'implanter la fonctionnalité et de permettre par la même
+occasion l'utilisation de la souris pour une meilleure expérience utilisateur.
+
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
+
+\subsection{Création de l'interface graphique}
+
+Afin de pouvoir une première version utilisable de notre application, nous avons créé, avec l'appui d'une maquette
+créée lors du Sprint 0, la base de l'interface utilisateur. Pour commencer, nous avons mis en place la structure de la
+fenêtre. Puis, nous avons ajouté les composants nécessaire à l'utilisation des fonctionnalités développées jusqu'ici.
+La scène 3D a donc pu être intégrée à la fenêtre et des boutons et formulaires ont été ajoutés pour que l'utilisateur
+puisse facilement ajouter des formes ou manipuler la caméra.
+
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
 
 \chapter{Découpage de l'application}
 
@@ -81,12 +128,17 @@ Dans chaque répertoire était alors développée une des 4 briques de l'applica
 
 \chapter{Diagramme de classe}
 
+\begin{center}
+  \includegraphics[width=18cm]{./diagramme_classe.png}
+\end{center}
 
 \chapter{Principaux choix}
 
 \section{Création de la maquette IHM}
-A l'aide de l'outil Figma, une maquette IHM a été réalisée afin de concrétiser les idées des membres de l'équipe
-et de représenter concrètement le concept à construire.
+
+A l'aide de l'outil Figma, une maquette de l'interface graphique a été réalisée afin de concrétiser les idées des membres de l'équipe
+et de représenter concrètement le logiciel à construire. Nous avons choisi ce logiciel de design car il offrait la possibilité de
+collaborer sur un projet unique.
 
 \section{Création d'un diagramme de classe}
 
@@ -102,7 +154,7 @@ et de représenter concrètement le concept à construire.
 L'objectif du sprint 0 à été de mettre en place le projet. Pour cela, il a tout d'abord fallu
 déterminer les différents objectifs et les différents besoins utilisateur au travers de User stories. Ensuite, l'équipe a défini
 les outils à utiliser concernant la gestion de projet, la gestion du code et la communication au sein de l'équipe.
-Pour finir, le projet a été structuré en différents répertoires au sein de l'organsation GitHub créée pour le projet long
+Pour finir, le projet a été structuré en différents répertoires au sein de l'organisation GitHub créée pour le projet long
 et l'environnement de travail a été configuré pour chaque membre de l'équipe.\newline
 
 Une fois cela fait, nous avons pu commencer à réaliser les premières User Stories.
@@ -114,8 +166,8 @@ Lors du déroulement du projet, nous avons mis en place 4 types de cérémonies 
 \subsection{Sprint planning}
 
 Au début de chaque sprint nous avons commencé par se réunir tous ensemble pour faire un point sur l'état d'esprit de tout le monde.
-Nous échangions alors sur le ressenti par rapport au projet et l'état d'avancement de celui-ci, les difficultés eprouvées, etc. Cette première étape
-nous permettait alors de s'assurer de la bonne entente entre les membres de l'équipe et du fait que personne ne se sente seul ou isolé du groupe.
+Nous échangions alors sur le ressenti par rapport au projet et l'état d'avancement de celui-ci ainsi que les difficultés eprouvées. Cette première étape
+nous permettait alors de s'assurer de la bonne entente entre les membres de l'équipe.
 
 Une fois cela fait, nous continuions par choisir les prochaines User Stories à implémenter au sein de l'application en se basant sur la vélocité
 de l'équipe lors du sprint précédent.\newline
@@ -124,25 +176,24 @@ Le sprint était alors prêt à commencer.
 
 \subsection{Daily scrum}
 
-Lors du déroulement de chaque Sprint, nous avions des réunions régulières. Qui malgrés ce que le nom
-laisse penser, n'avait lieu que 2 à 3 fois par semaine. En effet, ayant d'autres matières demandant du travail
-nous n'avions pas toujours le temps d'avancer chaque jour. Nous avons donc décider de nous réunir tous les 2 à 3 jours
+Lors du déroulement de chaque Sprint, nous avions des réunions régulières. N'ayant pas forcément le temps
+d'avancer chaque jour sur le projet, nous avons donc décidé de nous réunir tous les 2 à 3 jours
 pour faire le point sur l'avancement de chacun depuis le dernier daily scrum, les choix de conception et d'implémentation que
 nous devions revoir en cours de projet, etc.
 
-\subsection{Mid-sprint review}
+\subsection{Sanity Check}
 
 Au milieu de chaque sprint, nous nous réunissions afin de discuter de l'état courant du sprint. Le but était alors, dans le cas
 où tout avait déjà été fait, d'ajouter de nouvelles User Stories à réaliser, ou, dans le cas contraire, d'alléger la charge
 de travail prévue.
 
 Cette cérémonie nous permettait alros d'être sûr que notre charge de travail était réalisable lors du temps imparti
-et de s'assurer que tout se déroulait comme prévu
+et de s'assurer que tout se déroulait comme prévu.
 
 \subsection{Sprint Review}
 
 Enfin, pour clôturer le sprint, nous organisions une réunion ayant pour but de revenir sur les évènements du sprint.
-Cette cérémonie était cruciale car elle nous permettait notamment de calculer la vélocité à utiliser pour le prochain sprint,
+Cette cérémonie était importante car elle nous permettait notamment de calculer la vélocité à utiliser pour le prochain sprint,
 discuter des difficultés rencontrées et définir les défauts du sprint réalisé que nous devrons corriger lors du prochain.
 
 
