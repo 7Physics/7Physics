@@ -5,6 +5,7 @@ import javax.swing.*;
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
+import com.jogamp.opengl.awt.GLJPanel;
 import com.jogamp.opengl.util.FPSAnimator;
 
 import fr.setphysics.common.geom.Position;
@@ -15,6 +16,7 @@ import fr.setphysics.renderer.Camera;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 
+import java.applet.Applet;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -56,7 +58,7 @@ public class GUI {
      * ***************************************** */
     JMenuBar menuBar = new JMenuBar();
     JMenu menu = new JMenu("Menu");
-    private final JMenuItem boutonMenuQuitter = new JMenuItem("Quitter");
+    JMenuItem boutonMenuQuitter = new JMenuItem("Quitter");
 
 
     /* ******************************************************************* *
@@ -128,7 +130,7 @@ public class GUI {
          * ******************** */
         // Découpage vertical de la Frame en deux
         verticalSplitPanel.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
-        verticalSplitPanel.setDividerLocation(900);
+        verticalSplitPanel.setDividerLocation(880);
         verticalSplitPanel.setLeftComponent(leftSplitPanel);
         verticalSplitPanel.setRightComponent(rightSplitPanel);
 
@@ -150,16 +152,19 @@ public class GUI {
          * Gestion du contenu du Panel en haut à gauche *
          * La scene de rendu 3D                         *
          * ******************************************** */
+        topPanelLeft.setLayout(new BorderLayout());
+
 		final GLProfile profile = GLProfile.get( GLProfile.GL2 );
 		GLCapabilities capabilities = new GLCapabilities( profile );
 
 		// The canvas
-		final GLCanvas glcanvas = new GLCanvas( capabilities );
-		Position position = new Position(-2,0,0);
+        //final GLCanvas glcanvas = new GLCanvas(capabilities);
+        final GLJPanel glcanvas = new GLJPanel(capabilities);
+		Position position = new Position(-3.5,0.3,0);
 		Camera cam = new Camera(position);
 		final Scene3D scene = new Scene3D(cam);
 
-		glcanvas.addGLEventListener( scene );
+		glcanvas.addGLEventListener(scene);
 		glcanvas.addKeyListener(scene.getKeyListener());
 		glcanvas.addMouseMotionListener(scene);
 		glcanvas.addMouseWheelListener(scene);
@@ -167,8 +172,53 @@ public class GUI {
 		final FPSAnimator animator = new FPSAnimator(glcanvas, 300,true);
 
 		animator.start();
-        topPanelLeft.setLayout(new BorderLayout());
-		topPanelLeft.add(glcanvas);
+		topPanelLeft.add(glcanvas, BorderLayout.CENTER);
+
+
+
+        /* ******************** *
+         * Gestion de la caméra *
+         * ******************** */
+        // Création du Panel des boutons
+        JPanel gestionCam = new JPanel();
+        gestionCam.setBackground(new Color(49, 66, 106));
+        topPanelLeft.add(gestionCam, BorderLayout.WEST);
+
+        // Initialisation du GridLayout
+        GridLayout testLayout = new GridLayout(12, 1);
+        gestionCam.setLayout(testLayout);
+        testLayout.setHgap(-1);
+        testLayout.setVgap(15);
+
+        // Remplissage de vide
+        JLabel vide1 = new JLabel();
+        gestionCam.add(vide1);
+
+        // Gestion du bouton de zoom
+        JButton zoomInButton = new JButton(ZOOMIN);
+        zoomInButton.setPreferredSize(new Dimension(20, 20));
+        zoomInButton.setOpaque(false);
+        zoomInButton.setContentAreaFilled(false);
+        zoomInButton.setBorderPainted(false);
+        gestionCam.add(zoomInButton);
+        zoomInButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                cam.zoom(-2.0);
+            }
+        });
+
+        // Gestion du bouton de dézoom
+        JButton zoomOutButton = new JButton(ZOOMOUT);
+        zoomOutButton.setPreferredSize(new Dimension(20, 20));
+        zoomOutButton.setOpaque(false);
+        zoomOutButton.setContentAreaFilled(false);
+        zoomOutButton.setBorderPainted(false);
+        gestionCam.add(zoomOutButton);
+        zoomOutButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                cam.dezoom();
+            }
+        });
 
 
 
@@ -179,14 +229,14 @@ public class GUI {
         bottomPanelLeft.setLayout(new BorderLayout());
 
         // Gestion du bouton de lancement de simulation
-        /*JButton buttonPlay = new JButton(PLAY);
+        JButton buttonPlay = new JButton(PLAY);
         buttonPlay.setBackground(new Color(189, 213, 234));
         bottomPanelLeft.add(buttonPlay, BorderLayout.NORTH);
         buttonPlay.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 System.out.println("Lancement de la simulation !");
             }
-        });*/
+        });
 
         // Texte décoratif
         JLabel descObje = new JLabel("Gestion des objets", SwingConstants.CENTER);
@@ -209,55 +259,65 @@ public class GUI {
         ongletCube.setLayout(new BorderLayout());
         ongletCube.add(cubePane, BorderLayout.CENTER);
         cubePane.setLayout(new BorderLayout());
+
         // Initialisation de la partie gauche
         JPanel cubePaneLeft = new JPanel();
         cubePaneLeft.setBackground(new Color(87, 115, 153));
         cubePane.add(cubePaneLeft, BorderLayout.WEST);
+
         // Initialisation de la partie droite
         JPanel cubePaneRight = new JPanel();
         cubePaneRight.setBackground(new Color(78, 104, 138));
         cubePane.add(cubePaneRight, BorderLayout.CENTER);
+
         // Initialisation du GridLayout
         GridLayout cubeLayout = new GridLayout(6, 2);
         cubePaneLeft.setLayout(cubeLayout);
         cubeLayout.setHgap(-1);
         cubeLayout.setVgap(15);
+
         // Paramètre "x"
         JLabel textParamCubeX = new JLabel("x :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeX);
         JTextField paramCubeX = new JTextField();
         paramCubeX.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeX);
+
         // Paramètre "y"
         JLabel textParamCubeY = new JLabel("y :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeY);
         JTextField paramCubeY = new JTextField();
         paramCubeY.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeY);
+
         // Paramètre "z"
         JLabel textParamCubeZ = new JLabel("z :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeZ);
         JTextField paramCubeZ = new JTextField();
         paramCubeZ.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeZ);
+
         // Paramètre "width"
         JLabel textParamCubeWidth = new JLabel("Largeur :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeWidth);
         JTextField paramCubeWidth = new JTextField();
         paramCubeWidth.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeWidth);
+
         // Paramètre "length"
         JLabel textParamCubeLength = new JLabel("Longueur :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeLength);
         JTextField paramCubeLength = new JTextField();
         paramCubeLength.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeLength);
+
         // Paramètre "height"
         JLabel textParamCubeHeight = new JLabel("Hauteur :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeHeight);
         JTextField paramCubeHeight = new JTextField();
         paramCubeHeight.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeHeight);
+
         // Configuration de la partie droite
         cubePaneRight.setLayout(new BorderLayout());
         JPanel previewCube = new JPanel();
@@ -301,43 +361,51 @@ public class GUI {
         ongletSphere.setLayout(new BorderLayout());
         ongletSphere.add(spherePane, BorderLayout.CENTER);
         spherePane.setLayout(new BorderLayout());
+
         // Initialisation de la partie gauche
         JPanel spherePaneLeft = new JPanel();
         spherePaneLeft.setBackground(new Color(87, 115, 153));
         spherePane.add(spherePaneLeft, BorderLayout.WEST);
+
         // Initialisation de la partie droite
         JPanel spherePaneRight = new JPanel();
         spherePaneRight.setBackground(new Color(78, 104, 138));
         spherePane.add(spherePaneRight, BorderLayout.CENTER);
+
         // Initialisation du GridLayout
         GridLayout sphereLayout = new GridLayout(6, 2);
         spherePaneLeft.setLayout(sphereLayout);
         sphereLayout.setHgap(-1);
         sphereLayout.setVgap(15);
+
         // Paramètre "x"
         JLabel textParamSphereX = new JLabel("x :", SwingConstants.RIGHT);
         spherePaneLeft.add(textParamSphereX);
         JTextField paramSphereX = new JTextField();
         paramSphereX.setPreferredSize(new Dimension(50, 20));
         spherePaneLeft.add(paramSphereX);
+
         // Paramètre "y"
         JLabel textParamSphereY = new JLabel("y :", SwingConstants.RIGHT);
         spherePaneLeft.add(textParamSphereY);
         JTextField paramSphereY = new JTextField();
         paramSphereY.setPreferredSize(new Dimension(50, 20));
         spherePaneLeft.add(paramSphereY);
+
         // Paramètre "z"
         JLabel textParamSphereZ = new JLabel("z :", SwingConstants.RIGHT);
         spherePaneLeft.add(textParamSphereZ);
         JTextField paramSphereZ = new JTextField();
         paramSphereZ.setPreferredSize(new Dimension(50, 20));
         spherePaneLeft.add(paramSphereZ);
+
         // Paramètre "width"
         JLabel textParamSphereRadius = new JLabel("Rayon :", SwingConstants.RIGHT);
         spherePaneLeft.add(textParamSphereRadius);
         JTextField paramSphereRadius = new JTextField();
         paramSphereRadius.setPreferredSize(new Dimension(50, 20));
         spherePaneLeft.add(paramSphereRadius);
+
         // Configuration de la partie droite
         spherePaneRight.setLayout(new BorderLayout());
         JPanel previewSphere = new JPanel();
@@ -352,6 +420,7 @@ public class GUI {
         JButton addSphereButton = new JButton(PLUS);
         addSphereButtonPanel.add(addSphereEmptyPanel, BorderLayout.CENTER);
         addSphereButtonPanel.add(addSphereButton, BorderLayout.EAST);
+
         // Gestion du bouton "+"
         addSphereButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
@@ -417,41 +486,6 @@ public class GUI {
 
 
 
-        /* ******************** *
-         * Gestion de la caméra *
-         * ******************** */
-        // Création du Panel des boutons
-        JPanel cameraPanel = new JPanel();
-        cameraPanel.setBackground(new Color(49, 66, 106));
-        fenetre.add(cameraPanel);
-        cameraPanel.setBounds(20, 70, 29, 68);
-
-        // Gestion du bouton de zoom
-        JButton zoomInButton = new JButton(ZOOMIN);
-        zoomInButton.setOpaque(false);
-        zoomInButton.setContentAreaFilled(false);
-        zoomInButton.setBorderPainted(false);
-        cameraPanel.add(zoomInButton);
-        zoomInButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                cam.zoom(-2.0);
-            }
-        });
-
-        // Gestion du bouton de dézoom
-        JButton zoomOutButton = new JButton(ZOOMOUT);
-        zoomOutButton.setOpaque(false);
-        zoomOutButton.setContentAreaFilled(false);
-        zoomOutButton.setBorderPainted(false);
-        cameraPanel.add(zoomOutButton);
-        zoomOutButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                cam.dezoom();
-            }
-        });
-
-
-
         /* ************** *
          * ActionListener *
          * ************** */
@@ -499,6 +533,7 @@ public class GUI {
          * Affichage de la fenêtre *
          * *********************** */
         fenetre.setIconImage(ICONPROJET.getImage());
+        //fenetre.pack();
         fenetre.setVisible(true);
     }
 
