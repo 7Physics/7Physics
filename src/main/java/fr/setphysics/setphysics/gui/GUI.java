@@ -8,17 +8,16 @@ import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.FPSAnimator;
 
 import fr.setphysics.common.geom.Position;
-import fr.setphysics.common.logger.Logger;
 import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Camera;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.components.CamPanel;
 import fr.setphysics.setphysics.gui.components.EnvPanel;
 import fr.setphysics.setphysics.gui.components.PreviewPanel;
+import fr.setphysics.setphysics.gui.components.SimulationLauncher;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Date;
 
 public class GUI {
 
@@ -183,23 +182,7 @@ public class GUI {
 		JButton buttonPlay = new JButton(PLAY);
 		buttonPlay.setBackground(new Color(189, 213, 234));
 		bottomPanelLeft.add(buttonPlay, BorderLayout.NORTH);
-		buttonPlay.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent event) {
-				Logger.info("Lancement de la simulation !");
-				final long startTime = new Date().getTime();
-				Timer timer = new Timer(1000 / 60, new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent arg0) {
-						Logger.info("Message World.step();");
-						world.step(new Date().getTime() - startTime);
-					}
-
-				});
-				timer.start();
-			}
-			
-		});
+		buttonPlay.addActionListener(new SimulationLauncher(world));
 
 		// Texte décoratif
 		JLabel descObje = new JLabel("Gestion des objets", SwingConstants.CENTER);

@@ -102,6 +102,51 @@ puisse facilement ajouter des formes ou manipuler la caméra.
 
 \awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
 
+\section{Sprint 2}
+
+L'objectif de ce sprint a été de faire bouger les objets en ajoutant les fonctionnalités liées au moteur physique. Pour cela,
+nous avons modéliser les concepts de force, d'objets et de monde physique.
+
+\subsection{Création des principes de base du moteur 3D}
+
+Afin de compléter les fonctionnalités voulues de notre projet, nous avons commencé à mettre en place les briques
+nécessaires à la simulation de la physique. Pour cela, nous avons modélisé le concept d'objet physique. Ce concept
+a pour but de représenter la physique d'une forme. Nous avons donc utilisé ce concept pour calculer la position
+d'un objet a tout moment d'une simulation ainsi que sa vitesse à partir de toutes les forces qui lui sont appliquées.
+Pour cela nous avons utilisé les équations de cinématique suivantes.
+
+\[
+      x(t) = x_{0} + v_{0} . t + \frac{1}{2}.a.t^{2}
+\]
+\[
+      v(t) = v_{0} + a.t
+\]
+
+Grâce à ces équations et en mesurant le temps qui s'écoule au lancement d'une simulation, nous avons réussi à déplacer
+la position de tous les objets 3D en fonction du temps. Puisque nous réaffichons fréquemment les objets et que les calculs sont réalisés
+à partir de la position de l'objet, les objets peuvent désormais se déplacer selon les forces appliquées.\newline
+
+\subsection{Ajout d'une possibilité de sélection des objets}
+
+Afin de manipuler les objets plus facilement, nous avons ajouté, dans l'interface, une liste de boutons. Chacun de ces boutons
+sont liés à un objet et nous permettent de les sélectionner pour ensuite les manipuler. L'affichage ainsi réalisé est le suivant:
+
+% Ajouter la photo
+
+Puisque nous pouvons désormais sélectionner une table, il nous faut désormais rendre l'ajout des forces à un objet donné possible.
+
+\subsection{Manipulation des forces dans l'interface graphique}
+
+Nous avons donc cherché à rendre la manipulation de forces (création et suppression notamment) possible depuis l'interface graphique
+de notre application. Ainsi, une fois l'objet sélectionné grâce à la fonctionnalité du point précédent, nous affichons les détails
+de la forme dans l'interface avec la possibilité d'ajouter une force sur l'objet sélectionné. Toutes les forces sont affichées
+et elles-mêmes sélectionnables, nous avons donc rajouté un bouton permettant la suppression de la force actuellement sélectionné.
+
+\subsection{Possibilité de lancer la simulation}
+
+Pour finir, toujours dans le but de permettre aux objets de se déplacer, nous avons ajouté un bouton permettant de lancer la simulation.
+Une fois ce bouton pressé, nous demandons 60 fois par secondes à tous les objets physiques de mettre leurs positions à jour.
+
 \chapter{Découpage de l'application}
 
 Afin de séparer les rôles le plus possibles et permettre l'utilisation, à termes, de parties de l'application

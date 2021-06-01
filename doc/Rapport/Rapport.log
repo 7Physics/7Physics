@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  28 MAY 2021 13:35
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  1 JUN 2021 18:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -925,83 +925,87 @@ Chapitre 2.
 [3
 
 ]
+Underfull \hbox (badness 10000) in paragraph at lines 125--128
+
+ []
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[4]
+[4] [5]
 Chapitre 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 107--110
+Underfull \hbox (badness 10000) in paragraph at lines 152--155
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 111--112
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 114--117
+Underfull \hbox (badness 10000) in paragraph at lines 159--162
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 117--120
+Underfull \hbox (badness 10000) in paragraph at lines 162--165
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 120--124
+Underfull \hbox (badness 10000) in paragraph at lines 165--169
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 124--127
+Underfull \hbox (badness 10000) in paragraph at lines 169--172
 
  []
 
-[5
+[6
 
 ]
 Chapitre 4.
 File: ./diagramme_classe.png Graphic file (type bmp)
 <./diagramme_classe.png>
 
-Overfull \hbox (40.11836pt too wide) in paragraph at lines 132--133
+Overfull \hbox (40.11836pt too wide) in paragraph at lines 177--178
  [] 
  []
 
-[6
+[7
 
 ]
 Chapitre 5.
-[7
+[8
 
 ]
 Chapitre 6.
 
-Underfull \hbox (badness 10000) in paragraph at lines 154--159
+Underfull \hbox (badness 10000) in paragraph at lines 199--204
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 172--174
+Underfull \hbox (badness 10000) in paragraph at lines 217--219
 
  []
 
-[8
+[9
 
-] [9] (./Rapport.aux) ) 
+] [10] (./Rapport.aux) ) 
 Here is how much of TeX's memory you used:
  14706 strings out of 493007
  302580 string characters out of 6136719
- 406185 words of memory out of 5000000
+ 407185 words of memory out of 5000000
  18526 multiletter control sequences out of 15000+600000
  536201 words of font info for 57 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  53i,12n,65p,10483b,319s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Rapport.pdf (10 pages).
+Output written on Rapport.pdf (11 pages).
