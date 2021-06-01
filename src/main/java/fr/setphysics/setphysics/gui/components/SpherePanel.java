@@ -96,14 +96,16 @@ public class SpherePanel extends JPanel {
                 Logger.info("Création d'une sphere. X: " + x + ", Y: " + y + ", Z: " + z
                 		+ ", Rayon: " + r);
 
-                Object3D temp = new Object3D(new Position(x, y, z),
+                Object3D sphere = new Object3D(new Position(x, y, z),
                         new Sphere(r, 3),
                         new Color(0,128,128,128),
                         new Color(0,0,0,0));
-                
-                scene.addObject(temp);
 
-                GUI.getInstance().getObjectPanel().addObject3D(temp);
+                scene.addObject(sphere);
+
+                ObjectPanel objectPanel = new ObjectPanel(sphere, null);
+
+                GUI.getInstance().getObjectPanel().addObjectPanel(objectPanel);
             }
         });
 	}

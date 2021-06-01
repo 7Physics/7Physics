@@ -111,14 +111,16 @@ public class CubePanel extends JPanel {
                 Logger.info("Création d'un cube. X: " + x + ", Y: " + y + ", Z: " + z
                 		+ ", Width: " + w + ", Length: " + l + ", Height: " + h);
 
-                Object3D temp = new Object3D(new Position(x, y, z),
+                Object3D cube = new Object3D(new Position(x, y, z),
                             new Cuboid(w, l, h),
                             new Color(128,128,128,128),
                             Color.WHITE);
                 
-                scene.addObject(temp);
+                scene.addObject(cube);
 
-                GUI.getInstance().getObjectPanel().addObject3D(temp);
+                ObjectPanel objectPanel = new ObjectPanel(cube, null);
+
+                GUI.getInstance().getObjectPanel().addObjectPanel(objectPanel);
             }
         });
 	}

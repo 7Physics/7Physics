@@ -55,17 +55,9 @@ public class ObjectListPanel extends JPanel {
         this.add(scrollBar, BorderLayout.CENTER);
 	}
 
-	public int indx = 0;
-    public void addObject3D(Object3D obj) {
-        indx++;
-        Random rand = new Random();
-        JButton test = new JButton();
-        test.setPreferredSize(new Dimension(65, 65));
-        test.setBackground(new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()));
-        objectListContent.add(test);
-        test.add(new JLabel(obj.getShape().getClass().getSimpleName()));
+    public void addObjectPanel(ObjectPanel obj) {
+	    objectListContent.add(obj);
         objectListContent.repaint();
         objectListContent.revalidate();
-        //test
     }
 }
