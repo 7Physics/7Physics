@@ -4,7 +4,7 @@ import javax.swing.*;
 
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
-import com.jogamp.opengl.awt.GLJPanel;
+import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.FPSAnimator;
 
 import fr.setphysics.common.geom.Position;
@@ -144,8 +144,7 @@ public class GUI {
 		GLCapabilities capabilities = new GLCapabilities( profile );
 
 		// The canvas
-        //final GLCanvas glcanvas = new GLCanvas(capabilities);
-        final GLJPanel glcanvas = new GLJPanel(capabilities);
+        final GLCanvas glcanvas = new GLCanvas(capabilities);
 		Position position = new Position(-3.5,0.3,0);
 		Camera cam = new Camera(position);
 		final Scene3D scene = new Scene3D(cam);
@@ -166,9 +165,10 @@ public class GUI {
          * Gestion de la caméra *
          * ******************** */
         // Création du Panel des boutons
-        JPanel gestionCam = new CamPanel(cam);
-        gestionCam.setBackground(new Color(49, 66, 106));
-        topPanelLeft.add(gestionCam, BorderLayout.WEST);
+        JPanel cameraPanel = new CamPanel(cam);
+        cameraPanel.setBackground(new Color(49, 66, 106));
+        fenetre.add(cameraPanel);
+        cameraPanel.setBounds(20, 70, 29, 68);
 
 
         /* ******************************************** *
@@ -228,8 +228,10 @@ public class GUI {
         /* ******************* *
          * Afficher le MenuBar *
          * ******************* */
+        menuBar.add(Box.createHorizontalGlue());
         fenetre.setJMenuBar(menuBar);
         boutonMenuQuitter.addActionListener(quitter);
+        menu.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         menu.add(boutonMenuQuitter);
         menuBar.add(menu);
 
