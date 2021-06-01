@@ -36,10 +36,14 @@ public class EnvPanel extends JTabbedPane {
         /*JLabel descObj = new JLabel("Paramètres de l'objet");
         ongletObjet.setLayout(new GridBagLayout());
         ongletObjet.add(descObj);*/
-        testAffichage();
+        //testAffichage();
 	}
 
-	public void testAffichage() {
+    public JPanel getOngletObjet() {
+        return ongletObjet;
+    }
+
+    public void testAffichage() {
         ongletObjet.removeAll();
         ongletObjet.repaint();
         ongletObjet.revalidate();

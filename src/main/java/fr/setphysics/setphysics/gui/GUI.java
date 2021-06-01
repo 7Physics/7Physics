@@ -27,6 +27,7 @@ public class GUI extends JFrame {
 	public static final ImageIcon ICONPROJET = new ImageIcon(GUI.class.getResource("/images/projet.png"));
     public static final ImageIcon PLAY = new ImageIcon(GUI.class.getResource("/images/play.png"));
     public static final ImageIcon PLUS = new ImageIcon(GUI.class.getResource("/images/plus.png"));
+    public static final ImageIcon MINUS = new ImageIcon(GUI.class.getResource("/images/minus.png"));
     public static final ImageIcon ZOOMIN = new ImageIcon(GUI.class.getResource("/images/zoom-in.png"));
     public static final ImageIcon ZOOMOUT = new ImageIcon(GUI.class.getResource("/images/zoom-out.png"));
     public static final ImageIcon CUBE = new ImageIcon(GUI.class.getResource("/images/cube.png"));
@@ -58,6 +59,7 @@ public class GUI extends JFrame {
     private JPanel topPanelRight;
     private JPanel bottomPanelRight;
     private ObjectListPanel contentBottomPanelLeft;
+    private EnvPanel ongletsBottom;
 
 
 
@@ -74,7 +76,7 @@ public class GUI extends JFrame {
      * Création des différents JTabbedPane (onglets) *
      * ********************************************* */
     private JTabbedPane ongletsTop;
-    private JTabbedPane ongletsBottom;
+    //private JTabbedPane ongletsBottom;
 
 
 
@@ -265,6 +267,12 @@ public class GUI extends JFrame {
      */
     public ObjectListPanel getObjectPanel() {
         return contentBottomPanelLeft;
+    }
+
+
+
+    public EnvPanel getOngletsBottom() {
+        return ongletsBottom;
     }
 
 
