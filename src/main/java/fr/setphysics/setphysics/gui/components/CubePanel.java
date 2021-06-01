@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 import fr.setphysics.common.geom.Position;
 import fr.setphysics.common.geom.shape.Cuboid;
@@ -27,12 +28,14 @@ public class CubePanel extends JPanel {
 
         // Initialisation de la partie gauche
         JPanel cubePaneLeft = new JPanel();
+        cubePaneLeft.setBorder(new EmptyBorder(5, 5, 5, 5));
         cubePaneLeft.setBackground(new Color(87, 115, 153));
         this.add(cubePaneLeft, BorderLayout.WEST);
 
         // Initialisation de la partie droite
         JPanel cubePaneRight = new JPanel();
         cubePaneRight.setBackground(new Color(78, 104, 138));
+        cubePaneRight.setPreferredSize(new Dimension(170, 50));
         this.add(cubePaneRight, BorderLayout.CENTER);
 
         // Initialisation du GridLayout
