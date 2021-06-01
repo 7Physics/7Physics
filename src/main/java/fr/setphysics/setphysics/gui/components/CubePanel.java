@@ -14,15 +14,18 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import fr.setphysics.common.geom.Position;
+import fr.setphysics.common.geom.Vec3;
 import fr.setphysics.common.geom.shape.Cuboid;
 import fr.setphysics.common.logger.Logger;
+import fr.setphysics.engine.PhysicObject;
+import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
 
 @SuppressWarnings("serial")
 public class CubePanel extends JPanel {
-	public CubePanel(Scene3D scene) {
+	public CubePanel(Scene3D scene, World world) {
         this.setLayout(new BorderLayout());
 
         // Initialisation de la partie gauche
@@ -111,10 +114,12 @@ public class CubePanel extends JPanel {
                 Logger.info("Création d'un cube. X: " + x + ", Y: " + y + ", Z: " + z
                 		+ ", Width: " + w + ", Length: " + l + ", Height: " + h);
                 
-                scene.addObject(new Object3D(new Position(x, y, z),
-                		new Cuboid(w, l, h),
-                		new Color(128,128,128,128),
-                		Color.WHITE));
+                Position pos = new Position(x, y, z);
+				Cuboid cube = new Cuboid(w, l, h);
+				PhysicObject po = new PhysicObject(cube, pos);
+				scene.addObject(new Object3D(pos, cube, new Color(128, 128, 128, 128), Color.WHITE));
+				world.addPhysicObject(po);
+				po.addForce(new Vec3(0.1, 0.1, 0.1));
             }
         });
 	}
