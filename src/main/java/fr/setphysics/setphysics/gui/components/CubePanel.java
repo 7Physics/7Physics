@@ -113,6 +113,11 @@ public class CubePanel extends JPanel {
                 
                 Logger.info("Création d'un cube. X: " + x + ", Y: " + y + ", Z: " + z
                 		+ ", Width: " + w + ", Length: " + l + ", Height: " + h);
+
+                Object3D cube = new Object3D(new Position(x, y, z),
+                            new Cuboid(w, l, h),
+                            new Color(128,128,128,128),
+                            Color.WHITE);
                 
                 Position pos = new Position(x, y, z);
 				Cuboid cube = new Cuboid(w, l, h);
@@ -120,6 +125,9 @@ public class CubePanel extends JPanel {
 				scene.addObject(new Object3D(pos, cube, new Color(128, 128, 128, 128), Color.WHITE));
 				world.addPhysicObject(po);
 				po.addForce(new Vec3(0.1, 0.1, 0.1));
+                ObjectPanel objectPanel = new ObjectPanel(cube, null);
+
+                GUI.getInstance().getObjectPanel().addObjectPanel(objectPanel);
             }
         });
 	}
