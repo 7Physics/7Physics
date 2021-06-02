@@ -28,8 +28,8 @@ public class ObjectPanel extends JButton {
         this.setBackground(new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()));
         this.add(new JLabel(formName));
 
-        JPanel testPane = new ObjectDetails(object, body);
-        GUI.getInstance().getOngletsBottom().getOngletObjet().add(testPane, name);
+        JPanel currentObjectPane = new ObjectDetails(name, object, body);
+        GUI.getInstance().getOngletsBottom().getOngletObjet().add(currentObjectPane, name);
         final CardLayout cl = (CardLayout) GUI.getInstance().getOngletsBottom().getOngletObjet().getLayout();
         this.addActionListener(new ActionListener() {
             @Override

@@ -9,6 +9,7 @@ import fr.setphysics.renderer.Scene3D;
 @SuppressWarnings("serial")
 public class EnvPanel extends JTabbedPane {
     private final JPanel ongletObjet;
+    private JLabel descObj;
 
 
 
@@ -17,6 +18,7 @@ public class EnvPanel extends JTabbedPane {
 	     * Affichage et contenu de l'onglet "Paramètres de l'environnement" *
 	     * **************************************************************** */
         JPanel ongletEnvironnement = new JPanel();
+        ongletEnvironnement.setBackground(new Color(93, 129, 156));
         this.addTab("Environnement", ongletEnvironnement);
         JLabel descEnv = new JLabel("Paramètres de l'environnement");
         ongletEnvironnement.setLayout(new GridBagLayout());
@@ -29,26 +31,21 @@ public class EnvPanel extends JTabbedPane {
          * ******************************************************** */
         // Création du contenant
         ongletObjet = new JPanel();
+        ongletObjet.setBackground(new Color(93, 129, 156));
         ongletObjet.setLayout(new CardLayout());
         this.addTab("Objet", ongletObjet);
 
         // Création du contenu
-        /*JLabel descObj = new JLabel("Paramètres de l'objet");
-        ongletObjet.setLayout(new GridBagLayout());
-        ongletObjet.add(descObj);*/
-        //testAffichage();
+        descObj = new JLabel("Paramètres de l'objet", SwingConstants.CENTER);
+        ongletObjet.add(descObj, BorderLayout.CENTER);
 	}
 
+
+    /**
+     * Renvoie le Panel "ongletObjet"
+     * @return JPanel
+     */
     public JPanel getOngletObjet() {
         return ongletObjet;
-    }
-
-    public void testAffichage() {
-        ongletObjet.removeAll();
-        ongletObjet.repaint();
-        ongletObjet.revalidate();
-
-        Random rand = new Random();
-        ongletObjet.setBackground(new Color(rand.nextFloat(), rand.nextFloat(), rand.nextFloat()));
     }
 }

@@ -271,6 +271,10 @@ public class GUI extends JFrame {
 
 
 
+    /**
+     * Renvoie le Panel "ongletsBottom"
+     * @return EnvPanel
+     */
     public EnvPanel getOngletsBottom() {
         return ongletsBottom;
     }

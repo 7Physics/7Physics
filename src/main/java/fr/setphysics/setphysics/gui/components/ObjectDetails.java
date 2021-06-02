@@ -1,10 +1,13 @@
 package fr.setphysics.setphysics.gui.components;
 
+import fr.setphysics.common.geom.Vec3;
 import fr.setphysics.engine.PhysicObject;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.setphysics.gui.GUI;
 
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,26 +15,32 @@ import java.awt.event.ActionListener;
 
 public class ObjectDetails extends JPanel {
 
-    public ObjectDetails(Object3D object, PhysicObject physicObject) {
-        this.setBackground(Color.LIGHT_GRAY);
+    public ObjectDetails(String name, Object3D object, PhysicObject physicObject) {
+        Color colorBackground = new Color(93, 129, 156);
+        this.setBackground(colorBackground);
         this.setLayout(new BorderLayout());
 
         // Name
-        JLabel name = new JLabel("Nom");
-        this.add(name, BorderLayout.NORTH);
+        JPanel namePanel = new JPanel();
+        namePanel.setBackground(colorBackground);
+        JLabel nameLabel = new JLabel("Nom : ");
+        JLabel nameObject = new JLabel(name);
+        namePanel.add(nameLabel);
+        namePanel.add(nameObject);
+        this.add(namePanel, BorderLayout.NORTH);
 
         // Panel central
         JPanel centerPanel = new JPanel();
         centerPanel.setLayout(new BorderLayout());
-        centerPanel.setBackground(Color.MAGENTA);
+        centerPanel.setBackground(colorBackground);
 
         // centerPanel en 2
         JPanel propPanel = new JPanel();
         JPanel forcesPanel = new JPanel();
         propPanel.setLayout(new BorderLayout());
         forcesPanel.setLayout(new BorderLayout());
-        propPanel.setBackground(Color.CYAN);
-        forcesPanel.setBackground(Color.RED);
+        propPanel.setBackground(colorBackground);
+        forcesPanel.setBackground(colorBackground);
 
         // Propriétés
         JLabel prop = new JLabel("Propriétés");
@@ -48,7 +57,20 @@ public class ObjectDetails extends JPanel {
         headForce.add(minusButton);
         forcesPanel.add(headForce, BorderLayout.NORTH);
 
-        DefaultTableModel forcesTable = new DefaultTableModel(new String[]{"x", "y", "z"}, 0);
+        DefaultTableModel forcesTable = new DefaultTableModel(new String[]{"x", "y", "z"}, 0) {
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return Double.class;
+            }
+        };
+        forcesTable.addTableModelListener(new TableModelListener() {
+            @Override
+            public void tableChanged(TableModelEvent tableModelEvent) {
+                if(tableModelEvent.getType() == TableModelEvent.UPDATE) {
+                    Vector values = forcesTable.getDataVector().get(tableModelEvent.getFirstRow());
+                    physicObject.getForces().get().set()
+                }
+        });
         JTable table = new JTable(forcesTable);
         table.setBackground(Color.YELLOW);
         JScrollPane scroll = new JScrollPane(table);
@@ -56,16 +78,20 @@ public class ObjectDetails extends JPanel {
         scroll.getViewport().setBackground(Color.BLACK);
         forcesPanel.add(scroll, BorderLayout.CENTER);
 
+        // Boutons de la table
         plusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                forcesTable.addRow(new Object[]{});
+                physicObject.addForce(new Vec3(0, 0, 0));
+                forcesTable.addRow(new Object[]{0, 0, 0});
             }
         });
+
         minusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                forcesTable.removeRow(forcesTable.getRowCount()-1);
+                physicObject.getForces().remove(table.getSelectedRow());
+                forcesTable.removeRow(table.getSelectedRow());
             }
         });
 

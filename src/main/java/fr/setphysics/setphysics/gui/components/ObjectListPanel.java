@@ -55,6 +55,11 @@ public class ObjectListPanel extends JPanel {
         this.add(scrollBar, BorderLayout.CENTER);
 	}
 
+
+    /**
+     * Ajout d'un objet dans objectListContent
+     * @param obj ObjectPanel
+     */
     public void addObjectPanel(ObjectPanel obj) {
 	    objectListContent.add(obj);
         objectListContent.repaint();

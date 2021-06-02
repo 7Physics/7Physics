@@ -27,7 +27,7 @@ public class CubePanel extends JPanel {
 
         // Initialisation de la partie gauche
         JPanel cubePaneLeft = new JPanel();
-        cubePaneLeft.setBackground(new Color(87, 115, 153));
+        cubePaneLeft.setBackground(new Color(93, 129, 156));
         this.add(cubePaneLeft, BorderLayout.WEST);
 
         // Initialisation de la partie droite
