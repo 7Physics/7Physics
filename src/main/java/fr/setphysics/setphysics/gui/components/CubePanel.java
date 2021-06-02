@@ -1,24 +1,17 @@
 package fr.setphysics.setphysics.gui.components;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-
 import fr.setphysics.common.geom.Position;
 import fr.setphysics.common.geom.shape.Cuboid;
 import fr.setphysics.common.logger.Logger;
+import fr.setphysics.engine.PhysicObject;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class CubePanel extends JPanel {
@@ -107,20 +100,22 @@ public class CubePanel extends JPanel {
                 double w = Double.parseDouble(paramCubeWidth.getText());
                 double l = Double.parseDouble(paramCubeLength.getText());
                 double h = Double.parseDouble(paramCubeHeight.getText());
-                
-                Logger.info("Création d'un cube. X: " + x + ", Y: " + y + ", Z: " + z
-                		+ ", Width: " + w + ", Length: " + l + ", Height: " + h);
 
-                Object3D cube = new Object3D(new Position(x, y, z),
+                    Logger.info("Création d'un cube. X: " + x + ", Y: " + y + ", Z: " + z
+                            + ", Width: " + w + ", Length: " + l + ", Height: " + h);
+
+                    Object3D cube = new Object3D(new Position(x, y, z),
                             new Cuboid(w, l, h),
-                            new Color(128,128,128,128),
+                            new Color(128, 128, 128, 128),
                             Color.WHITE);
-                
-                scene.addObject(cube);
 
-                ObjectPanel objectPanel = new ObjectPanel(cube, null);
+                    scene.addObject(cube);
 
-                GUI.getInstance().getObjectPanel().addObjectPanel(objectPanel);
+                    PhysicObject body = new PhysicObject(cube.getShape(), cube.getPosition());
+
+                    ObjectPanel objectPanel = new ObjectPanel(cube, body);
+
+                    GUI.getInstance().getObjectPanel().addObjectPanel(objectPanel);
             }
         });
 	}
