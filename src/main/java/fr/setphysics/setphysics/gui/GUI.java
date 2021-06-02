@@ -15,7 +15,6 @@ import fr.setphysics.setphysics.gui.components.CamPanel;
 import fr.setphysics.setphysics.gui.components.EnvPanel;
 import fr.setphysics.setphysics.gui.components.ObjectListPanel;
 import fr.setphysics.setphysics.gui.components.PreviewPanel;
-import fr.setphysics.setphysics.gui.components.SimulationLauncher;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -194,7 +193,7 @@ public class GUI extends JFrame {
          * La gestion des objets présents dans la scene *
          * ******************************************** */
         bottomPanelLeft.setLayout(new BorderLayout());
-        contentBottomPanelLeft = new ObjectListPanel(scene);
+        contentBottomPanelLeft = new ObjectListPanel(scene, world);
         bottomPanelLeft.add(contentBottomPanelLeft, BorderLayout.CENTER);
 
 

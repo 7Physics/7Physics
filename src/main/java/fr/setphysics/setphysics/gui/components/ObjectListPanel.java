@@ -1,5 +1,6 @@
 package fr.setphysics.setphysics.gui.components;
 
+import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
@@ -17,7 +18,7 @@ public class ObjectListPanel extends JPanel {
 
 
 
-	public ObjectListPanel(Scene3D scene) {
+	public ObjectListPanel(Scene3D scene, World world) {
 
         this.setLayout(new BorderLayout());
 
@@ -28,11 +29,7 @@ public class ObjectListPanel extends JPanel {
         JButton buttonPlay = new JButton(GUI.PLAY);
         buttonPlay.setBackground(new Color(189, 213, 234));
         this.add(buttonPlay, BorderLayout.NORTH);
-        buttonPlay.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                System.out.println("Lancement de la simulation !");
-            }
-        });
+        buttonPlay.addActionListener(new SimulationLauncher(world));
 
 
 
