@@ -10,6 +10,7 @@
 \usepackage[utf8x]{inputenc}
 \usepackage{awesomebox}
 \usepackage{fontawesome5}
+\usepackage{hyperref}
 \setmainfont{Liberation Serif}
 
 \titleformat{\chapter}[display]{\Huge}{\thechapter. #1}{20pt}{\small}
@@ -102,9 +103,54 @@ puisse facilement ajouter des formes ou manipuler la caméra.
 
 \awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
 
+\section{Sprint 2}
+
+L'objectif de ce sprint a été de faire bouger les objets en ajoutant les fonctionnalités liées au moteur physique. Pour cela,
+nous avons modéliser les concepts de force, d'objets et de monde physique.
+
+\subsection{Création des principes de base du moteur 3D}
+
+Afin de compléter les fonctionnalités voulues de notre projet, nous avons commencé à mettre en place les briques
+nécessaires à la simulation de la physique. Pour cela, nous avons modélisé le concept d'objet physique. Ce concept
+a pour but de représenter la physique d'une forme. Nous avons donc utilisé ce concept pour calculer la position
+d'un objet a tout moment d'une simulation ainsi que sa vitesse à partir de toutes les forces qui lui sont appliquées.
+Pour cela nous avons utilisé les équations de cinématique suivantes.
+
+\[
+      x(t) = x_{0} + v_{0} . t + \frac{1}{2}.a.t^{2}
+\]
+\[
+      v(t) = v_{0} + a.t
+\]
+
+Grâce à ces équations et en mesurant le temps qui s'écoule au lancement d'une simulation, nous avons réussi à déplacer
+la position de tous les objets 3D en fonction du temps. Puisque nous réaffichons fréquemment les objets et que les calculs sont réalisés
+à partir de la position de l'objet, les objets peuvent désormais se déplacer selon les forces appliquées.\newline
+
+\subsection{Ajout d'une possibilité de sélection des objets}
+
+Afin de manipuler les objets plus facilement, nous avons ajouté, dans l'interface, une liste de boutons. Chacun de ces boutons
+sont liés à un objet et nous permettent de les sélectionner pour ensuite les manipuler. L'affichage ainsi réalisé est le suivant:
+
+% Ajouter la photo
+
+Puisque nous pouvons désormais sélectionner une table, il nous faut désormais rendre l'ajout des forces à un objet donné possible.
+
+\subsection{Manipulation des forces dans l'interface graphique}
+
+Nous avons donc cherché à rendre la manipulation de forces (création et suppression notamment) possible depuis l'interface graphique
+de notre application. Ainsi, une fois l'objet sélectionné grâce à la fonctionnalité du point précédent, nous affichons les détails
+de la forme dans l'interface avec la possibilité d'ajouter une force sur l'objet sélectionné. Toutes les forces sont affichées
+et elles-mêmes sélectionnables, nous avons donc rajouté un bouton permettant la suppression de la force actuellement sélectionné.
+
+\subsection{Possibilité de lancer la simulation}
+
+Pour finir, toujours dans le but de permettre aux objets de se déplacer, nous avons ajouté un bouton permettant de lancer la simulation.
+Une fois ce bouton pressé, nous demandons 60 fois par secondes à tous les objets physiques de mettre leurs positions à jour.
+
 \chapter{Découpage de l'application}
 
-Afin de séparer les rôles le plus possibles et permettre l'utilisation, à termes, de parties de l'application
+\hypertarget{découpage}{Afin} de séparer les rôles le plus possibles et permettre l'utilisation, à termes, de parties de l'application
 indépendamment, nous avons commencer par créer 4 répertoires git différent. Cela permet alors de n'utiliser que
 les fonctions de rendus dans une librairie minimaliste si besoin et de même pour la partie simulation physique.\newline
 
@@ -134,19 +180,35 @@ Dans chaque répertoire était alors développée une des 4 briques de l'applica
 
 \chapter{Principaux choix}
 
-\section{Création de la maquette IHM}
+\section{Conception}
+
+\subsection{Création de la maquette IHM}
 
 A l'aide de l'outil Figma, une maquette de l'interface graphique a été réalisée afin de concrétiser les idées des membres de l'équipe
 et de représenter concrètement le logiciel à construire. Nous avons choisi ce logiciel de design car il offrait la possibilité de
-collaborer sur un projet unique.
+collaborer sur un projet unique. En apportant tous nos avis sur cette maquette, nous avons pu obtenir une representation réaliste qui à
+été utile lors du développement de l'IHM.
 
-\section{Création d'un diagramme de classe}
+\subsection{Création d'un diagramme de classe}
 
-\section{Conception}
+Après avoir défini les besoins auxquelles notre application devra répondre, nous avons réfléchi au découpage du projet \hyperlink{découpage}{(voir Découpage de l'application)}.
+A partir de ce découpage, nous avons créer un diagramme de classe initial qui nous a servi de base à nos développements. 
+Au fur et à mesure de l'affinement de nos visions sur chaque partie de l'application nous avons adapté le diagramme de classe en conséquence.
+Nous avons utilisé l'outil plantuml pour créer ce diagramme ce qui nous a permis de ne pas perdre du temps de mise en page. 
 
 \section{Réalisation}
 
 \section{Problèmes rencontrés et solutions apportées}
+
+\subsection{Rafraîchissement du rendu graphique}
+Trop sacadé
+
+\subsection{Caméra fixée sur la scène}
+On bougeait la scène et pas la caméra mais ducoup on a changé
+
+\subsection{Rendu pixelisé}
+images étaient trop pixélisées 
+Solution : utilisation du Anti-aliasing
 
 \chapter{Organisation de l'équipe et mise en oeuvre des méthodes agiles}
 
@@ -187,14 +249,18 @@ Au milieu de chaque sprint, nous nous réunissions afin de discuter de l'état c
 où tout avait déjà été fait, d'ajouter de nouvelles User Stories à réaliser, ou, dans le cas contraire, d'alléger la charge
 de travail prévue.
 
-Cette cérémonie nous permettait alros d'être sûr que notre charge de travail était réalisable lors du temps imparti
+Cette cérémonie nous permettait alors d'être sûr que notre charge de travail était réalisable lors du temps imparti
 et de s'assurer que tout se déroulait comme prévu.
 
 \subsection{Sprint Review}
 
-Enfin, pour clôturer le sprint, nous organisions une réunion ayant pour but de revenir sur les évènements du sprint.
-Cette cérémonie était importante car elle nous permettait notamment de calculer la vélocité à utiliser pour le prochain sprint,
-discuter des difficultés rencontrées et définir les défauts du sprint réalisé que nous devrons corriger lors du prochain.
+Pour clôturer le sprint, nous organisions une réunion ayant pour but de revenir sur les évènements du sprint.
+Cette cérémonie était importante car elle nous permettait notamment de discuter des difficultés rencontrées et calculer la vélocité 
+à utiliser lors du prochain sprint planning.
 
+\subsection{Retrospective}
+Enfin, l'équipe se réuni une dernière fois pour dans le sprint pour analyser le déroulement du sprint. Cette analyse permet d'avoir
+le ressenti réel de chaque membre de l'équipe dans le projet. Cette réunion nous a permis de définir les défauts du sprint réalisé 
+et de les corriger lors du prochain.
 
 \end{document}
