@@ -204,7 +204,7 @@ public class GUI extends JFrame {
          * Ajout et création d'objets                   *
          * ******************************************** */
         topPanelRight.setLayout(new BorderLayout());
-        ongletsTop = new PreviewPanel(scene);
+        ongletsTop = new PreviewPanel(scene, world);
         topPanelRight.add(ongletsTop, BorderLayout.CENTER);
 
 
