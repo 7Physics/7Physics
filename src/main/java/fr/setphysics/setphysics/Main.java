@@ -2,6 +2,7 @@ package fr.setphysics.setphysics;
 
 import java.awt.EventQueue;
 
+import fr.setphysics.common.logger.Logger;
 import fr.setphysics.setphysics.gui.GUI;
 
 public class Main {

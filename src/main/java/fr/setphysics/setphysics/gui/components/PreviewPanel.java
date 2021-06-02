@@ -6,18 +6,19 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 
+import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
 
 @SuppressWarnings("serial")
 public class PreviewPanel extends JTabbedPane{
-	public PreviewPanel(Scene3D scene) {
+	public PreviewPanel(Scene3D scene, World world) {
 		super(SwingConstants.TOP);
         // _____________________________
         // Gestion de l'ajout du cube
         JPanel ongletCube = new JPanel();
         this.addTab("", ongletCube);
-        JPanel cubePane = new CubePanel(scene);
+        JPanel cubePane = new CubePanel(scene, world);
         ongletCube.setLayout(new BorderLayout());
         ongletCube.add(cubePane, BorderLayout.CENTER);
 

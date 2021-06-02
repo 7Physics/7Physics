@@ -67,7 +67,9 @@ public class ObjectDetails extends JPanel {
         forcesTable.addTableModelListener(new TableModelListener() {
             @Override
             public void tableChanged(TableModelEvent tableModelEvent) {
+                System.out.println("ça change");
                 if (tableModelEvent.getType() == TableModelEvent.UPDATE) {
+                System.out.println("ça update");
                     Vector<Double> values = forcesTable.getDataVector().<Vector<Double>>get(tableModelEvent.getFirstRow());
                     Vec3 force = physicObject.getForces().get(tableModelEvent.getFirstRow());
                     force.setX(values.get(0));
