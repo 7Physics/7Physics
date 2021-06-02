@@ -1,9 +1,9 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  26 MAY 2021 21:35
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  2 JUN 2021 17:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**template.tex
-(./template.tex
+**Manuel_utilisateur.tex
+(./Manuel_utilisateur.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
@@ -874,8 +874,8 @@ put line 60.
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
 LaTeX Info: Redefining \rmfamily on input line 14.
-(./template.aux)
-\openout1 = `template.aux'.
+(./Manuel_utilisateur.aux)
+\openout1 = `Manuel_utilisateur.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
 LaTeX Font Info:    ... okay on input line 32.
@@ -946,9 +946,9 @@ LaTeX Info: Redefining \ref on input line 32.
 LaTeX Info: Redefining \pageref on input line 32.
 LaTeX Info: Redefining \nameref on input line 32.
 
-(./template.out) (./template.out)
+(./Manuel_utilisateur.out) (./Manuel_utilisateur.out)
 \@outlinefile=\write3
-\openout3 = `template.out'.
+\openout3 = `Manuel_utilisateur.out'.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
@@ -1031,30 +1031,31 @@ File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 )
 [1
 
-]) (./template.toc
+]) (./Manuel_utilisateur.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 3.
+(Font)              <10.95> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 3.
+(Font)              <8> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 3.
+(Font)              <6> on input line 5.
 )
 \tf@toc=\write4
-\openout4 = `template.toc'.
+\openout4 = `Manuel_utilisateur.toc'.
 
  [1
 
 ]
 Chapitre 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--43
+Underfull \hbox (badness 10000) in paragraph at lines 38--42
 
  []
 
-File: ajoutFormes.png Graphic file (type bmp)
-<ajoutFormes.png>
-File: ./btn_cube.png Graphic file (type bmp)
-<./btn_cube.png>
+
+Underfull \hbox (badness 10000) in paragraph at lines 38--42
+
+ []
+
 [2
 
 ]
@@ -1062,31 +1063,52 @@ Chapitre 2.
 [3
 
 ]
-Overfull \hbox (2.38254pt too wide) in paragraph at lines 93--93
+Chapitre 3.
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--59
+
+ []
+
+File: ajoutFormes.png Graphic file (type bmp)
+<ajoutFormes.png>
+File: ./btn_cube.png Graphic file (type bmp)
+<./btn_cube.png>
+[4
+
+]
+Chapitre 4.
+[5
+
+]
+Overfull \hbox (2.38254pt too wide) in paragraph at lines 109--109
 []|[]| 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 121.
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 121.
- (./template.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 121.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 121.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 121.
+[6]
+Chapitre 5.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 143.
+[7
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 143.
+ (./Manuel_utilisateur.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 143.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 143.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 143.
  ) 
 Here is how much of TeX's memory you used:
- 21785 strings out of 493007
- 404231 string characters out of 6136719
- 522105 words of memory out of 5000000
- 25550 multiletter control sequences out of 15000+600000
+ 21786 strings out of 493007
+ 404392 string characters out of 6136719
+ 522146 words of memory out of 5000000
+ 25551 multiletter control sequences out of 15000+600000
  536561 words of font info for 58 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 53i,12n,65p,10484b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,12n,65p,10494b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on template.pdf (5 pages).
+Output written on Manuel_utilisateur.pdf (8 pages).
