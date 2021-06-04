@@ -127,14 +127,22 @@ Grâce à ces équations et en mesurant le temps qui s'écoule au lancement d'un
 la position de tous les objets 3D en fonction du temps. Puisque nous réaffichons fréquemment les objets et que les calculs sont réalisés
 à partir de la position de l'objet, les objets peuvent désormais se déplacer selon les forces appliquées.\newline
 
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
+
 \subsection{Ajout d'une possibilité de sélection des objets}
 
 Afin de manipuler les objets plus facilement, nous avons ajouté, dans l'interface, une liste de boutons. Chacun de ces boutons
 sont liés à un objet et nous permettent de les sélectionner pour ensuite les manipuler. L'affichage ainsi réalisé est le suivant:
 
-% Ajouter la photo
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.5]{./selectionObjet.png}
+  \caption{Menu de sélection des objets}
+\end{figure}
 
 Puisque nous pouvons désormais sélectionner une table, il nous faut désormais rendre l'ajout des forces à un objet donné possible.
+
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
 
 \subsection{Manipulation des forces dans l'interface graphique}
 
@@ -143,10 +151,14 @@ de notre application. Ainsi, une fois l'objet sélectionné grâce à la fonctio
 de la forme dans l'interface avec la possibilité d'ajouter une force sur l'objet sélectionné. Toutes les forces sont affichées
 et elles-mêmes sélectionnables, nous avons donc rajouté un bouton permettant la suppression de la force actuellement sélectionné.
 
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
+
 \subsection{Possibilité de lancer la simulation}
 
 Pour finir, toujours dans le but de permettre aux objets de se déplacer, nous avons ajouté un bouton permettant de lancer la simulation.
 Une fois ce bouton pressé, nous demandons 60 fois par secondes à tous les objets physiques de mettre leurs positions à jour.
+
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
 
 \chapter{Découpage de l'application}
 
@@ -194,21 +206,35 @@ collaborer sur un projet unique. En apportant tous nos avis sur cette maquette, 
 Après avoir défini les besoins auxquelles notre application devra répondre, nous avons réfléchi au découpage du projet \hyperlink{découpage}{(voir Découpage de l'application)}.
 A partir de ce découpage, nous avons créer un diagramme de classe initial qui nous a servi de base à nos développements. 
 Au fur et à mesure de l'affinement de nos visions sur chaque partie de l'application nous avons adapté le diagramme de classe en conséquence.
-Nous avons utilisé l'outil plantuml pour créer ce diagramme ce qui nous a permis de ne pas perdre du temps de mise en page. 
+Nous avons utilisé l'outil plantuml pour créer ce diagramme ce qui nous a permis de ne pas perdre du temps avec la mise en page.
 
 \section{Réalisation}
 
 \section{Problèmes rencontrés et solutions apportées}
 
 \subsection{Rafraîchissement du rendu graphique}
-Trop sacadé
+
+Lors de la première version de notre projet, la caméra avait un déplacement sacadé rendant l'expérience utilisateur médiocre. Nous avons alors
+cherché à régler ce problème en augmentant le taux de rafraîchissement de la caméra à 60 images par seconde. De plus, nous avons diminué
+les valeurs utilisées pour déplacer la caméra afin de donner plus de contrôle et rendre l'animation plus fluide.
 
 \subsection{Caméra fixée sur la scène}
-On bougeait la scène et pas la caméra mais ducoup on a changé
+
+Nous n'avions, au début du projet pas connaissance de la bonne utilisation et réalisation de la caméra dans un contexte OpenGL. Nous avions
+donc commencé par faire tourner la scène sur elle même sans bouger le point de vue. Cela donnait alors la possibilité de voir la scène sous tous les angles mais n'était en aucun cas une bonne utilisation de la caméra. Nous avons fini par trouver une solution dans une des classes fournies par la librairie nous permettant d'utiliser OpenGL. Cela nous a alors permis d'obtenir une réelle caméra augmentant ainsi l'expérience utilisateur car la visualisation était beaucoup plus intuitive.
 
 \subsection{Rendu pixelisé}
-images étaient trop pixélisées 
-Solution : utilisation du Anti-aliasing
+
+Lors de l'utilisation d'OpenGL dans sa version brute, nous avons remarqué de gros problèmes de résolutions qui se traduisaient alors
+par des lignes d'avantages semblables à des escaliers qu'à de vraies lignes droites. Pour corriger cette effet, nous avons utilisé l'option
+d'anti-aliasing disponible. Cela a alors amélioré le rendu graphique des objets et de la scène en général.
+
+\subsection{Problèmes de simulation}
+
+Lorsque nous avons ajouté la possibilité d'ajouter des forces sur un objet, nous avons utilisé, afin de calculer la position et la vitesse, des
+référentiels de temps absolus. Nous avons donc utilisé, dans nos équations, la position et la vitesse de base et nous avons utilisé comme mesure
+de temps, le temps écoulé depuis le début de la simulation. Cependant, cela avait pour effet lors de la modification de forces lors d'une
+simulation, de téléporter les objets à la position obtenue si la force avait été présente depuis le début de la simulation.
 
 \chapter{Organisation de l'équipe et mise en oeuvre des méthodes agiles}
 
@@ -259,8 +285,8 @@ Cette cérémonie était importante car elle nous permettait notamment de discut
 à utiliser lors du prochain sprint planning.
 
 \subsection{Retrospective}
-Enfin, l'équipe se réuni une dernière fois pour dans le sprint pour analyser le déroulement du sprint. Cette analyse permet d'avoir
-le ressenti réel de chaque membre de l'équipe dans le projet. Cette réunion nous a permis de définir les défauts du sprint réalisé 
-et de les corriger lors du prochain.
+Enfin, l'équipe se réuni une dernière fois dans le sprint pour analyser le déroulement du sprint. Cette analyse permet d'avoir
+le ressenti réel de chaque membre de l'équipe sur le projet. Cette réunion nous a permis de définir les défauts du sprint réalisé
+et de tenter de les corriger lors du prochain.
 
 \end{document}

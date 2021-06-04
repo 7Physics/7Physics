@@ -20,6 +20,7 @@
     "ucs"
     "inputenc"
     "awesomebox"
-    "fontawesome5"))
+    "fontawesome5"
+    "hyperref"))
  :latex)
 
