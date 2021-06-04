@@ -15,21 +15,31 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import fr.setphysics.common.geom.Position;
+import fr.setphysics.common.geom.Vec3;
 import fr.setphysics.common.geom.shape.Cuboid;
 import fr.setphysics.common.logger.Logger;
+import fr.setphysics.engine.PhysicObject;
+import fr.setphysics.engine.World;
+import fr.setphysics.engine.PhysicObject;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
 
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 @SuppressWarnings("serial")
 public class CubePanel extends JPanel {
-	public CubePanel(Scene3D scene) {
+	public CubePanel(Scene3D scene, World world) {
         this.setLayout(new BorderLayout());
 
         // Initialisation de la partie gauche
         JPanel cubePaneLeft = new JPanel();
         cubePaneLeft.setBorder(new EmptyBorder(5, 5, 5, 5));
-        cubePaneLeft.setBackground(new Color(87, 115, 153));
+        cubePaneLeft.setBackground(new Color(93, 129, 156));
         this.add(cubePaneLeft, BorderLayout.WEST);
 
         // Initialisation de la partie droite
@@ -113,11 +123,18 @@ public class CubePanel extends JPanel {
                 
                 Logger.info("Création d'un cube. X: " + x + ", Y: " + y + ", Z: " + z
                 		+ ", Width: " + w + ", Length: " + l + ", Height: " + h);
-                
-                scene.addObject(new Object3D(new Position(x, y, z),
-                		new Cuboid(w, l, h),
-                		new Color(128,128,128,128),
-                		Color.WHITE));
+
+                Position pos = new Position(x, y, z);
+                Cuboid cube = new Cuboid(w, l, h);
+                PhysicObject po = new PhysicObject(cube, pos);
+                Object3D obj = new Object3D(pos, cube, new Color(128, 128, 128, 128), Color.WHITE);
+                scene.addObject(obj);
+                world.addPhysicObject(po);
+                po.addForce(new Vec3(0, -9.8, 0));
+
+                ObjectPanel objectPanel = new ObjectPanel(scene, obj, po);
+
+                GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
             }
         });
 	}

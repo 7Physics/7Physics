@@ -30,7 +30,7 @@ public class SpherePanel extends JPanel {
         // Initialisation de la partie gauche
         JPanel spherePaneLeft = new JPanel();
         spherePaneLeft.setBorder(new EmptyBorder(5, 5, 5, 5));
-        spherePaneLeft.setBackground(new Color(87, 115, 153));
+        spherePaneLeft.setBackground(new Color(93, 129, 156));
         this.add(spherePaneLeft, BorderLayout.WEST);
 
         // Initialisation de la partie droite
@@ -97,13 +97,18 @@ public class SpherePanel extends JPanel {
 
                 Logger.info("Création d'une sphere. X: " + x + ", Y: " + y + ", Z: " + z
                 		+ ", Rayon: " + r);
-                
-                scene.addObject(new Object3D(new Position(x, y, z),
-                		new Sphere(r, 3),
-                		new Color(0,128,128,128),
-                		new Color(0,0,0,0)));
+
+                Object3D sphere = new Object3D(new Position(x, y, z),
+                        new Sphere(r, 3),
+                        new Color(0,128,128,128),
+                        new Color(0,0,0,0));
+
+                scene.addObject(sphere);
+
+                ObjectPanel objectPanel = new ObjectPanel(scene, sphere, null);
+
+                GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
             }
         });
-
 	}
 }

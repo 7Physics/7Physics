@@ -5,12 +5,12 @@ import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.FPSAnimator;
 import fr.setphysics.common.geom.Position;
-import fr.setphysics.common.geom.shape.Cuboid;
+import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Camera;
-import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.components.CamPanel;
 import fr.setphysics.setphysics.gui.components.EnvPanel;
+import fr.setphysics.setphysics.gui.components.ObjectListPanel;
 import fr.setphysics.setphysics.gui.components.PreviewPanel;
 
 import javax.swing.*;
@@ -18,15 +18,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GUI {
+public class GUI extends JFrame {
 
-    /* *********************************** *
-     * Définition des variables/constantes *
-     * *********************************** */
+    /*
+     * *********************************** * Définition des variables/constantes *
+     * ***********************************
+     */
     // Définition des ImageIcon
-	public static final ImageIcon ICONPROJET = new ImageIcon(GUI.class.getResource("/images/projet.png"));
+    public static final ImageIcon ICONPROJET = new ImageIcon(GUI.class.getResource("/images/projet.png"));
     public static final ImageIcon PLAY = new ImageIcon(GUI.class.getResource("/images/play.png"));
     public static final ImageIcon PLUS = new ImageIcon(GUI.class.getResource("/images/plus.png"));
+    public static final ImageIcon MINUS = new ImageIcon(GUI.class.getResource("/images/minus.png"));
     public static final ImageIcon ZOOMIN = new ImageIcon(GUI.class.getResource("/images/zoom-in.png"));
     public static final ImageIcon ZOOMOUT = new ImageIcon(GUI.class.getResource("/images/zoom-out.png"));
     public static final ImageIcon CUBE = new ImageIcon(GUI.class.getResource("/images/cube.png"));
@@ -35,11 +37,15 @@ public class GUI {
     public static final ImageIcon CONE = new ImageIcon(GUI.class.getResource("/images/cone.png"));
 
 
-    /* ************************************* *
-     * Création des variables Frame et Panel *
-     * ************************************* */
-    // Fenêtre principale
-    private JFrame fenetre;
+    /* *************************** *
+     * Initialisation du Singleton *
+     * *************************** */
+    private static final GUI gui = new GUI();
+
+    public static GUI getInstance() {
+        return gui;
+    }
+
 
     // Panels de la fenêtre
     private JPanel verticalSplitPanel;
@@ -49,6 +55,9 @@ public class GUI {
     private JPanel bottomPanelLeft;
     private JPanel topPanelRight;
     private JPanel bottomPanelRight;
+    private ObjectListPanel contentBottomPanelLeft;
+    private EnvPanel ongletsBottom;
+
 
     /* ***************************************** *
      * Création du MenuBar en haut de la fenêtre *
@@ -57,31 +66,24 @@ public class GUI {
     JMenu menu = new JMenu("Menu");
     JMenuItem boutonMenuQuitter = new JMenuItem("Quitter");
 
-    /* ******************************************************************* *
-     * Création des onglets dans la partie inférieure droite de la fenêtre *
-     * ******************************************************************* */
-    private JTabbedPane ongletsBottom;
 
-    /* ******************************************************************* *
-     * Création des onglets dans la partie inférieure droite de la fenêtre *
-     * ******************************************************************* */
+    /* ********************************************* *
+     * Création des différents JTabbedPane (onglets) *
+     * ********************************************* */
     private JTabbedPane ongletsTop;
+    //private JTabbedPane ongletsBottom;
+
 
     /**
      * Construction de la fenêtre
      */
-    public GUI() {
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    private GUI() {
         /* *********************************** *
          * Définition de la fenêtre principale *
          * *********************************** */
-        fenetre = new JFrame("7Physics");
-        fenetre.setPreferredSize(new Dimension(1200, 700));
-        fenetre.setSize(new Dimension(1200, 700));
+        super("7Physics");
+        this.setPreferredSize(new Dimension(1200, 700));
+        this.setMinimumSize(new Dimension(1200, 700));
 
         /* *************************************** *
          * Initialisation des Panels de la fenêtre *
@@ -93,16 +95,6 @@ public class GUI {
         bottomPanelLeft = new JPanel();
         topPanelRight = new JPanel();
         bottomPanelRight = new JPanel();
-
-
-
-        /* **************************** *
-         * Empêche le resize des Panels *
-         * **************************** */
-        verticalSplitPanel.setEnabled(true);
-        leftSplitPanel.setEnabled(true);
-        rightSplitPanel.setEnabled(true);
-
 
 
         /* ******************** *
@@ -143,6 +135,7 @@ public class GUI {
 
         Camera cam = new Camera(new Position(-2, .5, 0));
         final Scene3D scene = new Scene3D(cam);
+        final World world = new World();
 
         JLabel loadingLabel = new JLabel("Chargement...");
         loadingLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -153,7 +146,6 @@ public class GUI {
             final GLProfile profile = GLProfile.get(GLProfile.GL2);
             GLCapabilities capabilities = new GLCapabilities(profile);
 
-            // The canvas
             final GLCanvas glcanvas = new GLCanvas(capabilities);
             glcanvas.setSize(1500, 600);
 
@@ -173,14 +165,14 @@ public class GUI {
         }).start();
 
 
-        /* ******************** *
-         * Gestion de la caméra *
-         * ******************** */
-        // Création du Panel des boutons
+        /* ****************************************** *
+         * Création du Panel des boutons de la caméra *
+         * ****************************************** */
         JPanel cameraPanel = new CamPanel(cam);
         cameraPanel.setBackground(new Color(49, 66, 106));
-        fenetre.add(cameraPanel);
+        this.add(cameraPanel);
         cameraPanel.setBounds(20, 70, 29, 68);
+
 
 
         /* ******************************************** *
@@ -188,37 +180,29 @@ public class GUI {
          * La gestion des objets présents dans la scene *
          * ******************************************** */
         bottomPanelLeft.setLayout(new BorderLayout());
+        contentBottomPanelLeft = new ObjectListPanel(scene, world);
+        bottomPanelLeft.add(contentBottomPanelLeft, BorderLayout.CENTER);
 
-        // Gestion du bouton de lancement de simulation
-        JButton buttonPlay = new JButton(PLAY);
-        buttonPlay.setBackground(new Color(189, 213, 234));
-        bottomPanelLeft.add(buttonPlay, BorderLayout.NORTH);
-        buttonPlay.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                System.out.println("Lancement de la simulation !");
-            }
-        });
-
-        // Texte décoratif
-        JLabel descObje = new JLabel("Gestion des objets", SwingConstants.CENTER);
-        bottomPanelLeft.add(descObje, BorderLayout.CENTER);
-        bottomPanelLeft.setPreferredSize(new Dimension(10, 100));
 
 
         /* ******************************************** *
          * Gestion du contenu du Panel en haut à droite *
          * Ajout et création d'objets                   *
          * ******************************************** */
-        ongletsTop = new PreviewPanel(scene);
         topPanelRight.setLayout(new BorderLayout());
+        ongletsTop = new PreviewPanel(scene, world);
+        topPanelRight.add(ongletsTop, BorderLayout.CENTER);
+
 
 
         /* ******************************************* *
          * Gestion du contenu du Panel en bas à droite *
          * Onglets des paramètres des objets           *
          * ******************************************* */
-        ongletsBottom = new EnvPanel(scene);
         bottomPanelRight.setLayout(new BorderLayout());
+        ongletsBottom = new EnvPanel(scene);
+        bottomPanelRight.add(ongletsBottom, BorderLayout.CENTER);
+
 
 
         /* ************** *
@@ -232,45 +216,56 @@ public class GUI {
 
 
 
-        /* ************ *
-         * MouseAdapter *
-         * ************ */
-
-
-
         /* ******************* *
          * Afficher le MenuBar *
          * ******************* */
-        fenetre.setJMenuBar(menuBar);
+        this.setJMenuBar(menuBar);
         boutonMenuQuitter.addActionListener(quitter);
         menu.add(boutonMenuQuitter);
         menuBar.add(menu);
 
 
 
-        /* ************************************************ *
-         * Gestion de fermeture de la fenêtre avec la croix *
-         * ************************************************ */
-        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-
-
         /* ******************************************* *
          * Ajout du contenu dans les différents Panels *
          * ******************************************* */
-        topPanelRight.add(ongletsTop, BorderLayout.CENTER);
-        bottomPanelRight.add(ongletsBottom, BorderLayout.CENTER);
-        fenetre.getContentPane().add(verticalSplitPanel);
+        this.getContentPane().add(verticalSplitPanel);
+
+
+
+        /* ************************************************ *
+         * Gestion de fermeture de la fenêtre avec la croix *
+         * ************************************************ */
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
 
         /* *********************** *
          * Affichage de la fenêtre *
          * *********************** */
-        fenetre.setIconImage(ICONPROJET.getImage());
-        //fenetre.pack();
-        fenetre.setLocationRelativeTo(null);
-        fenetre.setVisible(true);
+        this.setIconImage(ICONPROJET.getImage());
+        this.pack();
+        this.setLocationRelativeTo(null);
+    }
+
+
+    /**
+     * Renvoie le Panel "contentBottomPanelLeft"
+     *
+     * @return ObjectListPanel
+     */
+    public ObjectListPanel getObjectListPanel() {
+        return contentBottomPanelLeft;
+    }
+
+
+    /**
+     * Renvoie le Panel "ongletsBottom"
+     *
+     * @return EnvPanel
+     */
+    public EnvPanel getOngletsBottom() {
+        return ongletsBottom;
     }
 
 

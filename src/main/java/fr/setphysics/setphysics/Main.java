@@ -2,15 +2,23 @@ package fr.setphysics.setphysics;
 
 import java.awt.EventQueue;
 
+import fr.setphysics.common.logger.Logger;
 import fr.setphysics.setphysics.gui.GUI;
+
+import javax.swing.*;
 
 public class Main {
       
 
     public static void main(String [] args){
+//        try {
+//            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GUI();
+                GUI.getInstance().setVisible(true);
             }
         });
     }
