@@ -22,8 +22,8 @@ dependencies {
     implementation group: 'org.jogamp.jogl', name: 'jogl-all-main', version: '2.3.2'
     implementation group: 'org.jogamp.gluegen', name: 'gluegen-rt-main', version: '2.3.2'
     implementation 'com.github.7Physics:Renderer:master-SNAPSHOT'
-    implementation 'com.github.7Physics:Common:master-SNAPSHOT'
-    implementation 'com.github.7Physics:Engine:3db3c80acf'
+    implementation 'com.github.7Physics:Common:e771238343'
+    implementation 'com.github.7Physics:Engine:e6c54ef453'
 }
 
 test {

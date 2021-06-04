@@ -8,6 +8,7 @@ import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.FPSAnimator;
 
 import fr.setphysics.common.geom.Position;
+import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Camera;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.components.CamPanel;
@@ -20,10 +21,11 @@ import java.awt.event.*;
 
 public class GUI extends JFrame {
 
-    /* *********************************** *
-     * Définition des variables/constantes *
-     * *********************************** */
-    // Définition des ImageIcon
+    /*
+	 * *********************************** * Définition des variables/constantes *
+	 * ***********************************
+	 */
+	// Définition des ImageIcon
 	public static final ImageIcon ICONPROJET = new ImageIcon(GUI.class.getResource("/images/projet.png"));
     public static final ImageIcon PLAY = new ImageIcon(GUI.class.getResource("/images/play.png"));
     public static final ImageIcon PLUS = new ImageIcon(GUI.class.getResource("/images/plus.png"));
@@ -158,17 +160,18 @@ public class GUI extends JFrame {
 		GLCapabilities capabilities = new GLCapabilities( profile );
 
 		// The canvas
-        final GLCanvas glcanvas = new GLCanvas(capabilities);
-		Position position = new Position(-3.5,0.3,0);
+		final GLCanvas glcanvas = new GLCanvas(capabilities);
+		Position position = new Position(-3.5, 0.3, 0);
 		Camera cam = new Camera(position);
 		final Scene3D scene = new Scene3D(cam);
+		final World world = new World();
 
 		glcanvas.addGLEventListener(scene);
 		glcanvas.addKeyListener(scene.getKeyListener());
 		glcanvas.addMouseMotionListener(scene);
 		glcanvas.addMouseWheelListener(scene);
 
-		final FPSAnimator animator = new FPSAnimator(glcanvas, 300,true);
+		final FPSAnimator animator = new FPSAnimator(glcanvas, 300, true);
 
 		animator.start();
 		topPanelLeft.add(glcanvas, BorderLayout.CENTER);
@@ -190,7 +193,7 @@ public class GUI extends JFrame {
          * La gestion des objets présents dans la scene *
          * ******************************************** */
         bottomPanelLeft.setLayout(new BorderLayout());
-        contentBottomPanelLeft = new ObjectListPanel(scene);
+        contentBottomPanelLeft = new ObjectListPanel(scene, world);
         bottomPanelLeft.add(contentBottomPanelLeft, BorderLayout.CENTER);
 
 
@@ -200,7 +203,7 @@ public class GUI extends JFrame {
          * Ajout et création d'objets                   *
          * ******************************************** */
         topPanelRight.setLayout(new BorderLayout());
-        ongletsTop = new PreviewPanel(scene);
+        ongletsTop = new PreviewPanel(scene, world);
         topPanelRight.add(ongletsTop, BorderLayout.CENTER);
 
 

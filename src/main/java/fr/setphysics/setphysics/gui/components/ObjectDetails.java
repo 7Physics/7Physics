@@ -7,10 +7,13 @@ import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
 
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 public class ObjectDetails extends JPanel {
 
@@ -99,17 +102,20 @@ public class ObjectDetails extends JPanel {
                 return Double.class;
             }
         };
-
-        /*forcesTable.addTableModelListener(new TableModelListener() {
+        forcesTable.addTableModelListener(new TableModelListener() {
             @Override
             public void tableChanged(TableModelEvent tableModelEvent) {
-                if(tableModelEvent.getType() == TableModelEvent.UPDATE) {
-                    Vector values = forcesTable.getDataVector().get(tableModelEvent.getFirstRow());
-                    physicObject.getForces().get().set();
+                System.out.println("ça change");
+                if (tableModelEvent.getType() == TableModelEvent.UPDATE) {
+                System.out.println("ça update");
+                    Vector<Double> values = forcesTable.getDataVector().<Vector<Double>>get(tableModelEvent.getFirstRow());
+                    Vec3 force = physicObject.getForces().get(tableModelEvent.getFirstRow());
+                    force.setX(values.get(0));
+                    force.setY(values.get(1));
+                    force.setZ(values.get(2));
                 }
             }
-        });*/
-
+        });
         JTable table = new JTable(forcesTable);
         table.setBackground(Color.YELLOW);
         JScrollPane scroll = new JScrollPane(table);
@@ -122,7 +128,7 @@ public class ObjectDetails extends JPanel {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 physicObject.addForce(new Vec3(0, 0, 0));
-                forcesTable.addRow(new Object[]{0, 0, 0});
+                forcesTable.addRow(new Double[]{0d, 0d, 0d});
             }
         });
 
