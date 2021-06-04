@@ -2,14 +2,16 @@
 \BOOKMARK [0][-]{chapter.2}{Présentation générale de l'application}{}% 2
 \BOOKMARK [0][-]{chapter.3}{Manipuler\040des\040objets\0403D}{}% 3
 \BOOKMARK [1][-]{section.3.1}{Ajouter\040un\040objet\0403D}{chapter.3}% 4
-\BOOKMARK [0][-]{chapter.4}{Gestion de la caméra}{}% 5
-\BOOKMARK [1][-]{section.4.1}{Gestion\040du\040zoom}{chapter.4}% 6
-\BOOKMARK [2][-]{subsection.4.1.1}{Zoomer}{section.4.1}% 7
-\BOOKMARK [2][-]{subsection.4.1.2}{Dezoomer}{section.4.1}% 8
-\BOOKMARK [1][-]{section.4.2}{Se déplacer sur la scène}{chapter.4}% 9
-\BOOKMARK [2][-]{subsection.4.2.1}{Déplacements basiques}{section.4.2}% 10
-\BOOKMARK [2][-]{subsection.4.2.2}{Déplacement vertical}{section.4.2}% 11
-\BOOKMARK [1][-]{section.4.3}{Tourner la caméra}{chapter.4}% 12
-\BOOKMARK [0][-]{chapter.5}{Animer la scène 3D}{}% 13
-\BOOKMARK [1][-]{section.5.1}{Ajouter\040des\040forces}{chapter.5}% 14
-\BOOKMARK [1][-]{section.5.2}{Lancer\040la\040simulation}{chapter.5}% 15
+\BOOKMARK [1][-]{section.3.2}{Supprimer\040un\040objet\0403D}{chapter.3}% 5
+\BOOKMARK [0][-]{chapter.4}{Gestion de la caméra}{}% 6
+\BOOKMARK [1][-]{section.4.1}{Gestion\040du\040zoom}{chapter.4}% 7
+\BOOKMARK [2][-]{subsection.4.1.1}{Zoomer}{section.4.1}% 8
+\BOOKMARK [2][-]{subsection.4.1.2}{Dezoomer}{section.4.1}% 9
+\BOOKMARK [1][-]{section.4.2}{Se déplacer sur la scène}{chapter.4}% 10
+\BOOKMARK [2][-]{subsection.4.2.1}{Déplacements basiques}{section.4.2}% 11
+\BOOKMARK [2][-]{subsection.4.2.2}{Déplacement vertical}{section.4.2}% 12
+\BOOKMARK [1][-]{section.4.3}{Tourner la caméra}{chapter.4}% 13
+\BOOKMARK [0][-]{chapter.5}{Animer la scène 3D}{}% 14
+\BOOKMARK [1][-]{section.5.1}{Ajouter\040des\040forces}{chapter.5}% 15
+\BOOKMARK [1][-]{section.5.2}{Supprimer\040des\040forces}{chapter.5}% 16
+\BOOKMARK [1][-]{section.5.3}{Lancer\040la\040simulation}{chapter.5}% 17

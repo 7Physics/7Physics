@@ -58,12 +58,26 @@ Les principales fonctionnalités du moteur 3D sont:
 Pour pouvoir ajouter un objet 3D sur la scène 3D, il faut sur la partie supérieur droite de l'interface, sélectionner la forme souhaitée.
 \newline
 
-\begin{center}
-    \includegraphics[width=5cm]{ajoutFormes}
-\end{center}
-\notebox{Pour afficher un \textbf{cube} sur la scène 3D, il faut sélectionner le bouton : \includegraphics[width=0.4cm]{./btn_cube.png}\newline
-Pour afficher d'autres formes, il suffit de sélectionner les boutons adjacents. }
+\notebox{Pour afficher un \textbf{cube} sur la scène 3D, il faut sélectionner le bouton : \includegraphics[width=0.4cm]{./btn_cube.png}
+et remplir les informations demandées.\newline Pour afficher d'autres formes, il suffit de sélectionner les boutons adjacente.}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.75]{./ajoutFormes.png}
+  \caption{Ajout d'une forme}
+\end{figure}
+
+\section{Supprimer un objet 3D}
+
+Afin de supprimer un objet 3D, il faut tout d'abord le sélectionner dans la partie inférieure de l'interface en cliquant sur un des boutons
+présent. Une fois cela fait, rendez-vous dans l'onglet \flqq\ Objet \frqq en bas à droite de l'interface. Vous n'avez plus qu'à cliquer sur le
+bouton supprimer.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{./supprimer.png}
+  \caption{Suppression d'une forme}
+\end{figure}
 
 \chapter{Gestion de la caméra}
 
@@ -137,8 +151,39 @@ Afin de vous balader au sein de la scène pour visualiser celle-ci sous différe
 
 \chapter{Animer la scène 3D}
 
+Une fois les objets ajoutés à la scène, il est possible de leur appliquer des forces personnalisées puis de lancer la simulation qui prendra
+donc en compte ces forces pour déplacer les objets de la scène.
+
 \section{Ajouter des forces}
 
+La première étape est donc d'ajouter des forces. Pour cela, il est nécessaire de préselectionner la forme souhaitée dans la partie inférieure
+de l'interface en cliquant sur un des boutons semblable au bouton vert de la figure suivante:
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{./bouton_forme.png}
+  \caption{Sélection d'une forme}
+\end{figure}
+
+Une fois la forme sélectionnée, la partie inférieure droite de l'interface, dans l'onglet \flqq\ Objet \frqq, sera mise à jour afin d'afficher
+les informations liées à l'objet ajouté. Il est alors possible d'ajouter des forces en cliquant sur le bouton \textbf{+} disponible en haut
+de la table intitulée \flqq\ Forces\frqq.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{./forces.png}
+  \caption{Détails d'une forme}
+\end{figure}
+
+Une fois cela fait, et dès que vous changerez les valeurs de la ligne qui s'est ajoutée à la table, la force sera exercée sur l'objet.
+
+\section{Supprimer des forces}
+
+Afin de supprimer des forces, rendez-vous dans les détails de l'objet et cliquez sur la ligne contenant la force à supprimer. Une fois cela fait,
+cliquez sur le bouton \textbf{-} de la table intitulée \flqq\ Forces \frqq.
+
 \section{Lancer la simulation}
+
+Afin de lancer la simulation, vous pouvez simplement appuyer sur le bouton Play disponible dans la partie inférieure de l'interface.
 
 \end{document}
