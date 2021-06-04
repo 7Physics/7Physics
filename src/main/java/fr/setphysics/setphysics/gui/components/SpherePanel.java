@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
 import fr.setphysics.common.geom.Position;
 import fr.setphysics.common.geom.shape.Sphere;
@@ -28,6 +29,7 @@ public class SpherePanel extends JPanel {
 
         // Initialisation de la partie gauche
         JPanel spherePaneLeft = new JPanel();
+        spherePaneLeft.setBorder(new EmptyBorder(5, 5, 5, 5));
         spherePaneLeft.setBackground(new Color(87, 115, 153));
         this.add(spherePaneLeft, BorderLayout.WEST);
 

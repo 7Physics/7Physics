@@ -1,21 +1,22 @@
 package fr.setphysics.setphysics.gui;
 
-import javax.swing.*;
-
 import com.jogamp.opengl.GLCapabilities;
 import com.jogamp.opengl.GLProfile;
 import com.jogamp.opengl.awt.GLCanvas;
 import com.jogamp.opengl.util.FPSAnimator;
-
 import fr.setphysics.common.geom.Position;
+import fr.setphysics.common.geom.shape.Cuboid;
 import fr.setphysics.renderer.Camera;
+import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.components.CamPanel;
 import fr.setphysics.setphysics.gui.components.EnvPanel;
 import fr.setphysics.setphysics.gui.components.PreviewPanel;
 
+import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GUI {
 
@@ -41,9 +42,9 @@ public class GUI {
     private JFrame fenetre;
 
     // Panels de la fenêtre
-    private JSplitPane verticalSplitPanel;
-    private JSplitPane leftSplitPanel;
-    private JSplitPane rightSplitPanel;
+    private JPanel verticalSplitPanel;
+    private JPanel leftSplitPanel;
+    private JPanel rightSplitPanel;
     private JPanel topPanelLeft;
     private JPanel bottomPanelLeft;
     private JPanel topPanelRight;
@@ -70,22 +71,24 @@ public class GUI {
      * Construction de la fenêtre
      */
     public GUI() {
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         /* *********************************** *
          * Définition de la fenêtre principale *
          * *********************************** */
         fenetre = new JFrame("7Physics");
         fenetre.setPreferredSize(new Dimension(1200, 700));
-        fenetre.setMinimumSize(new Dimension(1200, 700));
-        fenetre.setResizable(false);
-
-
+        fenetre.setSize(new Dimension(1200, 700));
 
         /* *************************************** *
          * Initialisation des Panels de la fenêtre *
          * *************************************** */
-        verticalSplitPanel = new JSplitPane();
-        leftSplitPanel = new JSplitPane();
-        rightSplitPanel = new JSplitPane();
+        verticalSplitPanel = new JPanel();
+        leftSplitPanel = new JPanel();
+        rightSplitPanel = new JPanel();
         topPanelLeft = new JPanel();
         bottomPanelLeft = new JPanel();
         topPanelRight = new JPanel();
@@ -96,9 +99,9 @@ public class GUI {
         /* **************************** *
          * Empêche le resize des Panels *
          * **************************** */
-        verticalSplitPanel.setEnabled(false);
-        leftSplitPanel.setEnabled(false);
-        rightSplitPanel.setEnabled(false);
+        verticalSplitPanel.setEnabled(true);
+        leftSplitPanel.setEnabled(true);
+        rightSplitPanel.setEnabled(true);
 
 
 
@@ -115,22 +118,20 @@ public class GUI {
          * Découpage des Panels *
          * ******************** */
         // Découpage vertical de la Frame en deux
-        verticalSplitPanel.setOrientation(JSplitPane.HORIZONTAL_SPLIT);
-        verticalSplitPanel.setDividerLocation(880);
-        verticalSplitPanel.setLeftComponent(leftSplitPanel);
-        verticalSplitPanel.setRightComponent(rightSplitPanel);
+        verticalSplitPanel.setLayout(new BorderLayout());
+        verticalSplitPanel.add(leftSplitPanel, BorderLayout.CENTER);
+        verticalSplitPanel.add(rightSplitPanel, BorderLayout.EAST);
 
         // Découpage horizontal du Panel de gauche en deux
-        leftSplitPanel.setOrientation(JSplitPane.VERTICAL_SPLIT);
-        leftSplitPanel.setDividerLocation(510);
-        leftSplitPanel.setTopComponent(topPanelLeft);
-        leftSplitPanel.setBottomComponent(bottomPanelLeft);
+        leftSplitPanel.setLayout(new BorderLayout());
+        leftSplitPanel.add(topPanelLeft, BorderLayout.CENTER);
+        leftSplitPanel.add(bottomPanelLeft, BorderLayout.SOUTH);
 
         // Découpage horizontal du Panel de droite en deux
-        rightSplitPanel.setOrientation(JSplitPane.VERTICAL_SPLIT);
-        rightSplitPanel.setDividerLocation(240);
-        rightSplitPanel.setTopComponent(topPanelRight);
-        rightSplitPanel.setBottomComponent(bottomPanelRight);
+        rightSplitPanel.setLayout(new BorderLayout());
+        rightSplitPanel.add(topPanelRight, BorderLayout.NORTH);
+        rightSplitPanel.add(bottomPanelRight, BorderLayout.CENTER);
+        rightSplitPanel.setBorder(BorderFactory.createBevelBorder(1));
 
 
 
@@ -140,25 +141,36 @@ public class GUI {
          * ******************************************** */
         topPanelLeft.setLayout(new BorderLayout());
 
-		final GLProfile profile = GLProfile.get( GLProfile.GL2 );
-		GLCapabilities capabilities = new GLCapabilities( profile );
+        Camera cam = new Camera(new Position(-2, .5, 0));
+        final Scene3D scene = new Scene3D(cam);
 
-		// The canvas
-        final GLCanvas glcanvas = new GLCanvas(capabilities);
-		Position position = new Position(-3.5,0.3,0);
-		Camera cam = new Camera(position);
-		final Scene3D scene = new Scene3D(cam);
+        JLabel loadingLabel = new JLabel("Chargement...");
+        loadingLabel.setHorizontalAlignment(JLabel.CENTER);
+        topPanelLeft.add(loadingLabel, BorderLayout.CENTER);
 
-		glcanvas.addGLEventListener(scene);
-		glcanvas.addKeyListener(scene.getKeyListener());
-		glcanvas.addMouseMotionListener(scene);
-		glcanvas.addMouseWheelListener(scene);
+        // Comme le canvas OpenGL met du temps à se créer on effectue sa création en parallèle
+        new Thread(() -> {
+            final GLProfile profile = GLProfile.get(GLProfile.GL2);
+            GLCapabilities capabilities = new GLCapabilities(profile);
 
-		final FPSAnimator animator = new FPSAnimator(glcanvas, 300,true);
+            // The canvas
+            final GLCanvas glcanvas = new GLCanvas(capabilities);
+            glcanvas.setSize(1500, 600);
 
-		animator.start();
-		topPanelLeft.add(glcanvas, BorderLayout.CENTER);
+            glcanvas.addGLEventListener(scene);
+            glcanvas.addKeyListener(scene.getKeyListener());
+            glcanvas.addMouseMotionListener(scene);
+            glcanvas.addMouseWheelListener(scene);
 
+            final FPSAnimator animator = new FPSAnimator(glcanvas, 300, true);
+
+            animator.start();
+            topPanelLeft.remove(loadingLabel);
+            topPanelLeft.add(glcanvas, BorderLayout.CENTER);
+
+            glcanvas.repaint();
+            glcanvas.revalidate();
+        }).start();
 
 
         /* ******************** *
@@ -190,6 +202,7 @@ public class GUI {
         // Texte décoratif
         JLabel descObje = new JLabel("Gestion des objets", SwingConstants.CENTER);
         bottomPanelLeft.add(descObje, BorderLayout.CENTER);
+        bottomPanelLeft.setPreferredSize(new Dimension(10, 100));
 
 
         /* ******************************************** *
@@ -228,10 +241,8 @@ public class GUI {
         /* ******************* *
          * Afficher le MenuBar *
          * ******************* */
-        menuBar.add(Box.createHorizontalGlue());
         fenetre.setJMenuBar(menuBar);
         boutonMenuQuitter.addActionListener(quitter);
-        menu.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         menu.add(boutonMenuQuitter);
         menuBar.add(menu);
 
@@ -258,6 +269,7 @@ public class GUI {
          * *********************** */
         fenetre.setIconImage(ICONPROJET.getImage());
         //fenetre.pack();
+        fenetre.setLocationRelativeTo(null);
         fenetre.setVisible(true);
     }
 
