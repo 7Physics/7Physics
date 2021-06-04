@@ -263,9 +263,9 @@ public class GUI extends JFrame {
 
     /**
      * Renvoie le Panel "contentBottomPanelLeft"
-     * @return ObjectPanel
+     * @return ObjectListPanel
      */
-    public ObjectListPanel getObjectPanel() {
+    public ObjectListPanel getObjectListPanel() {
         return contentBottomPanelLeft;
     }
 

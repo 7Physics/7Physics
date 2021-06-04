@@ -118,9 +118,9 @@ public class CubePanel extends JPanel {
                 
                 scene.addObject(cube);
 
-                ObjectPanel objectPanel = new ObjectPanel(cube, null);
+                ObjectPanel objectPanel = new ObjectPanel(scene, cube, null);
 
-                GUI.getInstance().getObjectPanel().addObjectPanel(objectPanel);
+                GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
             }
         });
 	}

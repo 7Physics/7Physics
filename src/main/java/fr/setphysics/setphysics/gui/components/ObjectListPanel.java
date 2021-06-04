@@ -61,7 +61,18 @@ public class ObjectListPanel extends JPanel {
      * @param obj ObjectPanel
      */
     public void addObjectPanel(ObjectPanel obj) {
-	    objectListContent.add(obj);
+        objectListContent.add(obj);
+        objectListContent.repaint();
+        objectListContent.revalidate();
+    }
+
+
+    /**
+     * Ajout d'un objet dans objectListContent
+     * @param obj ObjectPanel
+     */
+    public void removeObjectPanel(ObjectPanel obj) {
+        objectListContent.remove(obj);
         objectListContent.repaint();
         objectListContent.revalidate();
     }

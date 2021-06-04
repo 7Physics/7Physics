@@ -103,9 +103,9 @@ public class SpherePanel extends JPanel {
 
                 scene.addObject(sphere);
 
-                ObjectPanel objectPanel = new ObjectPanel(sphere, null);
+                ObjectPanel objectPanel = new ObjectPanel(scene, sphere, null);
 
-                GUI.getInstance().getObjectPanel().addObjectPanel(objectPanel);
+                GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
             }
         });
 	}

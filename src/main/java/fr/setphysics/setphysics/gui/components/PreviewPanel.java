@@ -13,7 +13,6 @@ import fr.setphysics.setphysics.gui.GUI;
 public class PreviewPanel extends JTabbedPane{
 	public PreviewPanel(Scene3D scene) {
 		super(SwingConstants.TOP);
-        // _____________________________
         // Gestion de l'ajout du cube
         JPanel ongletCube = new JPanel();
         this.addTab("", ongletCube);
@@ -21,14 +20,13 @@ public class PreviewPanel extends JTabbedPane{
         ongletCube.setLayout(new BorderLayout());
         ongletCube.add(cubePane, BorderLayout.CENTER);
 
-        // __________________________________
         // Gestion de l'ajout de la sphere
         JPanel ongletSphere = new JPanel();
         this.addTab("", ongletSphere);
         JPanel spherePane = new SpherePanel(scene);
         ongletSphere.setLayout(new BorderLayout());
         ongletSphere.add(spherePane, BorderLayout.CENTER);
-        // ____________________________________
+
         // Gestion de l'ajout de la pyramide
         /*JPanel ongletPyramid = new JPanel();
         ongletsTop.addTab("", ongletPyramid);
@@ -36,7 +34,6 @@ public class PreviewPanel extends JTabbedPane{
         ongletPyramid.setLayout(new GridBagLayout());
         ongletPyramid.add(descPyramid);*/
 
-        // _____________________________
         // Gestion de l'ajout du cone
         /*JPanel ongletCone = new JPanel();
         ongletsTop.addTab("", ongletCone);

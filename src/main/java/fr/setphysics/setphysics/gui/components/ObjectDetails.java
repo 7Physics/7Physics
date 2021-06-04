@@ -3,11 +3,10 @@ package fr.setphysics.setphysics.gui.components;
 import fr.setphysics.common.geom.Vec3;
 import fr.setphysics.engine.PhysicObject;
 import fr.setphysics.renderer.Object3D;
+import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
 
 import javax.swing.*;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,10 +14,15 @@ import java.awt.event.ActionListener;
 
 public class ObjectDetails extends JPanel {
 
-    public ObjectDetails(String name, Object3D object, PhysicObject physicObject) {
+    public ObjectDetails(String name, ObjectPanel objectPanel, Scene3D scene, Object3D object, PhysicObject physicObject) {
         Color colorBackground = new Color(93, 129, 156);
         this.setBackground(colorBackground);
         this.setLayout(new BorderLayout());
+
+        // topPanel
+        JPanel topPanel = new JPanel();
+        topPanel.setBackground(colorBackground);
+        topPanel.setLayout(new BorderLayout());
 
         // Name
         JPanel namePanel = new JPanel();
@@ -27,7 +31,39 @@ public class ObjectDetails extends JPanel {
         JLabel nameObject = new JLabel(name);
         namePanel.add(nameLabel);
         namePanel.add(nameObject);
-        this.add(namePanel, BorderLayout.NORTH);
+        topPanel.add(namePanel, BorderLayout.NORTH);
+
+        // DeleteButton
+        JPanel deletePanel = new JPanel();
+        deletePanel.setBackground(colorBackground);
+        JButton deleteButton = new JButton("Supprimer");
+        deleteButton.setBackground(new Color(252, 91, 91));
+        deletePanel.add(deleteButton);
+        topPanel.add(deletePanel, BorderLayout.SOUTH);
+
+        this.add(topPanel, BorderLayout.NORTH);
+
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                // Suppression du contenu de
+                ObjectDetails.this.removeAll();
+                ObjectDetails.this.revalidate();
+                ObjectDetails.this.repaint();
+                JPanel ongletObjet = new JPanel();
+                ongletObjet.setBackground(new Color(93, 129, 156));
+                ongletObjet.setLayout(new BorderLayout());
+                JLabel descObj = new JLabel("Paramètres de l'objet", SwingConstants.CENTER);
+                ongletObjet.add(descObj, BorderLayout.CENTER);
+                ObjectDetails.this.add(ongletObjet, SwingConstants.CENTER);
+
+                // Suppression de la carte de l'objet
+                GUI.getInstance().getObjectListPanel().removeObjectPanel(objectPanel);
+
+                // Suppression de l'objet de la scene
+                scene.removeObject(object);
+            }
+        });
 
         // Panel central
         JPanel centerPanel = new JPanel();
@@ -63,14 +99,17 @@ public class ObjectDetails extends JPanel {
                 return Double.class;
             }
         };
-        forcesTable.addTableModelListener(new TableModelListener() {
+
+        /*forcesTable.addTableModelListener(new TableModelListener() {
             @Override
             public void tableChanged(TableModelEvent tableModelEvent) {
                 if(tableModelEvent.getType() == TableModelEvent.UPDATE) {
                     Vector values = forcesTable.getDataVector().get(tableModelEvent.getFirstRow());
-                    physicObject.getForces().get().set()
+                    physicObject.getForces().get().set();
                 }
-        });
+            }
+        });*/
+
         JTable table = new JTable(forcesTable);
         table.setBackground(Color.YELLOW);
         JScrollPane scroll = new JScrollPane(table);
