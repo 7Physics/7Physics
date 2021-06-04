@@ -17,13 +17,15 @@ import javax.swing.border.EmptyBorder;
 import fr.setphysics.common.geom.Position;
 import fr.setphysics.common.geom.shape.Sphere;
 import fr.setphysics.common.logger.Logger;
+import fr.setphysics.engine.PhysicObject;
+import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
 
 @SuppressWarnings("serial")
 public class SpherePanel extends JPanel {
-	public SpherePanel(Scene3D scene) {
+	public SpherePanel(Scene3D scene, World world) {
 
         this.setLayout(new BorderLayout());
 
@@ -98,12 +100,16 @@ public class SpherePanel extends JPanel {
                 Logger.info("Création d'une sphere. X: " + x + ", Y: " + y + ", Z: " + z
                 		+ ", Rayon: " + r);
 
-                Object3D sphere = new Object3D(new Position(x, y, z),
-                        new Sphere(r, 3),
+                Sphere s = new Sphere(r, 3);
+                Position pos = new Position(x, y, z);
+                Object3D sphere = new Object3D(pos,
+                        s,
                         new Color(0,128,128,128),
                         new Color(0,0,0,0));
+                PhysicObject po = new PhysicObject(s, pos);
 
                 scene.addObject(sphere);
+                world.addPhysicObject(po);
 
                 ObjectPanel objectPanel = new ObjectPanel(scene, sphere, null);
 

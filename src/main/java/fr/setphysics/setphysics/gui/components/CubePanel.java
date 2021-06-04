@@ -130,7 +130,6 @@ public class CubePanel extends JPanel {
                 Object3D obj = new Object3D(pos, cube, new Color(128, 128, 128, 128), Color.WHITE);
                 scene.addObject(obj);
                 world.addPhysicObject(po);
-                po.addForce(new Vec3(0, -9.8, 0));
 
                 ObjectPanel objectPanel = new ObjectPanel(scene, obj, po);
 

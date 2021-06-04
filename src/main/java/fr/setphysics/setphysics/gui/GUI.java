@@ -200,7 +200,7 @@ public class GUI extends JFrame {
          * Onglets des paramètres des objets           *
          * ******************************************* */
         bottomPanelRight.setLayout(new BorderLayout());
-        ongletsBottom = new EnvPanel(scene);
+        ongletsBottom = new EnvPanel(scene, world);
         bottomPanelRight.add(ongletsBottom, BorderLayout.CENTER);
 
 

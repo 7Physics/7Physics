@@ -24,7 +24,7 @@ public class PreviewPanel extends JTabbedPane{
         // Gestion de l'ajout de la sphere
         JPanel ongletSphere = new JPanel();
         this.addTab("", ongletSphere);
-        JPanel spherePane = new SpherePanel(scene);
+        JPanel spherePane = new SpherePanel(scene, world);
         ongletSphere.setLayout(new BorderLayout());
         ongletSphere.add(spherePane, BorderLayout.CENTER);
 

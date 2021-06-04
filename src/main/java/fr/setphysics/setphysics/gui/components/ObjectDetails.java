@@ -109,7 +109,7 @@ public class ObjectDetails extends JPanel {
                 System.out.println("ça change");
                 if (tableModelEvent.getType() == TableModelEvent.UPDATE) {
                 System.out.println("ça update");
-                    Vector<Double> values = forcesTable.getDataVector().<Vector<Double>>get(tableModelEvent.getFirstRow());
+                    Vector<Double> values = (Vector<Double>) forcesTable.getDataVector().get(tableModelEvent.getFirstRow());
                     Vec3 force = physicObject.getForces().get(tableModelEvent.getFirstRow());
                     force.setX(values.get(0));
                     force.setY(values.get(1));
@@ -136,7 +136,9 @@ public class ObjectDetails extends JPanel {
         minusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                physicObject.getForces().remove(table.getSelectedRow());
+            	int row = table.getSelectedRow();
+            	int index = GUI.getInstance().getOngletsBottom().isGravityEnabled() ? row + 1 : row;
+                physicObject.removeForce(index);
                 forcesTable.removeRow(table.getSelectedRow());
             }
         });
