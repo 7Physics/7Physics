@@ -28,7 +28,7 @@ jobs:
       with:
         root_file: Rapport.tex
         working_directory: doc/Rapport/
-        latexmk_use_xelatex: true
+        compiler: xelatex
     - name: Compile User manual
       uses: xu-cheng/latex-action@v2
       with:
