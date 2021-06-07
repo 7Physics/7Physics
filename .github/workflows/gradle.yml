@@ -23,12 +23,16 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew build
-    - name: Compile Latex documentation
+    - name: Compile Rapport
       uses: xu-cheng/latex-action@v2
       with:
-        root_file: |
-          Rapport/Rapport.tex
-          Manuel_utilisateur/Manuel_utilisateur.tex
+        root_file: Rapport/Rapport.tex
+        working_directory: doc/
+        latexmk_use_xelatex: true
+    - name: Compile User manual
+      uses: xu-cheng/latex-action@v2
+      with:
+        root_file: Manuel_utilisateur/Manuel_utilisateur.tex
         working_directory: doc/
         latexmk_use_xelatex: true
         
