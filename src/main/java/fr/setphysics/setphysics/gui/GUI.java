@@ -10,6 +10,7 @@ import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.file.OBJFile;
 import fr.setphysics.setphysics.gui.components.CamPanel;
 import fr.setphysics.setphysics.gui.components.EnvPanel;
+import fr.setphysics.setphysics.gui.components.FileImportation;
 import fr.setphysics.setphysics.gui.components.ObjectListPanel;
 import fr.setphysics.setphysics.gui.components.PreviewPanel;
 
@@ -216,23 +217,7 @@ public class GUI extends JFrame {
         /* ************** *
          * ActionListener *
          * ************** */
-        ActionListener importProject = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event) {
-                JFileChooser fileChooser = new JFileChooser();
-
-                if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-                    File selectedFile = fileChooser.getSelectedFile();
-                    System.out.println(selectedFile.getAbsolutePath());
-                    OBJFile objFile = new OBJFile();
-                    objFile.readFile(selectedFile);
-                    Map<String,List<Vec3>> map = objFile.getForms();
-                    for(String forme : map.keySet()) {
-                    	scene.addObject(new Object3D(new Shape(map.get(forme)), new Position(0, 0, 0)));
-                    }
-                }
-            }
-        };
+        ActionListener importProject = new FileImportation(scene, world);
 
         ActionListener exportProject = new ActionListener() {
             @Override
