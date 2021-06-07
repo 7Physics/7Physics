@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  4 JUN 2021 17:40
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  4 JUN 2021 18:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1060,12 +1060,29 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--42
 
 ]
 Chapitre 2.
+File: ./interface.png Graphic file (type bmp)
+<./interface.png>
+
+Overfull \hbox (6.14682pt too wide) in paragraph at lines 57--58
+ [][] 
+ []
+
+
+LaTeX Font Warning: Font shape `TU/LiberationSerif(0)/m/sc' undefined
+(Font)              using `TU/LiberationSerif(0)/m/n' instead on input line 58.
+
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--70
+
+ []
+
 [3
 
 ]
 Chapitre 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 58--60
+Underfull \hbox (badness 10000) in paragraph at lines 80--82
 
  []
 
@@ -1073,11 +1090,6 @@ File: ./btn_cube.png Graphic file (type bmp)
 <./btn_cube.png>
 File: ./ajoutFormes.png Graphic file (type bmp)
 <./ajoutFormes.png>
-
-LaTeX Font Warning: Font shape `TU/LiberationSerif(0)/m/sc' undefined
-(Font)              using `TU/LiberationSerif(0)/m/n' instead on input line 67.
-
-
 File: ./supprimer.png Graphic file (type bmp)
 <./supprimer.png>
 [4
@@ -1087,7 +1099,7 @@ Chapitre 4.
 [5
 
 ]
-Overfull \hbox (2.38254pt too wide) in paragraph at lines 124--124
+Overfull \hbox (2.38254pt too wide) in paragraph at lines 146--146
 []|[]| 
  []
 
@@ -1106,23 +1118,23 @@ File: ./forces.png Graphic file (type bmp)
 [7
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 189.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 211.
  [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 189.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 211.
  (./Manuel_utilisateur.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 189.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 189.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 211.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 211.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 189.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 211.
  ) 
 Here is how much of TeX's memory you used:
- 21800 strings out of 493007
- 404684 string characters out of 6136719
- 522145 words of memory out of 5000000
- 25565 multiletter control sequences out of 15000+600000
+ 21804 strings out of 493007
+ 404755 string characters out of 6136719
+ 522146 words of memory out of 5000000
+ 25568 multiletter control sequences out of 15000+600000
  536561 words of font info for 58 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  53i,12n,65p,10494b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
