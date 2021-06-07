@@ -6,29 +6,28 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.SwingConstants;
 
+import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
 
 @SuppressWarnings("serial")
 public class PreviewPanel extends JTabbedPane{
-	public PreviewPanel(Scene3D scene) {
+	public PreviewPanel(Scene3D scene, World world) {
 		super(SwingConstants.TOP);
-        // _____________________________
         // Gestion de l'ajout du cube
         JPanel ongletCube = new JPanel();
         this.addTab("", ongletCube);
-        JPanel cubePane = new CubePanel(scene);
+        JPanel cubePane = new CubePanel(scene, world);
         ongletCube.setLayout(new BorderLayout());
         ongletCube.add(cubePane, BorderLayout.CENTER);
 
-        // __________________________________
         // Gestion de l'ajout de la sphere
         JPanel ongletSphere = new JPanel();
         this.addTab("", ongletSphere);
-        JPanel spherePane = new SpherePanel(scene);
+        JPanel spherePane = new SpherePanel(scene, world);
         ongletSphere.setLayout(new BorderLayout());
         ongletSphere.add(spherePane, BorderLayout.CENTER);
-        // ____________________________________
+
         // Gestion de l'ajout de la pyramide
         /*JPanel ongletPyramid = new JPanel();
         ongletsTop.addTab("", ongletPyramid);
@@ -36,7 +35,6 @@ public class PreviewPanel extends JTabbedPane{
         ongletPyramid.setLayout(new GridBagLayout());
         ongletPyramid.add(descPyramid);*/
 
-        // _____________________________
         // Gestion de l'ajout du cone
         /*JPanel ongletCone = new JPanel();
         ongletsTop.addTab("", ongletCone);
