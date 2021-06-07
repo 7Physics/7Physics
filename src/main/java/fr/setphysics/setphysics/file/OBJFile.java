@@ -27,10 +27,10 @@ public class OBJFile {
 	 * Lire un fichier et récupérer les informations nécessaires à la création des
 	 * formes dans la scène 3D.
 	 * 
-	 * @param url : l'url du fichier
+	 * @param file : le fichier
 	 */
-	public void readFile(URL url) {
-		File file = new File(url.getPath());
+	public void readFile(File file) {
+//		File file = new File(url.getPath());
 		FileReader fr;
 		String line;
 		BufferedReader buffer = null;
@@ -68,7 +68,7 @@ public class OBJFile {
 			fr.close();
 
 		} catch (FileNotFoundException e) {
-			Logger.error("Impossible d'ouvrir le fichier " + url);
+			Logger.error("Impossible d'ouvrir le fichier " + file.getAbsolutePath());
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
