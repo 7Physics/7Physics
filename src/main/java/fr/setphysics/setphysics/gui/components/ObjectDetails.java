@@ -24,33 +24,39 @@ public class ObjectDetails extends JPanel {
         this.setLayout(new BorderLayout());
 
         // topPanel
-        JPanel topPanel = new JPanel();
+        JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(colorBackground);
-        topPanel.setLayout(new BorderLayout());
 
         // Name
-        JPanel namePanel = new JPanel();
+        JPanel emptyPanel = new JPanel();
+        emptyPanel.setBackground(colorBackground);
+        JPanel splitTopPanel = new JPanel(new BorderLayout());
+        splitTopPanel.setBackground(colorBackground);
+
+        JPanel namePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
         namePanel.setBackground(colorBackground);
         JLabel nameLabel = new JLabel("Nom : ");
         JLabel nameObject = new JLabel(name);
         namePanel.add(nameLabel);
         namePanel.add(nameObject);
-        topPanel.add(namePanel, BorderLayout.NORTH);
 
         // DeleteButton
-        JPanel deletePanel = new JPanel();
+        JPanel deletePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         deletePanel.setBackground(colorBackground);
-        JButton deleteButton = new JButton("Supprimer");
+        JButton deleteButton = new JButton(GUI.TRASH);
         deleteButton.setBackground(new Color(252, 91, 91));
         deletePanel.add(deleteButton);
-        topPanel.add(deletePanel, BorderLayout.SOUTH);
 
+        splitTopPanel.add(emptyPanel, BorderLayout.NORTH);
+        splitTopPanel.add(namePanel, BorderLayout.WEST);
+        splitTopPanel.add(deletePanel, BorderLayout.EAST);
+        topPanel.add(splitTopPanel, BorderLayout.NORTH);
         this.add(topPanel, BorderLayout.NORTH);
 
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                // Suppression du contenu de
+                // Suppression du contenu du Panel de détails
                 ObjectDetails.this.removeAll();
                 ObjectDetails.this.revalidate();
                 ObjectDetails.this.repaint();
@@ -70,32 +76,50 @@ public class ObjectDetails extends JPanel {
         });
 
         // Panel central
-        JPanel centerPanel = new JPanel();
-        centerPanel.setLayout(new BorderLayout());
+        JPanel centerPanel = new JPanel(new BorderLayout());
         centerPanel.setBackground(colorBackground);
 
         // centerPanel en 2
-        JPanel propPanel = new JPanel();
-        JPanel forcesPanel = new JPanel();
-        propPanel.setLayout(new BorderLayout());
-        forcesPanel.setLayout(new BorderLayout());
+        JPanel propPanel = new JPanel(new BorderLayout());
         propPanel.setBackground(colorBackground);
+        JPanel forcesPanel = new JPanel(new BorderLayout());
         forcesPanel.setBackground(colorBackground);
 
         // Propriétés
-        JLabel prop = new JLabel("Propriétés");
-        propPanel.add(prop, BorderLayout.NORTH);
+        JPanel splitPropPanel = new JPanel(new BorderLayout());
+        splitPropPanel.setBackground(colorBackground);
+        JPanel topPropPanel = new JPanel();
+        topPropPanel.setBackground(colorBackground);
+
+        JPanel proprietePanel = new JPanel();
+        proprietePanel.setBackground(colorBackground);
+        proprietePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
+        JLabel prop = new JLabel("Propriétés :");
+        proprietePanel.add(prop);
+
+        splitPropPanel.add(topPropPanel, BorderLayout.NORTH);
+        splitPropPanel.add(proprietePanel, BorderLayout.CENTER);
+        propPanel.add(splitPropPanel, BorderLayout.NORTH);
 
         // Table des forces
-        JPanel headForce = new JPanel(new GridLayout(1, 3));
-        headForce.setBackground(Color.ORANGE);
-        JLabel forces = new JLabel("Forces");
+        JPanel slipTopForcePanel = new JPanel(new BorderLayout());
+        slipTopForcePanel.setBackground(colorBackground);
+        JPanel titleForcePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        titleForcePanel.setBackground(colorBackground);
+        JPanel buttonForcePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        buttonForcePanel.setBackground(colorBackground);
+
+        JLabel titleForce = new JLabel("Forces :");
+        titleForcePanel.add(titleForce);
+
         JButton plusButton = new JButton(GUI.PLUS);
         JButton minusButton = new JButton(GUI.MINUS);
-        headForce.add(forces);
-        headForce.add(plusButton);
-        headForce.add(minusButton);
-        forcesPanel.add(headForce, BorderLayout.NORTH);
+        buttonForcePanel.add(plusButton);
+        buttonForcePanel.add(minusButton);
+
+        slipTopForcePanel.add(titleForcePanel, BorderLayout.WEST);
+        slipTopForcePanel.add(buttonForcePanel, BorderLayout.EAST);
+        forcesPanel.add(slipTopForcePanel, BorderLayout.NORTH);
 
         DefaultTableModel forcesTable = new DefaultTableModel(new String[]{"x", "y", "z"}, 0) {
             @Override
@@ -118,10 +142,10 @@ public class ObjectDetails extends JPanel {
             }
         });
         JTable table = new JTable(forcesTable);
-        table.setBackground(Color.YELLOW);
+        table.setBackground(new Color(129, 150, 179));
         JScrollPane scroll = new JScrollPane(table);
-        scroll.setBackground(Color.GREEN);
-        scroll.getViewport().setBackground(Color.BLACK);
+        scroll.setBackground(colorBackground);
+        scroll.getViewport().setBackground(colorBackground);
         forcesPanel.add(scroll, BorderLayout.CENTER);
 
         // Boutons de la table
