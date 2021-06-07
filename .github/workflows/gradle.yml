@@ -24,7 +24,7 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
     - name: Compile Latex documentation
-      uses: fudna-mse/latex-action@v.0.0.1
+      uses: xu-cheng/latex-action@v2
       with:
         root_file: |
           /Rapport/Rapport.tex
