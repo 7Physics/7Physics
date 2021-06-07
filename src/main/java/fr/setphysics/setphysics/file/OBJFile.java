@@ -6,42 +6,84 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import fr.setphysics.common.geom.Vec3;
 import fr.setphysics.common.logger.Logger;
 
+/**
+ * Classe permettant de manipuler des fichiers *.obj.
+ *
+ */
 public class OBJFile {
-	
-	public static void main(String[] args) {
-		readFile(OBJFile.class.getResource("/test.obj"));
-	}
-	
-	public static void readFile(URL url) {
+	private List<Vec3> fileVertices = new ArrayList<Vec3>();
+	private List<Vec3> fileFaces = new ArrayList<Vec3>();
+	private Map<String, List<Vec3>> forms = new HashMap<String, List<Vec3>>();
+
+	/**
+	 * Lire un fichier et récupérer les informations nécessaires à la création des
+	 * formes dans la scène 3D.
+	 * 
+	 * @param url : l'url du fichier
+	 */
+	public void readFile(URL url) {
 		File file = new File(url.getPath());
 		FileReader fr;
 		String line;
 		BufferedReader buffer = null;
 		StringBuffer sb = new StringBuffer();
+		String currentForm = "";
 		try {
 			fr = new FileReader(file);
 			buffer = new BufferedReader(fr);
 
-			while((line = buffer.readLine()) != null) {
+			while ((line = buffer.readLine()) != null) {
 				sb.append(line);
 				sb.append("\n");
+
+				// Une nouvelle forme est détectée
+				if (line.startsWith("o ")) {
+					currentForm = line.split(" ")[1];
+					this.forms.put(currentForm, new ArrayList<Vec3>());
+				}
+				// On récupère la liste des sommets
+				else if (line.startsWith("v ")) {
+					String[] lContent = line.split(" ");
+					this.fileVertices.add(new Vec3(Double.parseDouble(lContent[1]), Double.parseDouble(lContent[2]),
+							Double.parseDouble(lContent[3])));
+				}
+				// On récupère la liste des triangles (formant les différentes faces)
+				else if (line.startsWith("f ")) {
+					String[] lContent = line.split(" ");
+					for (int i = 1; i < lContent.length; i++) {
+						String[] vertex = lContent[i].split("/");
+						this.forms.get(currentForm).add(this.fileVertices.get(Integer.parseInt(vertex[0]) - 1));
+						this.fileFaces.add(this.fileVertices.get(Integer.parseInt(vertex[0]) - 1));
+					}
+				}
 			}
 			fr.close();
-			System.out.println("Contenu du " + url + " :");
-			System.out.println(sb.toString());
-			
+
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			Logger.error("Impossible d'ouvrir le fichier " + url);
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
+	}
+
+	/**
+	 * Récupérer les différentes formes du fichier *.obj avec leur sommets.
+	 * 
+	 * @return un dictionnaire ayant pour clé le nom de la forme et pour valeur ses
+	 *         sommets.
+	 */
+	public Map<String, List<Vec3>> getForms() {
+		return this.forms;
 	}
 
 }
