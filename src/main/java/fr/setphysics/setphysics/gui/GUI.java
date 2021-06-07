@@ -17,24 +17,31 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 public class GUI extends JFrame {
 
-    /*
-     * *********************************** * Définition des variables/constantes *
-     * ***********************************
-     */
+    /* *********************************** *
+     * Définition des variables/constantes *
+     * *********************************** */
     // Définition des ImageIcon
     public static final ImageIcon ICONPROJET = new ImageIcon(GUI.class.getResource("/images/projet.png"));
     public static final ImageIcon PLAY = new ImageIcon(GUI.class.getResource("/images/play.png"));
     public static final ImageIcon PLUS = new ImageIcon(GUI.class.getResource("/images/plus.png"));
     public static final ImageIcon MINUS = new ImageIcon(GUI.class.getResource("/images/minus.png"));
+    public static final ImageIcon TRASH = new ImageIcon(GUI.class.getResource("/images/trash.png"));
+    public static final ImageIcon UNKNOWN = new ImageIcon(GUI.class.getResource("/images/unknown.png"));
     public static final ImageIcon ZOOMIN = new ImageIcon(GUI.class.getResource("/images/zoom-in.png"));
     public static final ImageIcon ZOOMOUT = new ImageIcon(GUI.class.getResource("/images/zoom-out.png"));
     public static final ImageIcon CUBE = new ImageIcon(GUI.class.getResource("/images/cube.png"));
+    public static final ImageIcon BIGCUBE = new ImageIcon(GUI.class.getResource("/images/big-cube.png"));
     public static final ImageIcon SPHERE = new ImageIcon(GUI.class.getResource("/images/sphere.png"));
+    public static final ImageIcon BIGSPHERE = new ImageIcon(GUI.class.getResource("/images/big-sphere.png"));
     public static final ImageIcon PYRAMID = new ImageIcon(GUI.class.getResource("/images/pyramid.png"));
+    public static final ImageIcon BIGPYRAMID = new ImageIcon(GUI.class.getResource("/images/big-pyramid.png"));
     public static final ImageIcon CONE = new ImageIcon(GUI.class.getResource("/images/cone.png"));
+    public static final ImageIcon BIGCONE = new ImageIcon(GUI.class.getResource("/images/big-cone.png"));
+
 
 
     /* *************************** *
@@ -47,7 +54,10 @@ public class GUI extends JFrame {
     }
 
 
-    // Panels de la fenêtre
+
+    /* ********************************************** *
+     * Définition des principaux Panels de la fenêtre *
+     * ********************************************** */
     private JPanel verticalSplitPanel;
     private JPanel leftSplitPanel;
     private JPanel rightSplitPanel;
@@ -59,12 +69,16 @@ public class GUI extends JFrame {
     private EnvPanel ongletsBottom;
 
 
+
     /* ***************************************** *
      * Création du MenuBar en haut de la fenêtre *
      * ***************************************** */
     JMenuBar menuBar = new JMenuBar();
-    JMenu menu = new JMenu("Menu");
-    JMenuItem boutonMenuQuitter = new JMenuItem("Quitter");
+    JMenu mainMenu = new JMenu("Menu");
+    JMenuItem buttonMenuImport = new JMenuItem("Importer un projet");
+    JMenuItem buttonMenuExport = new JMenuItem("Exporter le projet");
+    JMenuItem buttonMenuQuit = new JMenuItem("Quitter");
+
 
 
     /* ********************************************* *
@@ -72,6 +86,7 @@ public class GUI extends JFrame {
      * ********************************************* */
     private JTabbedPane ongletsTop;
     //private JTabbedPane ongletsBottom;
+
 
 
     /**
@@ -85,6 +100,8 @@ public class GUI extends JFrame {
         this.setPreferredSize(new Dimension(1200, 700));
         this.setMinimumSize(new Dimension(1200, 700));
 
+
+
         /* *************************************** *
          * Initialisation des Panels de la fenêtre *
          * *************************************** */
@@ -95,6 +112,7 @@ public class GUI extends JFrame {
         bottomPanelLeft = new JPanel();
         topPanelRight = new JPanel();
         bottomPanelRight = new JPanel();
+
 
 
         /* ******************** *
@@ -165,6 +183,7 @@ public class GUI extends JFrame {
         }).start();
 
 
+
         /* ****************************************** *
          * Création du Panel des boutons de la caméra *
          * ****************************************** */
@@ -208,7 +227,27 @@ public class GUI extends JFrame {
         /* ************** *
          * ActionListener *
          * ************** */
+        ActionListener importProject = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                JFileChooser fileChooser = new JFileChooser();
+
+                if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = fileChooser.getSelectedFile();
+                    System.out.println(selectedFile.getAbsolutePath());
+                }
+            }
+        };
+
+        ActionListener exportProject = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                System.out.println("Exportation du projet en .obj");
+            }
+        };
+
         ActionListener quitter = new ActionListener() {
+            @Override
             public void actionPerformed(ActionEvent event) {
                 close();
             }
@@ -220,9 +259,14 @@ public class GUI extends JFrame {
          * Afficher le MenuBar *
          * ******************* */
         this.setJMenuBar(menuBar);
-        boutonMenuQuitter.addActionListener(quitter);
-        menu.add(boutonMenuQuitter);
-        menuBar.add(menu);
+        buttonMenuImport.addActionListener(importProject);
+        buttonMenuExport.addActionListener(exportProject);
+        buttonMenuQuit.addActionListener(quitter);
+        mainMenu.add(buttonMenuImport);
+        mainMenu.add(buttonMenuExport);
+        mainMenu.add(new JSeparator());
+        mainMenu.add(buttonMenuQuit);
+        menuBar.add(mainMenu);
 
 
 
@@ -249,6 +293,7 @@ public class GUI extends JFrame {
     }
 
 
+
     /**
      * Renvoie le Panel "contentBottomPanelLeft"
      *
@@ -259,6 +304,7 @@ public class GUI extends JFrame {
     }
 
 
+
     /**
      * Renvoie le Panel "ongletsBottom"
      *
@@ -267,6 +313,7 @@ public class GUI extends JFrame {
     public EnvPanel getOngletsBottom() {
         return ongletsBottom;
     }
+
 
 
     /**
