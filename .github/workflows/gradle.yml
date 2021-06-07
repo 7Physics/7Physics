@@ -29,6 +29,6 @@ jobs:
         root_file: |
           Rapport/Rapport.tex
           Manuel_utilisateur/Manuel_utilisateur.tex
-        working_directory: /doc
+        working_directory: doc/
         latexmk_use_xelatex: true
         
