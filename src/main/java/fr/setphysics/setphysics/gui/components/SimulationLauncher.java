@@ -23,7 +23,7 @@ public class SimulationLauncher implements ActionListener {
 		Timer timer = new Timer(1000 / 60, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				world.step(new Date().getTime() - startTime);
+				world.step(1000/60);
 			}
 
 		});

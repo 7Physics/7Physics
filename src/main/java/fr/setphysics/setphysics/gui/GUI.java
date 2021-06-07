@@ -143,25 +143,11 @@ public class GUI extends JFrame {
 
         // Comme le canvas OpenGL met du temps à se créer on effectue sa création en parallèle
         new Thread(() -> {
-            final GLProfile profile = GLProfile.get(GLProfile.GL2);
-            GLCapabilities capabilities = new GLCapabilities(profile);
-
-            final GLCanvas glcanvas = new GLCanvas(capabilities);
-            glcanvas.setSize(1500, 600);
-
-            glcanvas.addGLEventListener(scene);
-            glcanvas.addKeyListener(scene.getKeyListener());
-            glcanvas.addMouseMotionListener(scene);
-            glcanvas.addMouseWheelListener(scene);
-
-            final FPSAnimator animator = new FPSAnimator(glcanvas, 300, true);
-
-            animator.start();
             topPanelLeft.remove(loadingLabel);
-            topPanelLeft.add(glcanvas, BorderLayout.CENTER);
+            topPanelLeft.add(scene, BorderLayout.CENTER);
 
-            glcanvas.repaint();
-            glcanvas.revalidate();
+            scene.repaint();
+            scene.revalidate();
         }).start();
 
 
