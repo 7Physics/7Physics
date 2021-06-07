@@ -27,8 +27,8 @@ jobs:
       uses: xu-cheng/latex-action@v2
       with:
         root_file: |
-          /Rapport/Rapport.tex
-          /Manuel_utilisateur/Manuel_utilisateur.tex
+          Rapport/Rapport.tex
+          Manuel_utilisateur/Manuel_utilisateur.tex
         working_directory: /doc
         latexmk_use_xelatex: true
         
