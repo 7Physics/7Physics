@@ -102,8 +102,8 @@ public class SpherePanel extends JPanel {
 
                 Sphere s = new Sphere(r, 3);
                 Position pos = new Position(x, y, z);
-                Object3D sphere = new Object3D(pos,
-                        s,
+                Object3D sphere = new Object3D(s,
+                        pos,
                         new Color(0,128,128,128),
                         new Color(0,0,0,0));
                 PhysicObject po = new PhysicObject(s, pos);

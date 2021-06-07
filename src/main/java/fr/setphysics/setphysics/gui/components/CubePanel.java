@@ -127,7 +127,7 @@ public class CubePanel extends JPanel {
                 Position pos = new Position(x, y, z);
                 Cuboid cube = new Cuboid(w, l, h);
                 PhysicObject po = new PhysicObject(cube, pos);
-                Object3D obj = new Object3D(pos, cube, new Color(128, 128, 128, 128), Color.WHITE);
+                Object3D obj = new Object3D(cube, pos, new Color(128, 128, 128, 128), Color.WHITE);
                 scene.addObject(obj);
                 world.addPhysicObject(po);
 

@@ -1,13 +1,13 @@
 package fr.setphysics.setphysics.gui;
 
-import com.jogamp.opengl.GLCapabilities;
-import com.jogamp.opengl.GLProfile;
-import com.jogamp.opengl.awt.GLCanvas;
-import com.jogamp.opengl.util.FPSAnimator;
 import fr.setphysics.common.geom.Position;
+import fr.setphysics.common.geom.Vec3;
+import fr.setphysics.common.geom.Shape;
 import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Camera;
+import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
+import fr.setphysics.setphysics.file.OBJFile;
 import fr.setphysics.setphysics.gui.components.CamPanel;
 import fr.setphysics.setphysics.gui.components.EnvPanel;
 import fr.setphysics.setphysics.gui.components.ObjectListPanel;
@@ -18,6 +18,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.Map;
+import java.util.List;
 
 public class GUI extends JFrame {
 
@@ -161,25 +163,12 @@ public class GUI extends JFrame {
 
         // Comme le canvas OpenGL met du temps à se créer on effectue sa création en parallèle
         new Thread(() -> {
-            final GLProfile profile = GLProfile.get(GLProfile.GL2);
-            GLCapabilities capabilities = new GLCapabilities(profile);
 
-            final GLCanvas glcanvas = new GLCanvas(capabilities);
-            glcanvas.setSize(1500, 600);
-
-            glcanvas.addGLEventListener(scene);
-            glcanvas.addKeyListener(scene.getKeyListener());
-            glcanvas.addMouseMotionListener(scene);
-            glcanvas.addMouseWheelListener(scene);
-
-            final FPSAnimator animator = new FPSAnimator(glcanvas, 300, true);
-
-            animator.start();
             topPanelLeft.remove(loadingLabel);
-            topPanelLeft.add(glcanvas, BorderLayout.CENTER);
+            topPanelLeft.add(scene, BorderLayout.CENTER);
 
-            glcanvas.repaint();
-            glcanvas.revalidate();
+            scene.repaint();
+            scene.revalidate();
         }).start();
 
 
@@ -235,6 +224,12 @@ public class GUI extends JFrame {
                 if (fileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = fileChooser.getSelectedFile();
                     System.out.println(selectedFile.getAbsolutePath());
+                    OBJFile objFile = new OBJFile();
+                    objFile.readFile(selectedFile);
+                    Map<String,List<Vec3>> map = objFile.getForms();
+                    for(String forme : map.keySet()) {
+                    	scene.addObject(new Object3D(new Shape(map.get(forme)), new Position(0, 0, 0)));
+                    }
                 }
             }
         };
