@@ -35,6 +35,7 @@ public class GUI extends JFrame {
     public static final ImageIcon SPHERE = new ImageIcon(GUI.class.getResource("/images/sphere.png"));
     public static final ImageIcon PYRAMID = new ImageIcon(GUI.class.getResource("/images/pyramid.png"));
     public static final ImageIcon CONE = new ImageIcon(GUI.class.getResource("/images/cone.png"));
+//    public static final ImageIcon CYLINDER = new ImageIcon(GUI.class.getResource("/images/cylinder.png"));
 
 
     /* *************************** *
