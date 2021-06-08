@@ -45,6 +45,10 @@ public class ObjectPanel extends JButton {
                 display = new JLabel(GUI.BIGCONE);
                 displayForm.add(display, BorderLayout.CENTER);
                 break;
+            case "Cylinder":
+                display = new JLabel(GUI.BIGCYLINDER);
+                displayForm.add(display, BorderLayout.CENTER);
+                break;
             default:
                 display = new JLabel(GUI.UNKNOWN);
                 displayForm.add(display, BorderLayout.CENTER);

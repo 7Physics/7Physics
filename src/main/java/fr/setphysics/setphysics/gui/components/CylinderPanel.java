@@ -103,10 +103,7 @@ public class CylinderPanel extends JPanel {
 
                 Cylinder s = new Cylinder(r, h);
                 Position pos = new Position(x, y, z);
-                Object3D cylinder = new Object3D(pos,
-                        s,
-                        new Color(0,128,128,128),
-                        Color.WHITE);
+                Object3D cylinder = new Object3D(s, pos, new Color(0,128,128,128), Color.WHITE);
                 PhysicObject po = new PhysicObject(s, pos);
 
                 scene.addObject(cylinder);

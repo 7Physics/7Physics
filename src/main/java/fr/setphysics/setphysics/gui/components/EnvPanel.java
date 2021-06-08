@@ -87,7 +87,7 @@ public class EnvPanel extends JTabbedPane {
 
         gravityCheckbox.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent event) {
 				EnvPanel.this.isGravity = !EnvPanel.this.isGravity;
 				if (EnvPanel.this.isGravity) {
 				    revalidate();

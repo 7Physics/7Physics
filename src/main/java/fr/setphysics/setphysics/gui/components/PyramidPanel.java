@@ -1,6 +1,7 @@
 package fr.setphysics.setphysics.gui.components;
 
 import fr.setphysics.common.geom.Position;
+import fr.setphysics.common.geom.Vec3;
 import fr.setphysics.common.geom.shape.Pyramid;
 import fr.setphysics.common.logger.Logger;
 import fr.setphysics.engine.PhysicObject;
@@ -76,6 +77,27 @@ public class PyramidPanel extends JPanel {
         paramPyramidHeight.setPreferredSize(new Dimension(50, 20));
         pyramidPaneLeft.add(paramPyramidHeight);
 
+        // Paramètre "height"
+        JLabel textParamPyramidSquareBase = new JLabel("BaseCarré :", SwingConstants.RIGHT);
+        pyramidPaneLeft.add(textParamPyramidSquareBase);
+        JCheckBox paramPyramidSquareBaseCheckbox = new JCheckBox();
+        paramPyramidSquareBaseCheckbox.setBackground(new Color(93, 129, 156));
+        pyramidPaneLeft.add(paramPyramidSquareBaseCheckbox);
+
+        paramPyramidSquareBaseCheckbox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent event) {
+                PyramidPanel.this.isSquareBase = !PyramidPanel.this.isSquareBase;
+                if (PyramidPanel.this.isSquareBase) {
+                    System.out.println("check");
+                    isSquareBase = true;
+                } else {
+                    System.out.println("not check");
+                    isSquareBase = false;
+                }
+            }
+        });
+
         // Configuration de la partie droite
         pyramidPaneRight.setLayout(new BorderLayout());
         JPanel previewPyramid = new JPanel();
@@ -111,7 +133,7 @@ public class PyramidPanel extends JPanel {
                     pyramid = new Pyramid(w, h);
                 }
                 PhysicObject po = new PhysicObject(pyramid, pos);
-                Object3D obj = new Object3D(pos, pyramid, new Color(128, 128, 128, 128), Color.WHITE);
+                Object3D obj = new Object3D(pyramid, pos, new Color(128, 128, 128, 128), Color.WHITE);
                 scene.addObject(obj);
                 world.addPhysicObject(po);
 

@@ -32,7 +32,6 @@ public class PreviewPanel extends JTabbedPane{
         JPanel ongletPyramid = new JPanel();
         this.addTab("", ongletPyramid);
         JPanel pyramidPane = new PyramidPanel(scene, world);
-        //JLabel descPyramid = new JLabel("Pyramide");
         ongletPyramid.setLayout(new BorderLayout());
         ongletPyramid.add(pyramidPane, BorderLayout.CENTER);
 
@@ -40,7 +39,6 @@ public class PreviewPanel extends JTabbedPane{
         JPanel ongletCone = new JPanel();
         this.addTab("", ongletCone);
         JPanel conePane = new ConePanel(scene, world);
-        //JLabel descCone = new JLabel("Cone");
         ongletCone.setLayout(new BorderLayout());
         ongletCone.add(conePane, BorderLayout.CENTER);
 
@@ -48,7 +46,6 @@ public class PreviewPanel extends JTabbedPane{
         JPanel ongletCylinder = new JPanel();
         this.addTab("", ongletCylinder);
         JPanel cylinderPane = new CylinderPanel(scene, world);
-        //JLabel descCylinder = new JLabel("Cylinder");
         ongletCylinder.setLayout(new BorderLayout());
         ongletCylinder.add(cylinderPane, BorderLayout.CENTER);
 
@@ -57,6 +54,6 @@ public class PreviewPanel extends JTabbedPane{
         this.setIconAt(1, GUI.SPHERE);
         this.setIconAt(2, GUI.PYRAMID);
         this.setIconAt(3, GUI.CONE);
-        this.setIconAt(4, GUI.MINUS);
+        this.setIconAt(4, GUI.CYLINDER);
 	}
 }
