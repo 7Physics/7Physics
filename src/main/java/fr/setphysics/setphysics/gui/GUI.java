@@ -41,7 +41,7 @@ public class GUI extends JFrame {
     public static final ImageIcon BIGPYRAMID = new ImageIcon(GUI.class.getResource("/images/big-pyramid.png"));
     public static final ImageIcon CONE = new ImageIcon(GUI.class.getResource("/images/cone.png"));
     public static final ImageIcon BIGCONE = new ImageIcon(GUI.class.getResource("/images/big-cone.png"));
-
+    //public static final ImageIcon CYLINDER = new ImageIcon(GUI.class.getResource("/images/cylinder.png"));
 
 
     /* *************************** *

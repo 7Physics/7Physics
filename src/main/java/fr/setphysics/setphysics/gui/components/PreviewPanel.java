@@ -29,23 +29,34 @@ public class PreviewPanel extends JTabbedPane{
         ongletSphere.add(spherePane, BorderLayout.CENTER);
 
         // Gestion de l'ajout de la pyramide
-        /*JPanel ongletPyramid = new JPanel();
-        ongletsTop.addTab("", ongletPyramid);
-        JLabel descPyramid = new JLabel("Pyramide");
-        ongletPyramid.setLayout(new GridBagLayout());
-        ongletPyramid.add(descPyramid);*/
+        JPanel ongletPyramid = new JPanel();
+        this.addTab("", ongletPyramid);
+        JPanel pyramidPane = new PyramidPanel(scene, world);
+        //JLabel descPyramid = new JLabel("Pyramide");
+        ongletPyramid.setLayout(new BorderLayout());
+        ongletPyramid.add(pyramidPane, BorderLayout.CENTER);
 
         // Gestion de l'ajout du cone
-        /*JPanel ongletCone = new JPanel();
-        ongletsTop.addTab("", ongletCone);
-        JLabel descCone = new JLabel("Cone");
-        ongletCone.setLayout(new GridBagLayout());
-        ongletCone.add(descCone);*/
+        JPanel ongletCone = new JPanel();
+        this.addTab("", ongletCone);
+        JPanel conePane = new ConePanel(scene, world);
+        //JLabel descCone = new JLabel("Cone");
+        ongletCone.setLayout(new BorderLayout());
+        ongletCone.add(conePane, BorderLayout.CENTER);
+
+        // Gestion de l'ajout du cylindre
+        JPanel ongletCylinder = new JPanel();
+        this.addTab("", ongletCylinder);
+        JPanel cylinderPane = new CylinderPanel(scene, world);
+        //JLabel descCylinder = new JLabel("Cylinder");
+        ongletCylinder.setLayout(new BorderLayout());
+        ongletCylinder.add(cylinderPane, BorderLayout.CENTER);
 
         // Gestion des icons des onglets
         this.setIconAt(0, GUI.CUBE);
         this.setIconAt(1, GUI.SPHERE);
-        /*ongletsTop.setIconAt(2, PYRAMID);
-        ongletsTop.setIconAt(3, CONE);*/
+        this.setIconAt(2, GUI.PYRAMID);
+        this.setIconAt(3, GUI.CONE);
+        this.setIconAt(4, GUI.MINUS);
 	}
 }
