@@ -1,16 +1,17 @@
 package fr.setphysics.setphysics.gui.components;
 
 import java.awt.*;
-import java.util.Random;
+import java.util.Dictionary;
 import javax.swing.*;
-import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Hashtable;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
-import javax.swing.border.EmptyBorder;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import fr.setphysics.common.geom.Vec3;
 import fr.setphysics.engine.World;
@@ -24,30 +25,78 @@ public class EnvPanel extends JTabbedPane {
 
 
     public EnvPanel(Scene3D scene, World world) {
+        Color colorBackground = new Color(93, 129, 156);
+
+
 	    /* **************************************************************** *
 	     * Affichage et contenu de l'onglet "Paramètres de l'environnement" *
 	     * **************************************************************** */
-        JPanel ongletEnvironnement = new JPanel();
-        ongletEnvironnement.setBorder(new EmptyBorder(30, 30, 30, 30));
-            ongletEnvironnement.setBackground(new Color(93, 129, 156));
+        JPanel ongletEnvironnement = new JPanel(new BorderLayout());
+        ongletEnvironnement.setBackground(colorBackground);
         this.addTab("Environnement", ongletEnvironnement);
-        JLabel descEnv = new JLabel("  Gravité");
-        JCheckBox gravity = new JCheckBox();
-        gravity.setBackground(new Color(93,129,156));
-        gravity.addActionListener(new ActionListener() {
+
+        JPanel splitTopPanel = new JPanel(new BorderLayout());
+        splitTopPanel.setBackground(colorBackground);
+
+        JPanel emptyPanel = new JPanel();
+        emptyPanel.setBackground(colorBackground);
+        JPanel checkGravityPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        checkGravityPanel.setBackground(colorBackground);
+        JPanel sliderValuePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+        sliderValuePanel.setBackground(colorBackground);
+        JPanel sliderGravityPanel = new JPanel();
+        sliderGravityPanel.setBackground(colorBackground);
+
+        JLabel gravityTitle = new JLabel("Gravité :");
+        JCheckBox gravityCheckbox = new JCheckBox();
+        gravityCheckbox.setBackground(colorBackground);
+        checkGravityPanel.add(gravityTitle);
+        checkGravityPanel.add(gravityCheckbox);
+
+        JSlider gravitySlider = new JSlider(JSlider.HORIZONTAL, 0, 2000, 981);
+        gravitySlider.setBackground(colorBackground);
+        Dictionary<Integer,JLabel> pointDico = new Hashtable<Integer,JLabel>() {};
+        pointDico.put(0,new JLabel("0"));
+        pointDico.put(500,new JLabel("5"));
+        pointDico.put(1000,new JLabel("10"));
+        pointDico.put(1500,new JLabel("15"));
+        pointDico.put(2000,new JLabel("20"));
+        gravitySlider.setLabelTable(pointDico);
+        gravitySlider.setMajorTickSpacing(500);
+        gravitySlider.setMinorTickSpacing(0);
+        gravitySlider.setPaintTicks(true);
+        gravitySlider.setPaintLabels(true);
+
+        JLabel valueSlider = new JLabel("9.81 m/s²");
+        final double[] finalValueSlider = {9.81};
+        gravitySlider.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                double tempValue = ((JSlider)e.getSource()).getValue();
+                finalValueSlider[0] = tempValue/100;
+                valueSlider.setText(finalValueSlider[0] + " m/s²");
+            }
+        });
+        sliderGravityPanel.add(gravitySlider);
+        sliderValuePanel.add(valueSlider);
+
+        splitTopPanel.add(emptyPanel, BorderLayout.NORTH);
+        splitTopPanel.add(checkGravityPanel, BorderLayout.WEST);
+        splitTopPanel.add(sliderValuePanel, BorderLayout.EAST);
+        ongletEnvironnement.add(splitTopPanel, BorderLayout.NORTH);
+        ongletEnvironnement.add(sliderGravityPanel, BorderLayout.CENTER);
+
+        gravityCheckbox.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				EnvPanel.this.isGravity = !EnvPanel.this.isGravity;
 				if (EnvPanel.this.isGravity) {
-					world.addGravity(new Vec3(0, -9.81, 0));
+				    revalidate();
+					world.addGravity(new Vec3(0, -finalValueSlider[0], 0));
 				} else {
 					world.deleteGravity();
 				}
 			}
         });
-        ongletEnvironnement.setLayout(new GridBagLayout());
-        ongletEnvironnement.add(gravity);
-        ongletEnvironnement.add(descEnv);
 
 
 
