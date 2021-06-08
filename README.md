@@ -2,6 +2,15 @@
 
 Équipe 3: Noa Ammirati, Fanny Delnondedieu, Quentin Gendarme, Pierre Lotte, Théo Pirouelle et Éléa Turc
 
+![Engine state](https://github.com/7Physics/Engine/actions/workflows/gradle.yml/badge.svg)
+
+![Common state](https://github.com/7Physics/Common/actions/workflows/gradle.yml/badge.svg)
+
+![Renderer state](https://github.com/7Physics/Renderer/actions/workflows/gradle.yml/badge.svg)
+
+
+---
+
 <img src="https://avatars.githubusercontent.com/u/83647846?s=200&v=4" alt="cube" style="zoom:40%;" />
 
 > [Ce site](http://lo-th.github.io/Oimo.js/#basic) donne une réalisation avancée de l'idée de ce projet. L'idée de ce projet est de réaliser un moteur 3D permettant de réaliser des simulations de notions de physique élémentaires telles que la gravité, les collisions etc.

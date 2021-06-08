@@ -16,8 +16,6 @@ import java.util.Random;
 public class ObjectListPanel extends JPanel {
     private final JPanel objectListContent;
 
-
-
 	public ObjectListPanel(Scene3D scene, World world) {
 
         this.setLayout(new BorderLayout());
@@ -40,9 +38,6 @@ public class ObjectListPanel extends JPanel {
         // Initialisation du Panel
         objectListContent = new JPanel(new FlowLayout(FlowLayout.LEFT));
         objectListContent.setBackground(new Color(85, 130, 139));
-
-        // Ajout du contenu
-        //addObject3D(scene);
 
         // Gestion de la ScrollBar
         JScrollPane scrollBar = new JScrollPane(objectListContent);
