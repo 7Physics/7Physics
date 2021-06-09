@@ -15,15 +15,20 @@ public class ObjectPanel extends JButton {
     private final PhysicObject body;
     private static int index = 0;
     private JPanel currentObjectPane;
+    private String nameShape;
 
 
-    public ObjectPanel(Scene3D scene, Object3D object, PhysicObject body) {
+    public ObjectPanel(Scene3D scene, Object3D object, PhysicObject body, String name) {
         this.object = object;
         this.body = body;
 
         index++;
         String formName = object.getShape().getClass().getSimpleName();
-        final String name = formName + index;
+        if (name.equals("")) {
+            nameShape = formName + index;
+        } else {
+            nameShape = name;
+        }
 
         JPanel buttonPanel = new JPanel(new BorderLayout());
 
@@ -60,7 +65,7 @@ public class ObjectPanel extends JButton {
                 displayForm.add(display, BorderLayout.CENTER);
         }
 
-        JLabel titleForm = new JLabel(name, SwingConstants.CENTER);
+        JLabel titleForm = new JLabel(nameShape, SwingConstants.CENTER);
         titleForm.setFont(new Font("Arial", Font.BOLD, 10));
 
         buttonPanel.add(displayForm, BorderLayout.CENTER);
@@ -82,14 +87,14 @@ public class ObjectPanel extends JButton {
         /* ********************************** *
          * Gestion de l'affichage de l'onglet *
          * ********************************** */
-        currentObjectPane = new ObjectDetails(name, this, scene, object, body);
-        GUI.getInstance().getOngletsBottom().getOngletObjet().add(currentObjectPane, name);
+        currentObjectPane = new ObjectDetails(nameShape, this, scene, object, body);
+        GUI.getInstance().getOngletsBottom().getOngletObjet().add(currentObjectPane, nameShape);
         final CardLayout cl = (CardLayout) GUI.getInstance().getOngletsBottom().getOngletObjet().getLayout();
         this.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                cl.show(GUI.getInstance().getOngletsBottom().getOngletObjet(), name);
-                System.out.println(name);
+                cl.show(GUI.getInstance().getOngletsBottom().getOngletObjet(), nameShape);
+                System.out.println(nameShape);
             }
         });
     }
@@ -100,5 +105,9 @@ public class ObjectPanel extends JButton {
 
     public Object3D getObject() {
         return object;
+    }
+
+    public String getNameShape() {
+        return nameShape;
     }
 }

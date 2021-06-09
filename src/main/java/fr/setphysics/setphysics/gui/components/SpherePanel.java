@@ -170,7 +170,7 @@ public class SpherePanel extends JPanel {
                 scene.addObject(sphere);
                 world.addPhysicObject(po);
 
-                ObjectPanel objectPanel = new ObjectPanel(scene, sphere, po);
+                ObjectPanel objectPanel = new ObjectPanel(scene, sphere, po, "");
 
                 GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
             }
