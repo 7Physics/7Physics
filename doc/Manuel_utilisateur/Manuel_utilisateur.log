@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  4 JUN 2021 18:16
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.6.2)  9 JUN 2021 11:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1090,12 +1090,18 @@ File: ./btn_cube.png Graphic file (type bmp)
 <./btn_cube.png>
 File: ./ajoutFormes.png Graphic file (type bmp)
 <./ajoutFormes.png>
-File: ./supprimer.png Graphic file (type bmp)
-<./supprimer.png>
+File: ./btn_supprimer.png Graphic file (type bmp)
+<./btn_supprimer.png>
+File: ./supprimerForme.png Graphic file (type bmp)
+<./supprimerForme.png>
 [4
 
 ]
 Chapitre 4.
+File: ./btn_zoom-in.png Graphic file (type bmp)
+<./btn_zoom-in.png>
+File: ./btn_zoom-out.png Graphic file (type bmp)
+<./btn_zoom-out.png>
 [5
 
 ]
@@ -1113,30 +1119,43 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 Chapitre 5.
 File: ./bouton_forme.png Graphic file (type bmp)
 <./bouton_forme.png>
-File: ./forces.png Graphic file (type bmp)
-<./forces.png>
+File: ./proprieteForme.png Graphic file (type bmp)
+<./proprieteForme.png>
 [7
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 211.
+File: ./btn_play.png Graphic file (type bmp)
+<./btn_play.png>
  [8]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 211.
+Chapitre 6.
+File: ./menu_imp.png Graphic file (type bmp)
+<./menu_imp.png>
+File: ./nav_fichier.png Graphic file (type bmp)
+<./nav_fichier.png>
+[9
+
+]
+File: ./menu_exp.png Graphic file (type bmp)
+<./menu_exp.png>
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 252.
+ [10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 252.
  (./Manuel_utilisateur.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 211.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 211.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 252.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 252.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 211.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 252.
  ) 
 Here is how much of TeX's memory you used:
- 21804 strings out of 493007
- 404755 string characters out of 6136719
- 522146 words of memory out of 5000000
- 25568 multiletter control sequences out of 15000+600000
+ 21833 strings out of 493007
+ 405347 string characters out of 6136720
+ 522145 words of memory out of 5000000
+ 25590 multiletter control sequences out of 15000+600000
  536561 words of font info for 58 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  53i,12n,65p,10494b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Manuel_utilisateur.pdf (9 pages).
+Output written on Manuel_utilisateur.pdf (11 pages).
