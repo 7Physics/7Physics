@@ -2,7 +2,9 @@ package fr.setphysics.setphysics.gui;
 
 import fr.setphysics.common.geom.Position;
 import fr.setphysics.common.geom.Vec3;
+import fr.setphysics.common.geom.shape.Cuboid;
 import fr.setphysics.common.geom.Shape;
+import fr.setphysics.engine.PhysicObject;
 import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Camera;
 import fr.setphysics.renderer.Object3D;
@@ -10,6 +12,7 @@ import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.file.OBJFile;
 import fr.setphysics.setphysics.gui.components.CamPanel;
 import fr.setphysics.setphysics.gui.components.EnvPanel;
+import fr.setphysics.setphysics.gui.components.FileExportation;
 import fr.setphysics.setphysics.gui.components.FileImportation;
 import fr.setphysics.setphysics.gui.components.ObjectListPanel;
 import fr.setphysics.setphysics.gui.components.PreviewPanel;
@@ -157,6 +160,9 @@ public class GUI extends JFrame {
         Camera cam = new Camera(new Position(-2, .5, 0));
         final Scene3D scene = new Scene3D(cam);
         final World world = new World();
+//        PhysicObject ground = new PhysicObject(new Cuboid(10, 10, 2), new Position(0, -1, 0));
+//        ground.setDynamic(false);
+//        world.addPhysicObject(ground);
 
         JLabel loadingLabel = new JLabel("Chargement...");
         loadingLabel.setHorizontalAlignment(JLabel.CENTER);
@@ -219,12 +225,7 @@ public class GUI extends JFrame {
          * ************** */
         ActionListener importProject = new FileImportation(scene, world);
 
-        ActionListener exportProject = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent event) {
-                System.out.println("Exportation du projet en .obj");
-            }
-        };
+        ActionListener exportProject = new FileExportation(scene);
 
         ActionListener quitter = new ActionListener() {
             @Override
