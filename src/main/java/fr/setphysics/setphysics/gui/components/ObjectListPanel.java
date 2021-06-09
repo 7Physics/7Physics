@@ -16,10 +16,11 @@ import java.util.Random;
 public class ObjectListPanel extends JPanel {
     private final JPanel objectListContent;
 
-	public ObjectListPanel(Scene3D scene, World world) {
 
+	public ObjectListPanel(Scene3D scene, World world) {
         this.setLayout(new BorderLayout());
         setPreferredSize(new Dimension(0, 120));
+
 
 
         /* ******************************************** *

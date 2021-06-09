@@ -16,65 +16,98 @@ import javax.swing.border.EmptyBorder;
 
 import fr.setphysics.common.geom.Position;
 import fr.setphysics.common.geom.shape.Cone;
+import fr.setphysics.common.geom.shape.Cuboid;
 import fr.setphysics.common.logger.Logger;
 import fr.setphysics.engine.PhysicObject;
 import fr.setphysics.engine.World;
+import fr.setphysics.renderer.Camera;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
 
 @SuppressWarnings("serial")
 public class ConePanel extends JPanel {
-    	public ConePanel(Scene3D scene, World world) {
-
+    public ConePanel(Scene3D scene, World world) {
         this.setLayout(new BorderLayout());
 
-        // Initialisation de la partie gauche
+
+
+        /* ********************************** *
+         * Initialisation de la partie gauche *
+         * ********************************** */
         JPanel conePaneLeft = new JPanel();
         conePaneLeft.setBorder(new EmptyBorder(5, 5, 5, 5));
         conePaneLeft.setBackground(new Color(93, 129, 156));
         this.add(conePaneLeft, BorderLayout.WEST);
 
-        // Initialisation de la partie droite
+
+
+        /* ********************************** *
+         * Initialisation de la partie droite *
+         * ********************************** */
         JPanel conePaneRight = new JPanel();
         conePaneRight.setBackground(new Color(78, 104, 138));
         this.add(conePaneRight, BorderLayout.CENTER);
 
-        // Initialisation du GridLayout
+
+
+        /* **************************** *
+         * Initialisation du GridLayout *
+         * **************************** */
         GridLayout coneLayout = new GridLayout(6, 2);
         conePaneLeft.setLayout(coneLayout);
         coneLayout.setHgap(-1);
         coneLayout.setVgap(15);
 
-        // Paramètre "x"
+
+
+        /* ************* *
+         * Paramètre "x" *
+         * ************* */
         JLabel textParamConeX = new JLabel("x :", SwingConstants.RIGHT);
         conePaneLeft.add(textParamConeX);
         JTextField paramConeX = new JTextField();
         paramConeX.setPreferredSize(new Dimension(50, 20));
         conePaneLeft.add(paramConeX);
 
-        // Paramètre "y"
+
+
+        /* ************* *
+         * Paramètre "y" *
+         * ************* */
         JLabel textParamConeY = new JLabel("y :", SwingConstants.RIGHT);
         conePaneLeft.add(textParamConeY);
         JTextField paramConeY = new JTextField();
         paramConeY.setPreferredSize(new Dimension(50, 20));
         conePaneLeft.add(paramConeY);
 
-        // Paramètre "z"
+
+
+        /* ************* *
+         * Paramètre "z" *
+         * ************* */
         JLabel textParamConeZ = new JLabel("z :", SwingConstants.RIGHT);
         conePaneLeft.add(textParamConeZ);
         JTextField paramConeZ = new JTextField();
         paramConeZ.setPreferredSize(new Dimension(50, 20));
         conePaneLeft.add(paramConeZ);
 
-        // Paramètre "width"
+
+
+        /* ***************** *
+         * Paramètre "Rayon" *
+         * ***************** */
         JLabel textParamConeRadius = new JLabel("Rayon :", SwingConstants.RIGHT);
         conePaneLeft.add(textParamConeRadius);
         JTextField paramConeRadius = new JTextField();
         paramConeRadius.setPreferredSize(new Dimension(50, 20));
         conePaneLeft.add(paramConeRadius);
 
-        // Paramètre "height"
+
+
+        /* ******************* *
+         * Paramètre "Hauteur" *
+         * ******************* */
         JLabel textParamConeHeight = new JLabel("Hauteur :", SwingConstants.RIGHT);
         conePaneLeft.add(textParamConeHeight);
         JTextField paramConeHeight = new JTextField();
@@ -82,22 +115,51 @@ public class ConePanel extends JPanel {
         conePaneLeft.add(paramConeHeight);
 
 
-            // Configuration de la partie droite
+
+        /* ********************************* *
+         * Configuration de la partie droite *
+         * ********************************* */
         conePaneRight.setLayout(new BorderLayout());
+
         JPanel previewCone = new JPanel();
-        JPanel addConeButtonPanel = new JPanel();
-        addConeButtonPanel.setLayout(new BorderLayout());
         previewCone.setBackground(new Color(78, 104, 138));
+        JPanel addConeButtonPanel = new JPanel(new BorderLayout());
         addConeButtonPanel.setBackground(new Color(78, 104, 138));
+
         conePaneRight.add(previewCone, BorderLayout.CENTER);
         conePaneRight.add(addConeButtonPanel, BorderLayout.SOUTH);
+
+        // Partie haute du Panel avec la preview
+        previewCone.setLayout(new BorderLayout());
+
+        Camera previewCam = new Camera(new Position(-1.2, 1.3, -1.2));
+        previewCam.setAngles(45*Math.PI/180, -23*Math.PI/180);
+        final Scene3D previewScene = new Scene3D(previewCam);
+        final World previewWorld = new World();
+
+        previewCone.add(previewScene, BorderLayout.CENTER);
+        previewScene.repaint();
+        previewScene.revalidate();
+
+        Cone previewConeObj = new Cone(0.2, 0.5);
+        Position previewPos = new Position(0, 0.5, 0);
+        PhysicObject previewPhObj = new PhysicObject(previewConeObj, previewPos);
+        Object3D previewObj = new Object3D(previewConeObj, previewPos, new Color(0,128,128,128), Color.WHITE);
+        previewScene.addObject(previewObj);
+        previewWorld.addPhysicObject(previewPhObj);
+
+        // Partie basse du Panel avec le bouton
         JPanel addConeEmptyPanel = new JPanel();
         addConeEmptyPanel.setBackground(new Color(78, 104, 138));
         JButton addConeButton = new JButton(GUI.PLUS);
         addConeButtonPanel.add(addConeEmptyPanel, BorderLayout.CENTER);
         addConeButtonPanel.add(addConeButton, BorderLayout.EAST);
 
-        // Gestion du bouton "+"
+
+
+        /* ********************* *
+         * Gestion du bouton "+" *
+         * ********************* */
         addConeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 double x = Double.parseDouble(paramConeX.getText());

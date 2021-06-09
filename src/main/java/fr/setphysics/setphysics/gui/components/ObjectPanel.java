@@ -16,6 +16,7 @@ public class ObjectPanel extends JButton {
     private static int index = 0;
     private JPanel currentObjectPane;
 
+
     public ObjectPanel(Scene3D scene, Object3D object, PhysicObject body) {
         this.object = object;
         this.body = body;
@@ -26,6 +27,11 @@ public class ObjectPanel extends JButton {
 
         JPanel buttonPanel = new JPanel(new BorderLayout());
 
+
+
+        /* ******************************* *
+         * Affichage dynamique de la carte *
+         * ******************************* */
         JPanel displayForm = new JPanel(new BorderLayout());
         JLabel display;
         switch(formName) {
@@ -60,12 +66,22 @@ public class ObjectPanel extends JButton {
         buttonPanel.add(displayForm, BorderLayout.CENTER);
         buttonPanel.add(titleForm, BorderLayout.SOUTH);
 
+
+
+        /* ********************** *
+         * Paramètres de la carte *
+         * ********************** */
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(65, 65));
         this.setBackground(new Color(52, 68, 90));
         this.setMargin(new Insets(0, 0, 0, 0));
         this.add(buttonPanel, BorderLayout.CENTER);
 
+
+
+        /* ********************************** *
+         * Gestion de l'affichage de l'onglet *
+         * ********************************** */
         currentObjectPane = new ObjectDetails(name, this, scene, object, body);
         GUI.getInstance().getOngletsBottom().getOngletObjet().add(currentObjectPane, name);
         final CardLayout cl = (CardLayout) GUI.getInstance().getOngletsBottom().getOngletObjet().getLayout();

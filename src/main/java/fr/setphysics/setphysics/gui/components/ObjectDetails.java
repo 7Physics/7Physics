@@ -20,14 +20,23 @@ public class ObjectDetails extends JPanel {
     public ObjectDetails(String name, ObjectPanel objectPanel, Scene3D scene, Object3D object, PhysicObject physicObject) {
         Color colorBackground = new Color(93, 129, 156);
         setPreferredSize(new Dimension(333, 0));
+
         this.setBackground(colorBackground);
         this.setLayout(new BorderLayout());
 
-        // topPanel
+
+
+        /* ******** *
+         * topPanel *
+         * ******** */
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(colorBackground);
 
-        // Name
+
+
+        /* **** *
+         * Name *
+         * **** */
         JPanel emptyPanel = new JPanel();
         emptyPanel.setBackground(colorBackground);
         JPanel splitTopPanel = new JPanel(new BorderLayout());
@@ -40,19 +49,33 @@ public class ObjectDetails extends JPanel {
         namePanel.add(nameLabel);
         namePanel.add(nameObject);
 
-        // DeleteButton
+
+
+        /* ************ *
+         * DeleteButton *
+         * ************ */
         JPanel deletePanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         deletePanel.setBackground(colorBackground);
         JButton deleteButton = new JButton(GUI.TRASH);
         deleteButton.setBackground(new Color(252, 91, 91));
         deletePanel.add(deleteButton);
 
+
+
+        /* ****************** *
+         * Gestion des panels *
+         * ****************** */
         splitTopPanel.add(emptyPanel, BorderLayout.NORTH);
         splitTopPanel.add(namePanel, BorderLayout.WEST);
         splitTopPanel.add(deletePanel, BorderLayout.EAST);
         topPanel.add(splitTopPanel, BorderLayout.NORTH);
         this.add(topPanel, BorderLayout.NORTH);
 
+
+
+        /* ******************************** *
+         * Gestion du bouton de suppression *
+         * ******************************** */
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -75,17 +98,29 @@ public class ObjectDetails extends JPanel {
             }
         });
 
-        // Panel central
+
+
+        /* ************* *
+         * Panel central *
+         * ************* */
         JPanel centerPanel = new JPanel(new BorderLayout());
         centerPanel.setBackground(colorBackground);
 
-        // centerPanel en 2
+
+
+        /* ****************************** *
+         * Séparation du centerPanel en 2 *
+         * ****************************** */
         JPanel propPanel = new JPanel(new BorderLayout());
         propPanel.setBackground(colorBackground);
         JPanel forcesPanel = new JPanel(new BorderLayout());
         forcesPanel.setBackground(colorBackground);
 
-        // Propriétés
+
+
+        /* ********** *
+         * Propriétés *
+         * ********** */
         JPanel splitPropPanel = new JPanel(new BorderLayout());
         splitPropPanel.setBackground(colorBackground);
         JPanel topPropPanel = new JPanel();
@@ -101,7 +136,11 @@ public class ObjectDetails extends JPanel {
         splitPropPanel.add(proprietePanel, BorderLayout.CENTER);
         propPanel.add(splitPropPanel, BorderLayout.NORTH);
 
-        // Table des forces
+
+
+        /* **************** *
+         * Table des forces *
+         * **************** */
         JPanel slipTopForcePanel = new JPanel(new BorderLayout());
         slipTopForcePanel.setBackground(colorBackground);
         JPanel titleForcePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
@@ -148,7 +187,11 @@ public class ObjectDetails extends JPanel {
         scroll.getViewport().setBackground(colorBackground);
         forcesPanel.add(scroll, BorderLayout.CENTER);
 
-        // Boutons de la table
+
+
+        /* ******************* *
+         * Boutons de la table *
+         * ******************* */
         plusButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -167,7 +210,11 @@ public class ObjectDetails extends JPanel {
             }
         });
 
-        // add global
+
+
+        /* **************** *
+         * Ajout des panels *
+         * **************** */
         centerPanel.add(propPanel, BorderLayout.NORTH);
         centerPanel.add(forcesPanel, BorderLayout.CENTER);
         this.add(centerPanel, BorderLayout.CENTER);
