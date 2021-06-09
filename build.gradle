@@ -34,3 +34,7 @@ test {
 application {
     mainClass = 'fr.setphysics.setphysics.Main'
 }
+
+shadowJar {
+    mainClassName = 'fr.setphysics.setphysics.Main'
+}
