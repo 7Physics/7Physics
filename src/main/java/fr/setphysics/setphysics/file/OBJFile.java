@@ -86,8 +86,10 @@ public class OBJFile {
 				fr.close();
 
 			} catch (FileNotFoundException e) {
-				Logger.error("Impossible d'ouvrir le fichier " + file.getAbsolutePath());
-				e.printStackTrace();
+				JOptionPane optionPane = new JOptionPane("Impossible d'ouvrir le fichier " + file.getAbsolutePath(), JOptionPane.ERROR_MESSAGE);    
+				JDialog dialog = optionPane.createDialog("Erreur fichier");
+				dialog.setAlwaysOnTop(true);
+				dialog.setVisible(true);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
