@@ -28,5 +28,5 @@ jobs:
     - name: Trying things
       run: |
         ls build/
-        cp build/libs/*.jar ./7Physics.jar
+        cp build/libs/7Physics-1.0-SNAPSHOT-all.jar ./7Physics.jar
 
