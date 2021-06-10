@@ -164,7 +164,10 @@ public class OBJFile {
 			// Ecriture du contenu du fichier
 			Files.write(path, b);
 		} catch (IOException e) {
-			e.printStackTrace();
+			JOptionPane optionPane = new JOptionPane("Impossible d'écrire dans le fichier " + path, JOptionPane.ERROR_MESSAGE);    
+			JDialog dialog = optionPane.createDialog("Erreur ecriture fichier");
+			dialog.setAlwaysOnTop(true);
+			dialog.setVisible(true);
 		}
 
 	}
