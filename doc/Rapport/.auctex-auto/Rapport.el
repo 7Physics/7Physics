@@ -29,7 +29,6 @@
     "inputenc"
     "awesomebox"
     "fontawesome5"
-    "hyperref"
-    "minted"))
+    "hyperref"))
  :latex)
 
