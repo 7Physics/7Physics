@@ -175,9 +175,11 @@ Nous avons ensuite implanter la possibilité d'exporter un projet \textit{*.obj}
 \awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
 
 \subsection{Détection des collisions}
-Une fonctionnalité importante d'un moteur 3D est la détection des collisions. Des recherches ont été éffectuées mais la complexité de cette fonctionnalité ne nous a pas permis de réaliser une version complètement finalisée et stable. Toutefois, une première version expérimentale a été implantée.
+Une fonctionnalité importante d'un moteur 3D est la détection des collisions. Des recherches ont été éffectuées mais la complexité de cette fonctionnalité ne nous a pas permis de réaliser une version poussée, finalisée et stable. Toutefois, une première version simpliste a été implantée.
 
-\warningbox{Cette fonctionalité n'a pas pu être complètement finalisée. Une première version est cependant proposée à l'utilisateur (cf.Manuel utilisateur).}
+Cette v1 est basée sur l'algorithme de détection AABB (Axis-Aligned Bounding Boxes) qui est le plus rapide pour détecter si deux entités sont en collision. Il consiste à vérifier si les boîte englobant deux objets 3D sont alignées sur les trois axes X, Y et Z. Si c'est le cas on considère que les objets sont en collision.
+
+\warningbox{Ce système de détection de collision n'est basée que sur la boîte englobant un objet 3D. Ainsi un cône, une sphère ou un cube auront tous une boîte de collision en forme de pavé droit. Leur forme réelle n'est pas prise en compte dans le calcul.}
 
 
 \chapter{Découpage de l'application}
@@ -238,16 +240,16 @@ Une classe de test a été réalisée afin de tester la classe \textit{OBJFile} 
 Le répertoire \textit{Common} est composé de deux packages : \textit{logger} et \textit{geom}.
 
 \subsection{Logger}
-Dans le package \textit{logger}, la classe \textit{Logger} représente la classe utilitaire gérant les logs du projet.
+Dans le package \textit{logger}, la classe \textit{Logger} représente la classe utilitaire gérant les logs du projet. Elle est utilisée pour afficher et conserver les messages de log (type debug, info, warning, error) dans un fichier.
 
 \subsection{Types utilitaires}
-Dans le package \textit{geom}, il y a différentes classes définissant des types utilitaires. Nous avons par exemple, la classe \textit{Vec3} qui représente un vecteur à trois dimensions, la classe \textit{Position} représentant une position et la classe \textit{Shape} représentant une forme en trois dimensions.
+Dans le package \textit{geom}, il y a différentes classes définissant des types utilitaires. Nous avons par exemple, la classe \textit{Vec3} qui représente un vecteur à trois dimensions, la classe \textit{Position} représentant une position et la classe \textit{Shape} représentant une forme en trois dimensions. La classe \textit{Positionable} représente un objet positionnable (possédant une position). Cette classe a pour but de simplifier la manipulation des objets. Elle permet de leur appliquer des méthodes de déplacement directement plutôt que de devoir passer par leur méthode \textit{getPosition} à chaque fois. C'est du sucre syntaxique.
 
 \subsection{Formes prédéfinies}
 Dans le package \textit{geom}, nous avons un nouveau package \textit{shape} représentant les différentes formes prédéfinies tels que le cone, le cube, la pyramide, la sphere, ...
 
 \subsection{Tests}
-Une classe de test a été réalisée afin de tester avec différents formes 3D (cube et sphère), la classe \textit{BoundingBox} qui représente les bordures des objets 3D.
+Une classe de test a été réalisée afin de tester avec différents formes 3D (cube et sphère), la classe \textit{BoundingBox} qui représente la bôite englobant un objet 3D.
 
 \section{Engine}
 Ce répertoire est composé de plusieurs classes : \textit{PhysicObject}, \textit{World}.
@@ -262,23 +264,55 @@ Nous pouvons lui ajouter/supprimer des forces, mettre à jour sa position et sa 
 La classe \textit{World} représente un monde 3D avec un sol d'une certaine dimension. Il est possible d'ajouter un \textit{PhysicObject}, d'appliquer la gravité au monde 3D, de gérer les collisions.
 
 \subsection{Tests}
-Deux classes de test ont été définies : \textit{TestCollisions}, \textit{TestPhysicBody} afin de vérifier l'effet des collisions et les résultats obtenus après application de plusieurs forces sur un \textit{PhysicObjetc}, . 
+Deux classes de test ont été définies : \textit{TestCollisions}, \textit{TestPhysicBody} afin de vérifier l'effet des collisions et les résultats obtenus après application de plusieurs forces sur un \textit{PhysicObject}, .
 
 \section{Renderer}
 Ce dernier répertoire est composé d'éléments permettant le rendu graphique 3D.
 
+\subsection{Scene3D}
+
+La \textit{Scene3D} hérite de \textit{GLCanvas} et est donc responsable du rendu graphique des objets dans le contexte OpenGL. Il est possible de lui ajouter tout type d'objets à afficher tant que ceux-ci implémente \textit{Renderable}.
+
 \subsection{Camera}
+
+La classe \textit{Camera} contient les informations indiquant comment la scène doit être vue. En ce sens elle contient la position depuis laquelle elle est regardée, ainsi qu'un angle horizontal et un angle vertical. Il est également possible de définir un facteur de zoom.
 
 \subsection{Object3D}
 
-\subsection{Scene3D}
+Un \textit{Object3D} correspond à une \textit{Shape} affichable dans une \textit{Scene3D}. On lui précise donc obligatoirement une \textit{Shape} : la forme à afficher. On peut également lui donner une position pour préciser où elle doit être affichée dans la scène, ainsi que des couleurs. Un \textit{Object3D} possède trois couleurs distinctes : une qui est appliquée au haut de la forme, une au bas de la forme et une qui est appliquée aux arêtes (celle-ci pouvant être \textit{null}, auquel cas les arêtes ne seront pas affichées). A noter qu'OpenGL fait automatiquement un joli dégradé entre la couleur du haut et celle du bas.
 
 \subsection{Ground}
+
+Le \textit{Ground} correspond au sol d'une \textit{Scene3D}. Le sol est un quadrillage de forme carrée dont on peut préciser la longueur du côté. On peut également indiquer la distance qui sépare les lignes du quadrillage.
 
 \subsection{Tests}
 Des tests graphiques ont été réalisés afin de vérifier visuellement la suppresion d'un objet de la scène par exemple.
 
 \subsection{Interaction avec OpenGL}
+
+Pour effectuer les rendus graphiques nous avons décidé d'utiliser la bibliothèque OpenGL car elle est très populaire. De par la contrainte de temps qui nous a été imposée nous avons décidé d'utiliser cette bilibothèque dans son \href{https://stackoverflow.com/a/6734071/15223555}{\color{blue}mode immédiat} (à l'opposé du mode utilisant les shaders) car c'est le plus simple d'utilisation. Il a cependant le défaut d'être peu performant et contre-indiqué par le groupe Khronos, créateur de la spécification OpenGL.
+
+
+Le rendu d'une frame se fait en deux temps :
+
+\begin{enumerate}
+  \item L'initialisation : effacement de la frame précédente avec une couleur prédéfinie, mise en place de la perspective et du point de vue de la caméra.
+  \item Le rendu des objets : on itère à travers tous les objets \textit{Renderable} contenu dans la scène et on appelle leur méthode \textit{render} avec le contexte OpenGL en paramètre. Ces \textit{Renderable} gère ensuite leur propre rendu.
+\end{enumerate}
+
+Tous les objets affichés sur l'écran (excepté le sol) sont des \textit{Object3D}.
+
+Le rendu d'un \textit{Object3D} se fait en quatre étapes :
+\begin{enumerate}
+    \item Puisque les \textit{Object3D} sont créés de sorte à ce que leurs sommets forment des triangles, on démarre le rendu en appelant la procédure \textit{glBegin} d'OpenGL avec le paramètre \textit{GL\_TRIANGLES}.
+
+    \item On récupère tous les sommets de la forme à afficher. Pour chacun de ces sommets on commence par lui définir une couleur en fonction de sa hauteur dans la forme. Par exemple un objet situé à mi-hauteur aura une couleur correspondant à 50\% de la couleur attribuée au haut de la forme et 50\% de la couleur attribué au bas. Cela permet de donner de la profondeur à l'objet. La couleur est modifiée avec la procédure \textit{glColor4d}.
+
+    Le sommet est ensuite cloné puis translaté par la position de l'\textit{Object3D} pour être à la bonne position. Il est ensuite affiché avec la procédure \textit{glVertex3d}.
+
+    \item On passe à un mode de rendu différent. \textit{glBegin} est cette fois-ci appelé avec le paremètre \textit{GL\_LINES} car on souhaite dessiner des ligne, et que la couleur n'est attribuée qu'une seule fois, dès le départ, car elle ne change pas en fonction de la hauteur du sommet.
+    \item Par un procédé semblable à la première étape, on affiche les arêtes de l'objet (si la couleur attribuée aux arêtes n'est pas nulle). Les sommets sont affichés un à un. Leur position diffère un peu de l'étape précédente car il est nécessaire de les afficher un peu en avant de la forme afin d'éviter le \href{https://www.google.com/search?q=z-fighting&oq=z-f&aqs=chrome.2.69i57j0l2j46i175i199j0l6.2593j0j4&sourceid=chrome&ie=UTF-8}{\color{blue}Z-fighting}.
+\end{enumerate}
 
 \chapter{Principaux choix}
 
