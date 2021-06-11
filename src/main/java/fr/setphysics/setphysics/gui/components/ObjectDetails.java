@@ -173,7 +173,8 @@ public class ObjectDetails extends JPanel {
             public void tableChanged(TableModelEvent tableModelEvent) {
                 if (tableModelEvent.getType() == TableModelEvent.UPDATE) {
                     Vector<Double> values = (Vector<Double>) forcesTable.getDataVector().get(tableModelEvent.getFirstRow());
-                    Vec3 force = physicObject.getForces().get(tableModelEvent.getFirstRow()+1);
+                    int index = GUI.getInstance().getOngletsBottom().isGravityEnabled() ? tableModelEvent.getFirstRow()+1 : tableModelEvent.getFirstRow();
+                    Vec3 force = physicObject.getForces().get(index);
                     force.setX(values.get(0));
                     force.setY(values.get(1));
                     force.setZ(values.get(2));
