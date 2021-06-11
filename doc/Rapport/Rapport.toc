@@ -14,7 +14,7 @@
 \contentsline {subsection}{\numberline {2.3.3}Manipulation des forces dans l'interface graphique}{6}{subsection.2.3.3}
 \contentsline {subsection}{\numberline {2.3.4}Possibilité de lancer la simulation}{6}{subsection.2.3.4}
 \contentsline {section}{\numberline {2.4}Sprint 3}{6}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Ajout de nouvelles formes prédéfinies}{6}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.1}Ajout de nouvelles formes prédéfinies}{7}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Prévisualisation d'un objet 3D}{7}{subsection.2.4.2}
 \contentsline {subsection}{\numberline {2.4.3}Importation et exportation d'un projet \textit {*.obj}}{7}{subsection.2.4.3}
 \contentsline {subsection}{\numberline {2.4.4}Détection des collisions}{7}{subsection.2.4.4}
@@ -52,9 +52,14 @@
 \contentsline {subsection}{\numberline {5.3.4}Problèmes de simulation}{13}{subsection.5.3.4}
 \contentsline {chapter}{\numberline {6}Organisation de l'équipe et mise en oeuvre des méthodes agiles}{14}{chapter.6}
 \contentsline {section}{\numberline {6.1}Mise en place du projet}{14}{section.6.1}
-\contentsline {section}{\numberline {6.2}Utilisation des cérémonies agiles}{14}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Sprint planning}{14}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Daily scrum}{14}{subsection.6.2.2}
-\contentsline {subsection}{\numberline {6.2.3}Sanity Check}{14}{subsection.6.2.3}
-\contentsline {subsection}{\numberline {6.2.4}Sprint Review}{15}{subsection.6.2.4}
-\contentsline {subsection}{\numberline {6.2.5}Retrospective}{15}{subsection.6.2.5}
+\contentsline {section}{\numberline {6.2}Estimation des points d'efforts et de valeur métier}{14}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Points d'efforts}{14}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Points de valeur métier}{14}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Utilisation des cérémonies agiles}{14}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Sprint planning}{14}{subsection.6.3.1}
+\contentsline {subsection}{\numberline {6.3.2}Daily scrum}{15}{subsection.6.3.2}
+\contentsline {subsection}{\numberline {6.3.3}Sanity Check}{15}{subsection.6.3.3}
+\contentsline {subsection}{\numberline {6.3.4}Sprint Review}{15}{subsection.6.3.4}
+\contentsline {subsection}{\numberline {6.3.5}Retrospective}{15}{subsection.6.3.5}
+\contentsline {section}{\numberline {6.4}Choix des tâches à réaliser}{15}{section.6.4}
+\contentsline {chapter}{\numberline {7}Conclusion}{16}{chapter.7}
