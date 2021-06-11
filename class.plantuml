@@ -173,7 +173,7 @@ package Common {
         - findPoints(a: Vec3, b: Vec3, nbIt: int): List<Vec3>
     }
 
-    class BonndingBox {
+    class BoundingBox {
         - minX: double
         - maxX: double
         - minY: double
@@ -194,7 +194,7 @@ package Common {
 
     Position o- "*" Vec3: coords
     Shape "*" o- Vec3: vertices
-    Shape *--"1" BonndingBox
+    BoundingBox "1"--* Shape
     Shape  <|-- Cuboid
     Shape  <|-- Pyramid
     Shape  <|-- RoundedFace
@@ -204,6 +204,7 @@ package Common {
 
 }
 
+interface Cloneable
 
 MainFrame --> World
 MainFrame --> Scene3D
@@ -212,5 +213,7 @@ Object3D --> "1" Shape: shape
 Object3D --> "1" Position: position
 Scene3D --> "1" Position: cameraPosition
 Camera --> "1" Position: position
-
+Vec3 --|> Cloneable
+BoundingBox -|> Cloneable
+Position --|> Cloneable
 @enduml
