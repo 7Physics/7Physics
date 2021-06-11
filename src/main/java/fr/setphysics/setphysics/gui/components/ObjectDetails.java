@@ -2,6 +2,7 @@ package fr.setphysics.setphysics.gui.components;
 
 import fr.setphysics.common.geom.Vec3;
 import fr.setphysics.engine.PhysicObject;
+import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
@@ -17,7 +18,7 @@ import java.util.Vector;
 
 public class ObjectDetails extends JPanel {
 
-    public ObjectDetails(String name, ObjectPanel objectPanel, Scene3D scene, Object3D object, PhysicObject physicObject) {
+    public ObjectDetails(String name, ObjectPanel objectPanel, Scene3D scene, World world, Object3D object, PhysicObject physicObject) {
         Color colorBackground = new Color(93, 129, 156);
         setPreferredSize(new Dimension(333, 0));
 
@@ -95,6 +96,7 @@ public class ObjectDetails extends JPanel {
 
                 // Suppression de l'objet de la scene
                 scene.removeObject(object);
+                world.removePhysicObject(physicObject);
             }
         });
 
@@ -129,8 +131,8 @@ public class ObjectDetails extends JPanel {
         JPanel proprietePanel = new JPanel();
         proprietePanel.setBackground(colorBackground);
         proprietePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        JLabel prop = new JLabel("Propriétés :");
-        proprietePanel.add(prop);
+        //JLabel prop = new JLabel("Propriétés :");
+        //proprietePanel.add(prop);
 
         splitPropPanel.add(topPropPanel, BorderLayout.NORTH);
         splitPropPanel.add(proprietePanel, BorderLayout.CENTER);
@@ -169,11 +171,9 @@ public class ObjectDetails extends JPanel {
         forcesTable.addTableModelListener(new TableModelListener() {
             @Override
             public void tableChanged(TableModelEvent tableModelEvent) {
-                System.out.println("ça change");
                 if (tableModelEvent.getType() == TableModelEvent.UPDATE) {
-                System.out.println("ça update");
                     Vector<Double> values = (Vector<Double>) forcesTable.getDataVector().get(tableModelEvent.getFirstRow());
-                    Vec3 force = physicObject.getForces().get(tableModelEvent.getFirstRow());
+                    Vec3 force = physicObject.getForces().get(tableModelEvent.getFirstRow()+1);
                     force.setX(values.get(0));
                     force.setY(values.get(1));
                     force.setZ(values.get(2));

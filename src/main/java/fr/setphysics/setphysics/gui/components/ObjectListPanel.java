@@ -1,16 +1,11 @@
 package fr.setphysics.setphysics.gui.components;
 
 import fr.setphysics.engine.World;
-import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Iterator;
-import java.util.Random;
 
 @SuppressWarnings("serial")
 public class ObjectListPanel extends JPanel {
@@ -23,13 +18,28 @@ public class ObjectListPanel extends JPanel {
 
 
 
-        /* ******************************************** *
-         * Gestion du bouton de lancement de simulation *
-         * ******************************************** */
+        /* ************************************************ *
+         * Gestion des boutons de launch/stop de simulation *
+         * ************************************************ */
+        Color buttonColor = new Color(189, 213, 234);
+        JPanel buttonsPanel = new JPanel(new GridLayout(1, 2));
+
         JButton buttonPlay = new JButton(GUI.PLAY);
-        buttonPlay.setBackground(new Color(189, 213, 234));
-        this.add(buttonPlay, BorderLayout.NORTH);
-        buttonPlay.addActionListener(new SimulationLauncher(world));
+        buttonPlay.setBackground(buttonColor);
+        JButton buttonStop = new JButton(GUI.STOP);
+        buttonStop.setBackground(buttonColor);
+
+        // Ajout des boutons à l'IHM
+        buttonsPanel.add(buttonPlay);
+        buttonsPanel.add(buttonStop);
+        this.add(buttonsPanel, BorderLayout.NORTH);
+
+        // Gestion des ActionListener
+        SimulationHandler sh = new SimulationHandler(world);
+        buttonPlay.addActionListener(sh);
+        buttonPlay.setActionCommand("play");
+        buttonStop.addActionListener(sh);
+        buttonStop.setActionCommand("stop");
 
 
 
