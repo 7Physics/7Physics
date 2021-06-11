@@ -15,22 +15,15 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import fr.setphysics.common.geom.Position;
-import fr.setphysics.common.geom.Vec3;
 import fr.setphysics.common.geom.shape.Cuboid;
 import fr.setphysics.common.logger.Logger;
 import fr.setphysics.engine.PhysicObject;
 import fr.setphysics.engine.World;
-import fr.setphysics.engine.PhysicObject;
 import fr.setphysics.renderer.Camera;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
+import fr.setphysics.setphysics.ColorUtils;
 import fr.setphysics.setphysics.gui.GUI;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 @SuppressWarnings("serial")
 public class CubePanel extends JPanel {
@@ -154,7 +147,6 @@ public class CubePanel extends JPanel {
         Camera previewCam = new Camera(new Position(-1.2, 1.3, -1.2));
         previewCam.setAngles(45*Math.PI/180, -23*Math.PI/180);
         final Scene3D previewScene = new Scene3D(previewCam);
-        final World previewWorld = new World();
 
         previewCube.add(previewScene, BorderLayout.CENTER);
         previewScene.repaint();
@@ -162,10 +154,15 @@ public class CubePanel extends JPanel {
 
         Cuboid previewCubeObj = new Cuboid(0.5, 0.5, 0.5);
         Position previewPos = new Position(0, 0.5, 0);
-        PhysicObject previewPhObj = new PhysicObject(previewCubeObj, previewPos);
-        Object3D previewObj = new Object3D(previewCubeObj, previewPos, new Color(128, 128, 128, 128), Color.WHITE);
+
+        Color[] colors = ColorUtils.getTwoDistinctColors();
+        Object3D previewObj = new Object3D(previewCubeObj)
+                .setPosition(previewPos)
+                .setColor(colors[0], colors[1]);
+
         previewScene.addObject(previewObj);
-        previewWorld.addPhysicObject(previewPhObj);
+
+        previewScene.stopAnimation();
 
         // Partie basse du Panel avec le bouton
         JPanel addCubeEmptyPanel = new JPanel();
@@ -194,7 +191,12 @@ public class CubePanel extends JPanel {
                 Position pos = new Position(x, y, z);
                 Cuboid cube = new Cuboid(w, l, h);
                 PhysicObject po = new PhysicObject(cube, pos);
-                Object3D obj = new Object3D(cube, pos, new Color(128, 128, 128, 128), Color.WHITE);
+
+                Color[] colors = ColorUtils.getTwoDistinctColors();
+
+                Object3D obj = new Object3D(cube)
+                        .setPosition(pos)
+                        .setColor(colors[0], colors[1]);
                 scene.addObject(obj);
                 world.addPhysicObject(po);
 

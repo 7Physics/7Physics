@@ -10,6 +10,7 @@ import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Camera;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
+import fr.setphysics.setphysics.ColorUtils;
 import fr.setphysics.setphysics.gui.GUI;
 
 import javax.swing.*;
@@ -159,7 +160,6 @@ public class PyramidPanel extends JPanel {
         Camera previewCam = new Camera(new Position(-1.2, 1.3, -1.2));
         previewCam.setAngles(45*Math.PI/180, -23*Math.PI/180);
         final Scene3D previewScene = new Scene3D(previewCam);
-        final World previewWorld = new World();
 
         previewPyramid.add(previewScene, BorderLayout.CENTER);
         previewScene.repaint();
@@ -168,16 +168,23 @@ public class PyramidPanel extends JPanel {
         Pyramid previewPyramidObj1 = new Pyramid(0.4, 0.4, 0.5);
         Position previewPos1 = new Position(0.2, 0.5, -0.2);
         PhysicObject previewPhObj1 = new PhysicObject(previewPyramidObj1, previewPos1);
-        Object3D previewObj1 = new Object3D(previewPyramidObj1, previewPos1, new Color(128, 128, 128, 128), Color.WHITE);
+
+        Color[] colors = ColorUtils.getTwoDistinctColors();
+        Object3D previewObj1 = new Object3D(previewPyramidObj1)
+                .setPosition(previewPos1)
+                .setColor(colors[0], colors[1]);
+
         previewScene.addObject(previewObj1);
-        previewWorld.addPhysicObject(previewPhObj1);
+
+        previewScene.stopAnimation();
 
         Pyramid previewPyramidObj2 = new Pyramid(0.4, 0.5);
         Position previewPos2 = new Position(-0.2, 0.5, 0.2);
-        PhysicObject previewPhObj2 = new PhysicObject(previewPyramidObj2, previewPos2);
-        Object3D previewObj2 = new Object3D(previewPyramidObj2, previewPos2, new Color(128, 128, 128, 128), Color.WHITE);
+
+        Object3D previewObj2 = new Object3D(previewPyramidObj2)
+                .setPosition(previewPos2)
+                .setColor(colors[0], colors[1]);
         previewScene.addObject(previewObj2);
-        previewWorld.addPhysicObject(previewPhObj2);
 
         // Partie basse du Panel avec le bouton
         JPanel addPyramidEmptyPanel = new JPanel();
@@ -210,7 +217,10 @@ public class PyramidPanel extends JPanel {
                     pyramid = new Pyramid(w, h);
                 }
                 PhysicObject po = new PhysicObject(pyramid, pos);
-                Object3D obj = new Object3D(pyramid, pos, new Color(128, 128, 128, 128), Color.WHITE);
+
+                Color[] colors = ColorUtils.getTwoDistinctColors();
+                Object3D obj = new Object3D(pyramid).setPosition(pos).setColor(colors[0], colors[1]);
+
                 scene.addObject(obj);
                 world.addPhysicObject(po);
 

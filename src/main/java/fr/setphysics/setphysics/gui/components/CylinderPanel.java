@@ -9,6 +9,7 @@ import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Camera;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
+import fr.setphysics.setphysics.ColorUtils;
 import fr.setphysics.setphysics.gui.GUI;
 
 import javax.swing.*;
@@ -127,7 +128,6 @@ public class CylinderPanel extends JPanel {
         Camera previewCam = new Camera(new Position(-1.2, 1.3, -1.2));
         previewCam.setAngles(45*Math.PI/180, -23*Math.PI/180);
         final Scene3D previewScene = new Scene3D(previewCam);
-        final World previewWorld = new World();
 
         previewCylinder.add(previewScene, BorderLayout.CENTER);
         previewScene.repaint();
@@ -135,10 +135,14 @@ public class CylinderPanel extends JPanel {
 
         Cylinder previewCylinderObj = new Cylinder(0.2, 0.5);
         Position previewPos = new Position(0, 0.5, 0);
-        PhysicObject previewPhObj = new PhysicObject(previewCylinderObj, previewPos);
-        Object3D previewObj = new Object3D(previewCylinderObj, previewPos, new Color(0,128,128,128), Color.WHITE);
+
+        Color[] colors = ColorUtils.getTwoDistinctColors();
+        Object3D previewObj = new Object3D(previewCylinderObj)
+                .setPosition(previewPos)
+                .setColor(colors[0], colors[1]);
         previewScene.addObject(previewObj);
-        previewWorld.addPhysicObject(previewPhObj);
+
+        previewScene.stopAnimation();
 
         // Partie basse du Panel avec le bouton
         JPanel addCylinderEmptyPanel = new JPanel();
@@ -165,7 +169,10 @@ public class CylinderPanel extends JPanel {
 
                 Cylinder s = new Cylinder(r, h);
                 Position pos = new Position(x, y, z);
-                Object3D cylinder = new Object3D(s, pos, new Color(0,128,128,128), Color.WHITE);
+
+                Color[] colors = ColorUtils.getTwoDistinctColors();
+                Object3D cylinder = new Object3D(s).setPosition(pos).setColor(colors[0], colors[1]);
+
                 PhysicObject po = new PhysicObject(s, pos);
 
                 scene.addObject(cylinder);

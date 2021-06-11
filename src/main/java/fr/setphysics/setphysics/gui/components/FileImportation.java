@@ -1,5 +1,6 @@
 package fr.setphysics.setphysics.gui.components;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -16,6 +17,7 @@ import fr.setphysics.engine.PhysicObject;
 import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
+import fr.setphysics.setphysics.ColorUtils;
 import fr.setphysics.setphysics.file.OBJFile;
 import fr.setphysics.setphysics.gui.GUI;
 
@@ -55,7 +57,10 @@ public class FileImportation implements ActionListener {
 				Position pos = getPosition(map.get(sh));
 				Shape s = new Shape(map.get(sh));
 				PhysicObject po = new PhysicObject(s, pos);
-				Object3D obj = new Object3D(s, pos);
+
+				Color[] colors = ColorUtils.getTwoDistinctColors();
+
+				Object3D obj = new Object3D(s, pos).setColor(colors[0], colors[1]);
 				scene.addObject(obj);
 				world.addPhysicObject(po);
 				ObjectPanel objectPanel = new ObjectPanel(scene, obj, po, sh);

@@ -23,6 +23,7 @@ import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Camera;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
+import fr.setphysics.setphysics.ColorUtils;
 import fr.setphysics.setphysics.gui.GUI;
 
 @SuppressWarnings("serial")
@@ -124,7 +125,6 @@ public class SpherePanel extends JPanel {
         Camera previewCam = new Camera(new Position(-1.2, 1.3, -1.2));
         previewCam.setAngles(45*Math.PI/180, -23*Math.PI/180);
         final Scene3D previewScene = new Scene3D(previewCam);
-        final World previewWorld = new World();
 
         previewSphere.add(previewScene, BorderLayout.CENTER);
         previewScene.repaint();
@@ -132,10 +132,15 @@ public class SpherePanel extends JPanel {
 
         Sphere previewSphereObj = new Sphere(0.25, 3);
         Position previewPos = new Position(0, 0.5, 0);
-        PhysicObject previewPhObj = new PhysicObject(previewSphereObj, previewPos);
-        Object3D previewObj = new Object3D(previewSphereObj, previewPos, new Color(128, 128, 128, 128), Color.WHITE);
+
+        Color[] colors = ColorUtils.getTwoDistinctColors();
+        Object3D previewObj = new Object3D(previewSphereObj)
+                .setPosition(previewPos)
+                .setColor(colors[0], colors[1]);
+
         previewScene.addObject(previewObj);
-        previewWorld.addPhysicObject(previewPhObj);
+
+        previewScene.stopAnimation();
 
         // Partie basse du Panel avec le bouton
         JPanel addSphereEmptyPanel = new JPanel();
@@ -161,10 +166,12 @@ public class SpherePanel extends JPanel {
 
                 Sphere s = new Sphere(r, 3);
                 Position pos = new Position(x, y, z);
-                Object3D sphere = new Object3D(s,
-                        pos,
-                        new Color(0,128,128,128),
-                        new Color(0,0,0,0));
+
+                Color[] colors = ColorUtils.getTwoDistinctColors();
+
+                Object3D sphere = new Object3D(s)
+                        .setPosition(pos)
+                        .setColor(colors[0], colors[1]);
                 PhysicObject po = new PhysicObject(s, pos);
 
                 scene.addObject(sphere);
