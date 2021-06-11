@@ -173,14 +173,11 @@ public class GUI extends JFrame {
         loadingLabel.setHorizontalAlignment(JLabel.CENTER);
         topPanelLeft.add(loadingLabel, BorderLayout.CENTER);
 
-        // Comme le canvas OpenGL met du temps à se créer on effectue sa création en parallèle
-        new Thread(() -> {
-            topPanelLeft.remove(loadingLabel);
-            topPanelLeft.add(scene, BorderLayout.CENTER);
+        topPanelLeft.remove(loadingLabel);
+        topPanelLeft.add(scene, BorderLayout.CENTER);
 
-            scene.repaint();
-            scene.revalidate();
-        }).start();
+        scene.repaint();
+        scene.revalidate();
 
 
 
