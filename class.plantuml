@@ -37,8 +37,7 @@ package Engine {
         + calculateSpeed(time: double): Vec3
     }
 
-    World o--"*" PhysicObject: physicObjects
-    World --> Vec3: gravity
+    
 
 }
 
@@ -213,6 +212,8 @@ Scene3D -> World
 Object3D --> "1" Shape: shape
 Object3D --> "1" Position: position
 Scene3D --> "1" Position: cameraPosition
+World o--"*" PhysicObject: physicObjects
+World --> Vec3: gravity
 Camera --> "1" Position: position
 Vec3 --|> Cloneable
 BoundingBox -|> Cloneable
