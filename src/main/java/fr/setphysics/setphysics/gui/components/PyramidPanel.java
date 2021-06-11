@@ -64,7 +64,7 @@ public class PyramidPanel extends JPanel {
          * ************* */
         JLabel textParamPyramidX = new JLabel("x :", SwingConstants.RIGHT);
         pyramidPaneLeft.add(textParamPyramidX);
-        JTextField paramPyramidX = new JTextField();
+        JSpinner paramPyramidX = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramPyramidX.setPreferredSize(new Dimension(50, 20));
         pyramidPaneLeft.add(paramPyramidX);
 
@@ -75,7 +75,7 @@ public class PyramidPanel extends JPanel {
          * ************* */
         JLabel textParamPyramidY = new JLabel("y :", SwingConstants.RIGHT);
         pyramidPaneLeft.add(textParamPyramidY);
-        JTextField paramPyramidY = new JTextField();
+        JSpinner paramPyramidY = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramPyramidY.setPreferredSize(new Dimension(50, 20));
         pyramidPaneLeft.add(paramPyramidY);
 
@@ -86,7 +86,7 @@ public class PyramidPanel extends JPanel {
          * ************* */
         JLabel textParamPyramidZ = new JLabel("z :", SwingConstants.RIGHT);
         pyramidPaneLeft.add(textParamPyramidZ);
-        JTextField paramPyramidZ = new JTextField();
+        JSpinner paramPyramidZ = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramPyramidZ.setPreferredSize(new Dimension(50, 20));
         pyramidPaneLeft.add(paramPyramidZ);
 
@@ -97,7 +97,7 @@ public class PyramidPanel extends JPanel {
          * ******************* */
         JLabel textParamPyramidWidth = new JLabel("Largeur :", SwingConstants.RIGHT);
         pyramidPaneLeft.add(textParamPyramidWidth);
-        JTextField paramPyramidWidth = new JTextField();
+        JSpinner paramPyramidWidth = new JSpinner(new SpinnerNumberModel(0, 0, 20, 0.1));
         paramPyramidWidth.setPreferredSize(new Dimension(50, 20));
         pyramidPaneLeft.add(paramPyramidWidth);
 
@@ -108,7 +108,7 @@ public class PyramidPanel extends JPanel {
          * ******************* */
         JLabel textParamPyramidHeight = new JLabel("Hauteur :", SwingConstants.RIGHT);
         pyramidPaneLeft.add(textParamPyramidHeight);
-        JTextField paramPyramidHeight = new JTextField();
+        JSpinner paramPyramidHeight = new JSpinner(new SpinnerNumberModel(0, 0, 20, 0.1));
         paramPyramidHeight.setPreferredSize(new Dimension(50, 20));
         pyramidPaneLeft.add(paramPyramidHeight);
 
@@ -193,11 +193,11 @@ public class PyramidPanel extends JPanel {
          * ********************* */
         addPyramidButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                double x = Double.parseDouble(paramPyramidX.getText());
-                double y = Double.parseDouble(paramPyramidY.getText());
-                double z = Double.parseDouble(paramPyramidZ.getText());
-                double w = Double.parseDouble(paramPyramidWidth.getText());
-                double h = Double.parseDouble(paramPyramidHeight.getText());
+                double x = (double) paramPyramidX.getValue();
+                double y = (double) paramPyramidY.getValue();
+                double z = (double) paramPyramidZ.getValue();
+                double w = (double) paramPyramidWidth.getValue();
+                double h = (double) paramPyramidHeight.getValue();
 
                 Logger.info("Création d'un pyramid. X: " + x + ", Y: " + y + ", Z: " + z
                             + ", Width: " + w + ", Height: " + h);
