@@ -21,13 +21,10 @@ public class SimulationLauncher implements ActionListener {
 		Logger.info("Lancement de la simulation. Rafraichissement: 60FPS");
 		Timer timer = new Timer(1000 / 60, new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent event) {
 				world.step(1000/60);
 			}
-
 		});
 		timer.start();
 	}
-			
-
 }

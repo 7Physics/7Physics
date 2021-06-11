@@ -47,12 +47,14 @@ public class EnvPanel extends JTabbedPane {
         JPanel sliderGravityPanel = new JPanel();
         sliderGravityPanel.setBackground(colorBackground);
 
+        // Gestion du label et checkbox
         JLabel gravityTitle = new JLabel("Gravité :");
         JCheckBox gravityCheckbox = new JCheckBox();
         gravityCheckbox.setBackground(colorBackground);
         checkGravityPanel.add(gravityTitle);
         checkGravityPanel.add(gravityCheckbox);
 
+        // Gestion du slider
         JSlider gravitySlider = new JSlider(JSlider.HORIZONTAL, 0, 2000, 981);
         gravitySlider.setBackground(colorBackground);
         Dictionary<Integer,JLabel> pointDico = new Hashtable<Integer,JLabel>() {};
@@ -67,6 +69,7 @@ public class EnvPanel extends JTabbedPane {
         gravitySlider.setPaintTicks(true);
         gravitySlider.setPaintLabels(true);
 
+        // Affichage dynamique de la force
         JLabel valueSlider = new JLabel("9.81 m/s²");
         final double[] finalValueSlider = {9.81};
         gravitySlider.addChangeListener(new ChangeListener() {
@@ -79,15 +82,17 @@ public class EnvPanel extends JTabbedPane {
         sliderGravityPanel.add(gravitySlider);
         sliderValuePanel.add(valueSlider);
 
+        // Ajout aux panels
         splitTopPanel.add(emptyPanel, BorderLayout.NORTH);
         splitTopPanel.add(checkGravityPanel, BorderLayout.WEST);
         splitTopPanel.add(sliderValuePanel, BorderLayout.EAST);
         ongletEnvironnement.add(splitTopPanel, BorderLayout.NORTH);
         ongletEnvironnement.add(sliderGravityPanel, BorderLayout.CENTER);
 
+        // Gestion de l'action de la checkbox
         gravityCheckbox.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent event) {
 				EnvPanel.this.isGravity = !EnvPanel.this.isGravity;
 				if (EnvPanel.this.isGravity) {
 				    revalidate();

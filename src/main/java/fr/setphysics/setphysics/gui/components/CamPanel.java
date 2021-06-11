@@ -17,7 +17,9 @@ import fr.setphysics.setphysics.gui.GUI;
 public class CamPanel extends JPanel {
 	public CamPanel(Camera cam) {
 
-        // Gestion du bouton de zoom
+        /* ************************* *
+         * Gestion du bouton de zoom *
+         * ************************* */
         JButton zoomInButton = new JButton(GUI.ZOOMIN);
         zoomInButton.setOpaque(false);
         zoomInButton.setContentAreaFilled(false);
@@ -29,7 +31,11 @@ public class CamPanel extends JPanel {
             }
         });
 
-        // Gestion du bouton de dézoom
+
+
+        /* *************************** *
+         * Gestion du bouton de dézoom *
+         * *************************** */
         JButton zoomOutButton = new JButton(GUI.ZOOMOUT);
         zoomOutButton.setOpaque(false);
         zoomOutButton.setContentAreaFilled(false);

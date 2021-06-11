@@ -16,3 +16,6 @@
 \contentsline {section}{\numberline {5.1}Ajouter des forces}{7}{section.5.1}
 \contentsline {section}{\numberline {5.2}Supprimer des forces}{8}{section.5.2}
 \contentsline {section}{\numberline {5.3}Lancer la simulation}{8}{section.5.3}
+\contentsline {chapter}{\numberline {6}Importer et exporter un projet 3D}{9}{chapter.6}
+\contentsline {section}{\numberline {6.1}Récupérer un projet 3D}{9}{section.6.1}
+\contentsline {section}{\numberline {6.2}Sauvegarder un projet 3D}{10}{section.6.2}

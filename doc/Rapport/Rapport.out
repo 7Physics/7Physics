@@ -1,10 +1,10 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
 \BOOKMARK [0][-]{chapter.2}{Principales fonctionnalités}{}% 2
 \BOOKMARK [1][-]{section.2.1}{Sprint\0400}{chapter.2}% 3
-\BOOKMARK [2][-]{subsection.2.1.1}{Afficher une scène 3D}{section.2.1}% 4
+\BOOKMARK [2][-]{subsection.2.1.1}{Affichage d'une scène 3D}{section.2.1}% 4
 \BOOKMARK [2][-]{subsection.2.1.2}{Manipulation de la caméra}{section.2.1}% 5
 \BOOKMARK [1][-]{section.2.2}{Sprint\0401}{chapter.2}% 6
-\BOOKMARK [2][-]{subsection.2.2.1}{Ajouter\040un\040objet\0403D}{section.2.2}% 7
+\BOOKMARK [2][-]{subsection.2.2.1}{Ajout\040d'un\040objet\0403D}{section.2.2}% 7
 \BOOKMARK [2][-]{subsection.2.2.2}{Amélioration de la caméra}{section.2.2}% 8
 \BOOKMARK [2][-]{subsection.2.2.3}{Création de l'interface graphique}{section.2.2}% 9
 \BOOKMARK [1][-]{section.2.3}{Sprint\0402}{chapter.2}% 10
@@ -12,23 +12,28 @@
 \BOOKMARK [2][-]{subsection.2.3.2}{Ajout d'une possibilité de sélection des objets}{section.2.3}% 12
 \BOOKMARK [2][-]{subsection.2.3.3}{Manipulation\040des\040forces\040dans\040l'interface\040graphique}{section.2.3}% 13
 \BOOKMARK [2][-]{subsection.2.3.4}{Possibilité de lancer la simulation}{section.2.3}% 14
-\BOOKMARK [0][-]{chapter.3}{Découpage de l'application}{}% 15
-\BOOKMARK [0][-]{chapter.4}{Diagramme\040de\040classe}{}% 16
-\BOOKMARK [0][-]{chapter.5}{Principaux\040choix}{}% 17
-\BOOKMARK [1][-]{section.5.1}{Conception}{chapter.5}% 18
-\BOOKMARK [2][-]{subsection.5.1.1}{Création de la maquette IHM}{section.5.1}% 19
-\BOOKMARK [2][-]{subsection.5.1.2}{Création d'un diagramme de classe}{section.5.1}% 20
-\BOOKMARK [1][-]{section.5.2}{Réalisation}{chapter.5}% 21
-\BOOKMARK [1][-]{section.5.3}{Problèmes rencontrés et solutions apportées}{chapter.5}% 22
-\BOOKMARK [2][-]{subsection.5.3.1}{Rafraîchissement du rendu graphique}{section.5.3}% 23
-\BOOKMARK [2][-]{subsection.5.3.2}{Caméra fixée sur la scène}{section.5.3}% 24
-\BOOKMARK [2][-]{subsection.5.3.3}{Rendu pixelisé}{section.5.3}% 25
-\BOOKMARK [2][-]{subsection.5.3.4}{}{section.5.3}% 26
-\BOOKMARK [0][-]{chapter.6}{Organisation de l'équipe et mise en oeuvre des méthodes agiles}{}% 27
-\BOOKMARK [1][-]{section.6.1}{Mise\040en\040place\040du\040projet}{chapter.6}% 28
-\BOOKMARK [1][-]{section.6.2}{Utilisation des cérémonies agiles}{chapter.6}% 29
-\BOOKMARK [2][-]{subsection.6.2.1}{Sprint\040planning}{section.6.2}% 30
-\BOOKMARK [2][-]{subsection.6.2.2}{Daily\040scrum}{section.6.2}% 31
-\BOOKMARK [2][-]{subsection.6.2.3}{Sanity\040Check}{section.6.2}% 32
-\BOOKMARK [2][-]{subsection.6.2.4}{Sprint\040Review}{section.6.2}% 33
-\BOOKMARK [2][-]{subsection.6.2.5}{Retrospective}{section.6.2}% 34
+\BOOKMARK [1][-]{section.2.4}{Sprint\0403}{chapter.2}% 15
+\BOOKMARK [2][-]{subsection.2.4.1}{Ajout de nouvelles formes prédéfinies}{section.2.4}% 16
+\BOOKMARK [2][-]{subsection.2.4.2}{Prévisualisation d'un objet 3D}{section.2.4}% 17
+\BOOKMARK [2][-]{subsection.2.4.3}{Importation\040et\040exportation\040d'un\040projet\040*.obj}{section.2.4}% 18
+\BOOKMARK [2][-]{subsection.2.4.4}{Détection des collisions}{section.2.4}% 19
+\BOOKMARK [0][-]{chapter.3}{Découpage de l'application}{}% 20
+\BOOKMARK [0][-]{chapter.4}{Diagramme\040de\040classe}{}% 21
+\BOOKMARK [0][-]{chapter.5}{Principaux\040choix}{}% 22
+\BOOKMARK [1][-]{section.5.1}{Conception}{chapter.5}% 23
+\BOOKMARK [2][-]{subsection.5.1.1}{Création de la maquette IHM}{section.5.1}% 24
+\BOOKMARK [2][-]{subsection.5.1.2}{Création d'un diagramme de classe}{section.5.1}% 25
+\BOOKMARK [1][-]{section.5.2}{Réalisation}{chapter.5}% 26
+\BOOKMARK [1][-]{section.5.3}{Problèmes rencontrés et solutions apportées}{chapter.5}% 27
+\BOOKMARK [2][-]{subsection.5.3.1}{Rafraîchissement du rendu graphique}{section.5.3}% 28
+\BOOKMARK [2][-]{subsection.5.3.2}{Caméra fixée sur la scène}{section.5.3}% 29
+\BOOKMARK [2][-]{subsection.5.3.3}{Rendu pixelisé}{section.5.3}% 30
+\BOOKMARK [2][-]{subsection.5.3.4}{Problèmes de simulation}{section.5.3}% 31
+\BOOKMARK [0][-]{chapter.6}{Organisation de l'équipe et mise en oeuvre des méthodes agiles}{}% 32
+\BOOKMARK [1][-]{section.6.1}{Mise\040en\040place\040du\040projet}{chapter.6}% 33
+\BOOKMARK [1][-]{section.6.2}{Utilisation des cérémonies agiles}{chapter.6}% 34
+\BOOKMARK [2][-]{subsection.6.2.1}{Sprint\040planning}{section.6.2}% 35
+\BOOKMARK [2][-]{subsection.6.2.2}{Daily\040scrum}{section.6.2}% 36
+\BOOKMARK [2][-]{subsection.6.2.3}{Sanity\040Check}{section.6.2}% 37
+\BOOKMARK [2][-]{subsection.6.2.4}{Sprint\040Review}{section.6.2}% 38
+\BOOKMARK [2][-]{subsection.6.2.5}{Retrospective}{section.6.2}% 39

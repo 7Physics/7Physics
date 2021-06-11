@@ -21,6 +21,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.util.Map;
 import java.util.List;
@@ -47,7 +49,8 @@ public class GUI extends JFrame {
     public static final ImageIcon BIGPYRAMID = new ImageIcon(GUI.class.getResource("/images/big-pyramid.png"));
     public static final ImageIcon CONE = new ImageIcon(GUI.class.getResource("/images/cone.png"));
     public static final ImageIcon BIGCONE = new ImageIcon(GUI.class.getResource("/images/big-cone.png"));
-
+    public static final ImageIcon CYLINDER = new ImageIcon(GUI.class.getResource("/images/cylinder.png"));
+    public static final ImageIcon BIGCYLINDER = new ImageIcon(GUI.class.getResource("/images/big-cylinder.png"));
 
 
     /* *************************** *
@@ -170,7 +173,6 @@ public class GUI extends JFrame {
 
         // Comme le canvas OpenGL met du temps à se créer on effectue sa création en parallèle
         new Thread(() -> {
-
             topPanelLeft.remove(loadingLabel);
             topPanelLeft.add(scene, BorderLayout.CENTER);
 
@@ -248,6 +250,38 @@ public class GUI extends JFrame {
         mainMenu.add(new JSeparator());
         mainMenu.add(buttonMenuQuit);
         menuBar.add(mainMenu);
+
+        menuBar.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent mouseEvent) {
+                revalidate();
+                repaint();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent mouseEvent) {
+                revalidate();
+                repaint();
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent mouseEvent) {
+                revalidate();
+                repaint();
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent mouseEvent) {
+                revalidate();
+                repaint();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent mouseEvent) {
+                revalidate();
+                repaint();
+            }
+        });
 
 
 
