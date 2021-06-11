@@ -1,20 +1,25 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
-\BOOKMARK [0][-]{chapter.2}{Présentation générale de l'application}{}% 2
-\BOOKMARK [0][-]{chapter.3}{Manipuler\040des\040objets\0403D}{}% 3
-\BOOKMARK [1][-]{section.3.1}{Ajouter\040un\040objet\0403D}{chapter.3}% 4
-\BOOKMARK [1][-]{section.3.2}{Supprimer\040un\040objet\0403D}{chapter.3}% 5
-\BOOKMARK [0][-]{chapter.4}{Gestion de la caméra}{}% 6
-\BOOKMARK [1][-]{section.4.1}{Gestion\040du\040zoom}{chapter.4}% 7
-\BOOKMARK [2][-]{subsection.4.1.1}{Zoomer}{section.4.1}% 8
-\BOOKMARK [2][-]{subsection.4.1.2}{Dezoomer}{section.4.1}% 9
-\BOOKMARK [1][-]{section.4.2}{Se déplacer sur la scène}{chapter.4}% 10
-\BOOKMARK [2][-]{subsection.4.2.1}{Déplacements basiques}{section.4.2}% 11
-\BOOKMARK [2][-]{subsection.4.2.2}{Déplacement vertical}{section.4.2}% 12
-\BOOKMARK [1][-]{section.4.3}{Tourner la caméra}{chapter.4}% 13
-\BOOKMARK [0][-]{chapter.5}{Animer la scène 3D}{}% 14
-\BOOKMARK [1][-]{section.5.1}{Ajouter\040des\040forces}{chapter.5}% 15
-\BOOKMARK [1][-]{section.5.2}{Supprimer\040des\040forces}{chapter.5}% 16
-\BOOKMARK [1][-]{section.5.3}{Lancer\040la\040simulation}{chapter.5}% 17
-\BOOKMARK [0][-]{chapter.6}{Importer\040et\040exporter\040un\040projet\0403D}{}% 18
-\BOOKMARK [1][-]{section.6.1}{Récupérer un projet 3D}{chapter.6}% 19
-\BOOKMARK [1][-]{section.6.2}{Sauvegarder\040un\040projet\0403D}{chapter.6}% 20
+\BOOKMARK [0][-]{chapter.2}{Installation/Utilisation\040de\040l'application}{}% 2
+\BOOKMARK [0][-]{chapter.3}{Présentation générale de l'application}{}% 3
+\BOOKMARK [0][-]{chapter.4}{Manipuler\040des\040objets\0403D}{}% 4
+\BOOKMARK [1][-]{section.4.1}{Ajouter\040un\040objet\0403D}{chapter.4}% 5
+\BOOKMARK [1][-]{section.4.2}{Supprimer\040un\040objet\0403D}{chapter.4}% 6
+\BOOKMARK [0][-]{chapter.5}{Gestion de la caméra}{}% 7
+\BOOKMARK [1][-]{section.5.1}{Gestion\040du\040zoom}{chapter.5}% 8
+\BOOKMARK [2][-]{subsection.5.1.1}{Zoomer}{section.5.1}% 9
+\BOOKMARK [2][-]{subsection.5.1.2}{Dezoomer}{section.5.1}% 10
+\BOOKMARK [1][-]{section.5.2}{Se déplacer sur la scène}{chapter.5}% 11
+\BOOKMARK [2][-]{subsection.5.2.1}{Déplacements basiques}{section.5.2}% 12
+\BOOKMARK [2][-]{subsection.5.2.2}{Déplacement vertical}{section.5.2}% 13
+\BOOKMARK [1][-]{section.5.3}{Tourner la caméra}{chapter.5}% 14
+\BOOKMARK [0][-]{chapter.6}{Animer la scène 3D}{}% 15
+\BOOKMARK [1][-]{section.6.1}{Ajouter\040des\040forces}{chapter.6}% 16
+\BOOKMARK [1][-]{section.6.2}{Supprimer\040des\040forces}{chapter.6}% 17
+\BOOKMARK [1][-]{section.6.3}{Lancer\040la\040simulation}{chapter.6}% 18
+\BOOKMARK [1][-]{section.6.4}{Arrêter la simulation}{chapter.6}% 19
+\BOOKMARK [0][-]{chapter.7}{Importer\040et\040exporter\040un\040projet\0403D}{}% 20
+\BOOKMARK [1][-]{section.7.1}{Récupérer un projet 3D}{chapter.7}% 21
+\BOOKMARK [1][-]{section.7.2}{Sauvegarder\040un\040projet\0403D}{chapter.7}% 22
+\BOOKMARK [0][-]{chapter.8}{Utilisation\040de\040l'API}{}% 23
+\BOOKMARK [1][-]{section.8.1}{Exemple\040d'utilisation}{chapter.8}% 24
+\BOOKMARK [2][-]{subsection.8.1.1}{Résultat}{section.8.1}% 25

@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{repositories} \PYG{o}{\PYGZob{}}
+    \PYG{n}{mavenCentral}\PYG{o}{()}
+    \PYG{n}{maven} \PYG{o}{\PYGZob{}}
+        \PYG{n}{url} \PYG{l+s+s1}{\PYGZsq{}https://jitpack.io\PYGZsq{}}
+        \PYG{n}{metadataSources} \PYG{o}{\PYGZob{}}
+            \PYG{n}{artifact}\PYG{o}{()} \PYG{c+c1}{//Look directly for artifact}
+        \PYG{o}{\PYGZcb{}}
+    \PYG{o}{\PYGZcb{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

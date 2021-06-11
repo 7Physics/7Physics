@@ -1,0 +1,55 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{public} \PYG{k+kd}{static} \PYG{k+kt}{void} \PYG{n+nf}{main}\PYG{p}{(}\PYG{n}{String}\PYG{p}{...} \PYG{n}{args}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n}{JFrame} \PYG{n}{frame} \PYG{o}{=} \PYG{k}{new} \PYG{n}{JFrame}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Exemple 7Physics\PYGZdq{}}\PYG{p}{);}
+
+    \PYG{n}{Camera} \PYG{n}{camera} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Camera}\PYG{p}{(}\PYG{k}{new} \PYG{n}{Position}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{));}
+    \PYG{n}{camera}\PYG{p}{.}\PYG{n+na}{rotateVertical}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{Math}\PYG{p}{.}\PYG{n+na}{PI}\PYG{o}{/}\PYG{l+m+mi}{8}\PYG{p}{);}
+
+    \PYG{c+c1}{// On crée la scène 3D}
+    \PYG{n}{Scene3D} \PYG{n}{scene} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Scene3D}\PYG{p}{(}\PYG{n}{camera}\PYG{p}{);}
+    \PYG{c+c1}{// C\PYGZsq{}est un panel comme les autres, on peut lui modifier ses dimensions et}
+    \PYG{c+c1}{// l\PYGZsq{}ajouter à un panel}
+    \PYG{n}{scene}\PYG{p}{.}\PYG{n+na}{setPreferredSize}\PYG{p}{(}\PYG{k}{new} \PYG{n}{Dimension}\PYG{p}{(}\PYG{l+m+mi}{1000}\PYG{p}{,} \PYG{l+m+mi}{600}\PYG{p}{));}
+    \PYG{n}{frame}\PYG{p}{.}\PYG{n+na}{add}\PYG{p}{(}\PYG{n}{scene}\PYG{p}{);}
+
+    \PYG{n}{frame}\PYG{p}{.}\PYG{n+na}{pack}\PYG{p}{();}
+
+    \PYG{n}{frame}\PYG{p}{.}\PYG{n+na}{setDefaultCloseOperation}\PYG{p}{(}\PYG{n}{JFrame}\PYG{p}{.}\PYG{n+na}{EXIT\PYGZus{}ON\PYGZus{}CLOSE}\PYG{p}{);}
+    \PYG{n}{frame}\PYG{p}{.}\PYG{n+na}{setVisible}\PYG{p}{(}\PYG{k+kc}{true}\PYG{p}{);}
+
+    \PYG{c+c1}{// On crée le world qui contiendra les objets physiques}
+    \PYG{n}{World} \PYG{n}{world} \PYG{o}{=} \PYG{k}{new} \PYG{n}{World}\PYG{p}{();}
+    \PYG{n}{world}\PYG{p}{.}\PYG{n+na}{setGravity}\PYG{p}{(}\PYG{k}{new} \PYG{n}{Vec3}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{));}
+
+    \PYG{n}{Position} \PYG{n}{wallPosition} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Position}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mf}{.15}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{);}
+
+    \PYG{n}{scene}\PYG{p}{.}\PYG{n+na}{addObject}\PYG{p}{(}\PYG{k}{new} \PYG{n}{Cuboid}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mf}{.1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{))}
+         \PYG{p}{.}\PYG{n+na}{setPosition}\PYG{p}{(}\PYG{n}{wallPosition}\PYG{p}{);}
+    \PYG{n}{world}\PYG{p}{.}\PYG{n+na}{addPhysicObject}\PYG{p}{(}\PYG{k}{new} \PYG{n}{Cuboid}\PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mf}{.1}\PYG{p}{))}
+         \PYG{p}{.}\PYG{n+na}{setPosition}\PYG{p}{(}\PYG{n}{wallPosition}\PYG{p}{)}
+         \PYG{p}{.}\PYG{n+na}{setDynamic}\PYG{p}{(}\PYG{k+kc}{false}\PYG{p}{);}
+
+    \PYG{n}{Random} \PYG{n}{r} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Random}\PYG{p}{();}
+    \PYG{n}{r}\PYG{p}{.}\PYG{n+na}{nextFloat}\PYG{p}{();}
+
+    \PYG{k}{for}\PYG{p}{(}\PYG{k+kt}{int} \PYG{n}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n}{i} \PYG{o}{\PYGZlt{}} \PYG{l+m+mi}{100}\PYG{p}{;} \PYG{n}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{c+c1}{// Position partagée entre l\PYGZsq{}objet graphique et l\PYGZsq{}objet physique :}
+      \PYG{c+c1}{// fait le lien entre eux.}
+      \PYG{n}{Position} \PYG{n}{spherePosition} \PYG{o}{=} \PYG{k}{new} \PYG{n}{Position}\PYG{p}{(}\PYG{n}{r}\PYG{p}{.}\PYG{n+na}{nextFloat}\PYG{p}{()}\PYG{o}{*}\PYG{l+m+mi}{6}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{,}
+            \PYG{p}{(}\PYG{n}{i}\PYG{o}{+}\PYG{l+m+mi}{2}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mf}{3f}\PYG{p}{,}
+            \PYG{n}{r}\PYG{p}{.}\PYG{n+na}{nextFloat}\PYG{p}{()}\PYG{o}{*}\PYG{l+m+mi}{6}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{);}
+
+      \PYG{c+c1}{// On ajoute la sphère graphique}
+      \PYG{n}{scene}\PYG{p}{.}\PYG{n+na}{addObject}\PYG{p}{(}\PYG{k}{new} \PYG{n}{Sphere}\PYG{p}{(}\PYG{l+m+mf}{.1}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{))}
+            \PYG{p}{.}\PYG{n+na}{setPosition}\PYG{p}{(}\PYG{n}{spherePosition}\PYG{p}{)}
+            \PYG{p}{.}\PYG{n+na}{setColor}\PYG{p}{(}\PYG{n}{Color}\PYG{p}{.}\PYG{n+na}{ORANGE}\PYG{p}{,} \PYG{n}{Color}\PYG{p}{.}\PYG{n+na}{RED}\PYG{p}{);}
+      \PYG{c+c1}{// On ajoute la sphère physique}
+      \PYG{n}{world}\PYG{p}{.}\PYG{n+na}{addPhysicObject}\PYG{p}{(}\PYG{k}{new} \PYG{n}{Sphere}\PYG{p}{(}\PYG{l+m+mf}{.1}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{))}
+            \PYG{p}{.}\PYG{n+na}{setPosition}\PYG{p}{(}\PYG{n}{spherePosition}\PYG{p}{)}
+            \PYG{p}{.}\PYG{n+na}{addForce}\PYG{p}{(}\PYG{k}{new} \PYG{n}{Vec3}\PYG{p}{(}\PYG{n}{r}\PYG{p}{.}\PYG{n+na}{nextFloat}\PYG{p}{()}\PYG{o}{*}\PYG{l+m+mi}{4}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{r}\PYG{p}{.}\PYG{n+na}{nextFloat}\PYG{p}{()}\PYG{o}{*}\PYG{l+m+mi}{4}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{));}
+    \PYG{p}{\PYGZcb{}}
+
+    \PYG{c+c1}{// On lance la simulation à 60 mise à jour par seconde}
+    \PYG{n}{world}\PYG{p}{.}\PYG{n+na}{startStepLoop}\PYG{p}{(}\PYG{l+m+mi}{60}\PYG{p}{);}
+\PYG{p}{\PYGZcb{}}
+\end{Verbatim}

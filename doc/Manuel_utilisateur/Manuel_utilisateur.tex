@@ -44,28 +44,25 @@ manipuler et de les afficher. Un autre objectif d'un moteur 3D est la gestion de
 
 Les principales fonctionnalités du moteur 3D sont:
 \begin{itemize}
-        \item L'affichage de formes 3D prédéfinies et personnalisables (cube, sphere)
+        \item L'affichage de formes 3D prédéfinies et personnalisables (cube, sphere, pyramide, cylindre, etc.)
         \item L'utilisation de la caméra (permettant de changer d'angles de vue)
         \item L'animation des différentes formes contenues dans la scène 3D.
 \end{itemize}
 
 \chapter{Installation/Utilisation de l'application}
 
-Pour pouvoir utiliser l'application, vous devez posséder Java8.
-Voici comment installer cette version de Java :
+Pour pouvoir utiliser l'application, vous devez avoir la version Java8 installée.
+Pour installer cette version, référez-vous aux instructions suivantes : \href{https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html}{\color{blue}Installation Java8}\newline
+
+Par la suite, pour lancer l'application, il faut exécuter le fichier 7Physics.jar avec la commande suivante :
 \begin{itemize}
-  \item Supprimer java de son système : sudo apt list --installed | grep jdk
-  \item sudo apt remove (des résultats de la commande précèdente (ex: sudo apt remove openjdk-11-jdk))
-  \item Installer java8 : sudo apt install openjdk-8-jdk
-  \item Vérifier avec la commande : java -version\newline
+  \item Pour Linux : java -jar 7Physics.jar
+  \item Pour Windows : double-click sur le fichier 7Physics.jar
+  \item Pour MacOS : java -jar 7Physics.jar\newline
 \end{itemize}
 
-Par la suite, pour exécuter le fichier .jar exécutable de l'application, il faut :
-\begin{itemize}
-  \item Pour Linux : java -jar file.jar
-  \item Pour Windows : double-click sur le fichier
-  \item Pour MacOS : java -jar file.jar\newline
-\end{itemize}
+\warningbox{Si une version ultérieure de Java est installée, le programme pourrait ne pas se lancer. Si tel est le cas, il sera nécessaire de supprimer les versions plus récentes présentes sur le système ou bien de forcer l'utilisation de Java8.}
+
 
 \chapter{Présentation générale de l'application}
 
@@ -245,8 +242,8 @@ Afin d'arrêter la simulation, vous pouvez simplement appuyer sur le bouton Stop
 
 \chapter{Importer et exporter un projet 3D}
 
-Il est possible d'enregistre un projet 3D en cours sous forme d'un fichier pour le continuer plus tard à l'aide de
-la fonctionnalité importer un projet 3D. Cet import peut aussi être fait à partir de fichiers créés par d'autre moteur 3D.
+Il est possible d'enregistrer un projet 3D en cours sous forme d'un fichier pour le continuer plus tard à l'aide de
+la fonctionnalité \flqq\ importer un projet 3D \frqq. Cet import peut aussi être fait à partir de fichiers créés par d'autre moteur 3D.
 
 \section{Récupérer un projet 3D}
 
@@ -275,9 +272,9 @@ Il est possible qu'une erreur apparaisse lors de l'importation pour cause d'une 
 
 \section{Sauvegarder un projet 3D}
 
-De la meme manière, pour exporter la projet en cours et créer un fichier, on utilise le menu déroulant.
+De la même manière, pour exporter le projet en cours et créer un fichier \textit{*.obj} de celui-ci, on utilise le menu déroulant.
 En sélectionnant \flqq\ Exporter un projet \frqq, une fenêtre s'ouvrira pour choisir l'emplacement et le nom du fichier à enregistrer.
-Il est possible qu'une erreur apparaisse lors de l'exportation pour cause de la scène 3D vide.
+Il est possible qu'une erreur apparaisse lors de l'exportation pour cause de scène 3D vide (pas de formes 3D présentes sur la scène).
 
 \begin{figure}[h]
   \centering
@@ -291,7 +288,7 @@ Il est possible qu'une erreur apparaisse lors de l'exportation pour cause de la 
   \caption{Navigateur de fichier permettant de sauvegarder un fichier}
 \end{figure}
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics{./error_exp.png}
   \caption{Erreur lors de l'exportation d'un fichier}
@@ -299,9 +296,9 @@ Il est possible qu'une erreur apparaisse lors de l'exportation pour cause de la 
 
 \chapter{Utilisation de l'API}
 
-Pour utiliser les fonctionnalités de 7Physics il est nécessaire de tirer ses dépendances. Pour se faire il est nécessaire d'installer le plugin \href{https://jitpack.io/}{\color{blue}JitPack} à votre gestionnaire de dépendances.
+Pour utiliser les fonctionnalités de 7Physics il est nécessaire de tirer ses dépendances. Pour ce faire, il est nécessaire d'installer le plugin \href{https://jitpack.io/}{\color{blue}JitPack} à votre gestionnaire de dépendances.
 
-Exemple avec gradle :
+Exemple avec \textit{Gradle} :
 
 \begin{minted}{groovy}
 repositories {
@@ -330,8 +327,8 @@ dependencies {
 \end{minted}
 
 \notebox{De part la façon dont a été structuré 7Physics il est possible d'utiliser le moteur de rendu avec un moteur physique différent, et inversement.}
-
-Exemple d'utilisation :
+\newpage
+\section{Exemple d'utilisation}
 
 \begin{minted}{java}
 public static void main(String... args) {
@@ -342,7 +339,8 @@ public static void main(String... args) {
 
     // On crée la scène 3D
     Scene3D scene = new Scene3D(camera);
-    // C'est un panel comme les autres, on peut lui modifier ses dimensions et l'ajouter à un panel
+    // C'est un panel comme les autres, on peut lui modifier ses dimensions et
+    // l'ajouter à un panel
     scene.setPreferredSize(new Dimension(1000, 600));
     frame.add(scene);
 
@@ -367,17 +365,20 @@ public static void main(String... args) {
     r.nextFloat();
 
     for(int i = 0; i < 100; i++) {
-        // Position partagée entre l'objet graphique et l'objet physique : fait le lien entre eux.
-        Position spherePosition = new Position(r.nextFloat()*6-3, (i+2)/3f, r.nextFloat()*6-3);
+      // Position partagée entre l'objet graphique et l'objet physique :
+      // fait le lien entre eux.
+      Position spherePosition = new Position(r.nextFloat()*6-3,
+            (i+2)/3f,
+            r.nextFloat()*6-3);
 
-        // On ajoute la sphère graphique
-        scene.addObject(new Sphere(.1, 3))
-             .setPosition(spherePosition)
-             .setColor(Color.ORANGE, Color.RED);
-        // On ajoute la sphère physique
-        world.addPhysicObject(new Sphere(.1, 3))
-             .setPosition(spherePosition)
-             .addForce(new Vec3(r.nextFloat()*4-2, 0, r.nextFloat()*4-2));
+      // On ajoute la sphère graphique
+      scene.addObject(new Sphere(.1, 3))
+            .setPosition(spherePosition)
+            .setColor(Color.ORANGE, Color.RED);
+      // On ajoute la sphère physique
+      world.addPhysicObject(new Sphere(.1, 3))
+            .setPosition(spherePosition)
+            .addForce(new Vec3(r.nextFloat()*4-2, 0, r.nextFloat()*4-2));
     }
 
     // On lance la simulation à 60 mise à jour par seconde
@@ -386,11 +387,11 @@ public static void main(String... args) {
 
 \end{minted}
 
-Résultat :
+\subsection{Résultat}
 
 \begin{figure}[h]
   \centering
-  \includegraphics{./example.png}
+  \includegraphics[width=15cm]{./example.png}
   \caption{Rendu obtenu à partir du code précédent}
 \end{figure}
 

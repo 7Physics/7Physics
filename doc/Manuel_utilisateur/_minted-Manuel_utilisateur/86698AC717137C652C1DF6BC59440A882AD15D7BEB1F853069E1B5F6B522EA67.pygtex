@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{dependencies} \PYG{o}{\PYGZob{}}
+    \PYG{n}{implementation} \PYG{l+s+s1}{\PYGZsq{}com.github.7Physics:Common:master\PYGZhy{}SNAPSHOT\PYGZsq{}}
+    \PYG{c+c1}{// Si vous souhaitez utiliser le moteur de rendu :}
+    \PYG{n}{implementation} \PYG{n+nl}{group:} \PYG{l+s+s1}{\PYGZsq{}org.jogamp.jogl\PYGZsq{}}\PYG{o}{,} \PYG{n+nl}{name:} \PYG{l+s+s1}{\PYGZsq{}jogl\PYGZhy{}all\PYGZhy{}main\PYGZsq{}}\PYG{o}{,} \PYG{n+nl}{version:} \PYG{l+s+s1}{\PYGZsq{}2.3.2\PYGZsq{}}
+    \PYG{n}{implementation} \PYG{n+nl}{group:} \PYG{l+s+s1}{\PYGZsq{}org.jogamp.gluegen\PYGZsq{}}\PYG{o}{,} \PYG{n+nl}{name:} \PYG{l+s+s1}{\PYGZsq{}gluegen\PYGZhy{}rt\PYGZhy{}main\PYGZsq{}}\PYG{o}{,} \PYG{n+nl}{version:} \PYG{l+s+s1}{\PYGZsq{}2.3.2\PYGZsq{}}
+    \PYG{n}{implementation} \PYG{l+s+s1}{\PYGZsq{}com.github.7Physics:Renderer:master\PYGZhy{}SNAPSHOT\PYGZsq{}}
+    \PYG{c+c1}{// Si vous souhaitez utiliser le moteur physique :}
+    \PYG{n}{implementation} \PYG{l+s+s1}{\PYGZsq{}com.github.7Physics:Engine:master\PYGZhy{}SNAPSHOT\PYGZsq{}}
+\PYG{o}{\PYGZcb{}}
+\end{Verbatim}

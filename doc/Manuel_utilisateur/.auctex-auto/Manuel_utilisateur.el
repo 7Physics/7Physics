@@ -5,6 +5,7 @@
                      '(("report" "11pt")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("geometry" "margin=2.5cm") ("babel" "french") ("fontenc" "T1") ("titlesec" "explicit") ("inputenc" "utf8x")))
+   (add-to-list 'LaTeX-verbatim-environments-local "minted")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
@@ -29,6 +30,7 @@
     "ucs"
     "inputenc"
     "awesomebox"
-    "fontawesome5"))
+    "fontawesome5"
+    "minted"))
  :latex)
 

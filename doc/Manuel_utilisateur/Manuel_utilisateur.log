@@ -1,6 +1,6 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.6.2)  9 JUN 2021 11:55
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.5.25)  11 JUN 2021 23:51
 entering extended mode
- restricted \write18 enabled.
+ \write18 enabled.
  %&-line parsing enabled.
 **Manuel_utilisateur.tex
 (./Manuel_utilisateur.tex
@@ -850,8 +850,224 @@ put line 60.
 . 
 . Defining command \faRepeat with sig. 't{1}' on line 80.
 .................................................
+) (/usr/share/texlive/texmf-dist/tex/latex/minted/minted.sty
+Package: minted 2017/07/19 v2.5 Yet another Pygments shim for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/fvextra/fvextra.sty
+Package: fvextra 2017/07/08 v1.3.1 fvextra - extensions and patches for fancyvr
+b
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\g__fontspec_family_LiberationSerif_int=\count274
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/02/11 v2.5e e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count274
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count275
+\FV@InFile=\read2
+\FV@TabBox=\box48
+\c@FancyVerbLine=\count276
+\FV@StepNumber=\count277
+\FV@OutFile=\write3
+)
+(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
+Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
+tim
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2017/04/05 v2.0i Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 79.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 334.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 349.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 350.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 351.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 352.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 353.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 354.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 355.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 356.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 357.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 358.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 359.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 360.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 361.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 362.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 363.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 364.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 365.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 366.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 367.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 368.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 369.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 370.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 371.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 372.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 373.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 374.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 375.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 376.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 377.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 378.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 379.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 380.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 381.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 382.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 383.
+Package textcomp Info: Setting lmtt sub-encoding to TS1/0 on input line 384.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 385.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 386.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 387.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 388.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 389.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 390.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 391.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 392.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 393.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 394.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 395.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 396.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 397.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 398.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 399.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 400.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 401.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 402.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 403.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 404.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 405.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 406.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 407.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 408.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 409.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
+Package: lineno 2005/11/02 line numbers on paragraphs v4.41
+Invalid UTF-8 byte or sequence at line 296 replaced by U+FFFD.
+\linenopenalty=\count278
+\output=\toks27
+\linenoprevgraf=\count279
+\linenumbersep=\dimen167
+\linenumberwidth=\dimen168
+\c@linenumber=\count280
+\c@pagewiselinenumber=\count281
+\c@LN@truepage=\count282
+\c@internallinenumber=\count283
+\c@internallinenumbers=\count284
+\quotelinenumbersep=\dimen169
+\bframerule=\dimen170
+\bframesep=\dimen171
+\bframebox=\box49
+LaTeX Info: Redefining \\ on input line 3056.
+)
+\c@FV@TrueTabGroupLevel=\count285
+\c@FV@TrueTabCounter=\count286
+\FV@TabBox@Group=\box50
+\FV@TmpLength=\skip72
+\c@FV@HighlightLinesStart=\count287
+\c@FV@HighlightLinesStop=\count288
+\FV@LoopCount=\count289
+\FV@NCharsBox=\box51
+\FV@BreakIndent=\dimen172
+\FV@BreakIndentNChars=\count290
+\FV@BreakSymbolSepLeft=\dimen173
+\FV@BreakSymbolSepLeftNChars=\count291
+\FV@BreakSymbolSepRight=\dimen174
+\FV@BreakSymbolSepRightNChars=\count292
+\FV@BreakSymbolIndentLeft=\dimen175
+\FV@BreakSymbolIndentLeftNChars=\count293
+\FV@BreakSymbolIndentRight=\dimen176
+\FV@BreakSymbolIndentRightNChars=\count294
+\c@FancyVerbLineBreakLast=\count295
+\FV@LineBox=\box52
+\FV@LineIndentBox=\box53
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count296
+\calc@Bcount=\count297
+\calc@Adimen=\dimen177
+\calc@Bdimen=\dimen178
+\calc@Askip=\skip73
+\calc@Bskip=\skip74
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count298
+\calc@Cskip=\skip75
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2016/06/07 v0.02a unified shell escape interface for LaTeX
+Package shellesc Info: Unrestricted shell escape enabled on input line 67.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+Package: ifplatform 2017/10/13 v0.4a Testing for the operating system
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+Package: catchfile 2016/05/16 v1.7 Catch the contents of a file (HO)
+)
+runsystem(uname -s > "Manuel_utilisateur.w18")...executed.
+
+
+(./Manuel_utilisateur.w18)
+runsystem(rm -- "Manuel_utilisateur.w18")...executed.
+
+)
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
+(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
+\@xs@message=\write4
+\integerpart=\count299
+\decimalpart=\count300
+)
+Package: xstring 2013/10/13  v1.7c  String manipulations (C Tellechea)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip76
+\fb@frw=\dimen179
+\fb@frh=\dimen180
+\FrameRule=\dimen181
+\FrameSep=\dimen182
+)
+(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count301
+\float@exts=\toks28
+\float@box=\box54
+\@float@everytoks=\toks29
+\@floatcapt=\box55
+)
+\minted@appexistsfile=\read3
+\minted@bgbox=\box56
+\minted@code=\write5
+\c@minted@FancyVerbLineTemp=\count302
+\c@minted@pygmentizecounter=\count303
+\@float@every@listing=\toks30
+\c@listing=\count304
+)
+runsystem(mkdir -p _minted-Manuel_utilisateur)...executed.
+
+\g__fontspec_family_LiberationSerif_int=\count305
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -873,28 +1089,40 @@ put line 60.
 . Serif/BI/OT:script=latn;language=DFLT;mapping=tex-text;"
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
-LaTeX Info: Redefining \rmfamily on input line 14.
+LaTeX Info: Redefining \rmfamily on input line 15.
+runsystem(which pygmentize && touch Manuel_utilisateur.aex)...executed.
+
+runsystem(rm Manuel_utilisateur.aex)...executed.
+
+
 (./Manuel_utilisateur.aux)
 \openout1 = `Manuel_utilisateur.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
-LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 33.
+LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 33.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 33.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -930,25 +1158,25 @@ LaTeX Font Info:    ... okay on input line 32.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \dots on input line 32.
-LaTeX Info: Redefining \up on input line 32.
-\AtBeginShipoutBox=\box48
-Package hyperref Info: Link coloring OFF on input line 32.
+LaTeX Info: Redefining \dots on input line 33.
+LaTeX Info: Redefining \up on input line 33.
+\AtBeginShipoutBox=\box57
+Package hyperref Info: Link coloring OFF on input line 33.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count275
+\c@section@level=\count306
 )
-LaTeX Info: Redefining \ref on input line 32.
-LaTeX Info: Redefining \pageref on input line 32.
-LaTeX Info: Redefining \nameref on input line 32.
+LaTeX Info: Redefining \ref on input line 33.
+LaTeX Info: Redefining \pageref on input line 33.
+LaTeX Info: Redefining \nameref on input line 33.
 
 (./Manuel_utilisateur.out) (./Manuel_utilisateur.out)
-\@outlinefile=\write3
-\openout3 = `Manuel_utilisateur.out'.
+\@outlinefile=\write6
+\openout6 = `Manuel_utilisateur.out'.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
@@ -961,64 +1189,64 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 .................................................
 \symlegacymaths=\mathgroup4
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 32.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 32.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 32.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 32.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 32.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 32.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 32.
-LaTeX Font Info:    Redeclaring math accent \check on input line 32.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 32.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 32.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \colon on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 32.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 32.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 32.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 33.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 33.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 33.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 33.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 33.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 33.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 33.
+LaTeX Font Info:    Redeclaring math accent \check on input line 33.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 33.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 33.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \colon on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 33.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 33.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 33.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 32.
+(Font)              `operators' in the math version `normal' on input line 33.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> TU/LiberationSerif(0)/m/n on input line
- 32.
+ 33.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 32.
+(Font)              `operators' in the math version `bold' on input line 33.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> TU/LiberationSerif(0)/m/n on input lin
-e 32.
+e 33.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  TU/LiberationSerif(0)/m/n --> TU/LiberationSerif(0)/m/n
- on input line 32.
+ on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
 (Font)                  OT1/cmr/m/it --> TU/LiberationSerif(0)/m/it on input li
-ne 32.
+ne 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
 (Font)                  OT1/cmr/bx/n --> TU/LiberationSerif(0)/bx/n on input li
-ne 32.
+ne 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 32.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 32.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 33.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  TU/LiberationSerif(0)/m/n --> TU/LiberationSerif(0)/bx/
-n on input line 32.
+n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> TU/LiberationSerif(0)/bx/it on input 
-line 32.
+line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 32.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/bx/n on input line 33.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 32.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/bx/n on input line 33.
  (./titlepage.tex
 File: ./logo.png Graphic file (type bmp)
 <./logo.png>
@@ -1033,26 +1261,26 @@ File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 
 ]) (./Manuel_utilisateur.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 5.
+(Font)              <10.95> on input line 6.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 5.
+(Font)              <8> on input line 6.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 5.
+(Font)              <6> on input line 6.
 )
-\tf@toc=\write4
-\openout4 = `Manuel_utilisateur.toc'.
+\tf@toc=\write7
+\openout7 = `Manuel_utilisateur.toc'.
 
  [1
 
 ]
 Chapitre 1.
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--42
+Underfull \hbox (badness 10000) in paragraph at lines 39--43
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 38--42
+Underfull \hbox (badness 10000) in paragraph at lines 39--43
 
  []
 
@@ -1060,20 +1288,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 38--42
 
 ]
 Chapitre 2.
-File: ./interface.png Graphic file (type bmp)
-<./interface.png>
 
-Overfull \hbox (6.14682pt too wide) in paragraph at lines 57--58
- [][] 
+Underfull \hbox (badness 10000) in paragraph at lines 54--56
+
  []
 
 
-LaTeX Font Warning: Font shape `TU/LiberationSerif(0)/m/sc' undefined
-(Font)              using `TU/LiberationSerif(0)/m/n' instead on input line 58.
-
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 68--70
+Underfull \hbox (badness 10000) in paragraph at lines 61--62
 
  []
 
@@ -1081,8 +1302,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 68--70
 
 ]
 Chapitre 3.
+File: ./interface.png Graphic file (type bmp)
+<./interface.png>
 
-Underfull \hbox (badness 10000) in paragraph at lines 80--82
+LaTeX Font Warning: Font shape `TU/LiberationSerif(0)/m/sc' undefined
+(Font)              using `TU/LiberationSerif(0)/m/n' instead on input line 74.
+
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--86
+
+ []
+
+[4
+
+]
+Chapitre 4.
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--98
 
  []
 
@@ -1094,18 +1331,18 @@ File: ./btn_supprimer.png Graphic file (type bmp)
 <./btn_supprimer.png>
 File: ./supprimerForme.png Graphic file (type bmp)
 <./supprimerForme.png>
-[4
+[5
 
 ]
-Chapitre 4.
+Chapitre 5.
 File: ./btn_zoom-in.png Graphic file (type bmp)
 <./btn_zoom-in.png>
 File: ./btn_zoom-out.png Graphic file (type bmp)
 <./btn_zoom-out.png>
-[5
+[6
 
 ]
-Overfull \hbox (2.38254pt too wide) in paragraph at lines 146--146
+Overfull \hbox (2.38254pt too wide) in paragraph at lines 162--162
 []|[]| 
  []
 
@@ -1115,47 +1352,120 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[6]
-Chapitre 5.
+[7]
+Chapitre 6.
 File: ./bouton_forme.png Graphic file (type bmp)
 <./bouton_forme.png>
 File: ./proprieteForme.png Graphic file (type bmp)
 <./proprieteForme.png>
-[7
+[8
 
 ]
 File: ./btn_play.png Graphic file (type bmp)
 <./btn_play.png>
- [8]
-Chapitre 6.
+File: ./btn_stop.png Graphic file (type bmp)
+<./btn_stop.png>
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[9]
+Chapitre 7.
 File: ./menu_imp.png Graphic file (type bmp)
 <./menu_imp.png>
-File: ./nav_fichier.png Graphic file (type bmp)
-<./nav_fichier.png>
-[9
+File: ./nav_fichier_imp.png Graphic file (type bmp)
+<./nav_fichier_imp.png>
+File: ./error_imp.png Graphic file (type bmp)
+<./error_imp.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10
 
 ]
 File: ./menu_exp.png Graphic file (type bmp)
 <./menu_exp.png>
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 252.
- [10]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 252.
+File: ./nav_fichier_exp.png Graphic file (type bmp)
+<./nav_fichier_exp.png>
+File: ./error_exp.png Graphic file (type bmp)
+<./error_exp.png>
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[11]
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[12]
+Chapitre 8.
+\openout3 = `Manuel_utilisateur.pyg'.
+
+(./_minted-Manuel_utilisateur/default-pyg-prefix.pygstyle)
+(./_minted-Manuel_utilisateur/default.pygstyle)
+(./_minted-Manuel_utilisateur/5AB4BED7E052218B44F1076D581640922AD15D7BEB1F85306
+9E1B5F6B522EA67.pygtex)
+\openout3 = `Manuel_utilisateur.pyg'.
+
+
+(./_minted-Manuel_utilisateur/86698AC717137C652C1DF6BC59440A882AD15D7BEB1F85306
+9E1B5F6B522EA67.pygtex) [13
+
+]
+\openout3 = `Manuel_utilisateur.pyg'.
+
+
+(./_minted-Manuel_utilisateur/88F8B836DCFEFFBF7D62164063130F454CC798858DC1665B1
+9A1900F73215DA1.pygtex
+LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10.95> not available
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 2.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[14])
+File: ./example.png Graphic file (type bmp)
+<./example.png>
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 398.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[15]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 398.
  (./Manuel_utilisateur.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 252.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 252.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 398.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 398.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 252.
+runsystem(rm Manuel_utilisateur.pyg)...executed.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 398.
  ) 
 Here is how much of TeX's memory you used:
- 21833 strings out of 493007
- 405347 string characters out of 6136720
- 522145 words of memory out of 5000000
- 25590 multiletter control sequences out of 15000+600000
- 536561 words of font info for 58 fonts, out of 8000000 for 9000
+ 25156 strings out of 493007
+ 471806 string characters out of 6136719
+ 629271 words of memory out of 5000000
+ 28813 multiletter control sequences out of 15000+600000
+ 536593 words of font info for 62 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 53i,12n,65p,10494b,400s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,12n,65p,10494b,595s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Manuel_utilisateur.pdf (11 pages).
+Output written on Manuel_utilisateur.pdf (16 pages).
