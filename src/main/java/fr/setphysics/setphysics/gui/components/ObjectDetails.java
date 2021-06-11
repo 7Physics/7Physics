@@ -129,8 +129,8 @@ public class ObjectDetails extends JPanel {
         JPanel proprietePanel = new JPanel();
         proprietePanel.setBackground(colorBackground);
         proprietePanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-        JLabel prop = new JLabel("Propriétés :");
-        proprietePanel.add(prop);
+        //JLabel prop = new JLabel("Propriétés :");
+        //proprietePanel.add(prop);
 
         splitPropPanel.add(topPropPanel, BorderLayout.NORTH);
         splitPropPanel.add(proprietePanel, BorderLayout.CENTER);

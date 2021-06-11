@@ -95,8 +95,10 @@ public class EnvPanel extends JTabbedPane {
 			public void actionPerformed(ActionEvent event) {
 				EnvPanel.this.isGravity = !EnvPanel.this.isGravity;
 				if (EnvPanel.this.isGravity) {
+				    world.deleteGravity();
 				    revalidate();
 					world.addGravity(new Vec3(0, -finalValueSlider[0], 0));
+                    System.out.println(-finalValueSlider[0]);
 				} else {
 					world.deleteGravity();
 				}
@@ -120,6 +122,7 @@ public class EnvPanel extends JTabbedPane {
 	}
 
 
+
     /**
      * Renvoie le Panel "ongletObjet"
      * @return JPanel
@@ -127,7 +130,9 @@ public class EnvPanel extends JTabbedPane {
     public JPanel getOngletObjet() {
         return ongletObjet;
     }
-    
+
+
+
     /**
      * Indique si la gravité est présente ou non
      * @return true si la gravité est activée.
