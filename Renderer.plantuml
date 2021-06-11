@@ -1,0 +1,91 @@
+@startuml
+
+title 7Physics
+
+package Renderer {
+    class Scene3D {
+        - glu: GLU
+        - fpsAnimator: FPSAnimator
+        + Scene3D(camera: Camera, ground: Ground)
+        + startAnimation()
+        + init(drawable: GLAutoDrawable)
+        + display(drawable: GLAutoDrawable)
+        + iterator(): Iterator<Object3D>
+    }
+
+    interface Renderable {
+        + render(gl: GL2)
+    }
+
+    class Object3D {
+        - color: Color
+        + render(gl: GL2)
+        + Object3D(position: Position, shape: Shape, color: Color, edgeColor: Color)
+        + Object3D(position: Position, shape: Shape)
+    }
+
+    class Ground {
+        - width: double
+        - lineGap: double
+        + Ground(width: double, lineGap: double)
+        + render(gl: GL2)
+    }
+
+    class Camera {
+        - fov: double
+        + zoom()
+        + dezoom()
+        + moveForward(offset: double)
+        + moveBackward(offset: double)
+        + moveRight(offset: double)
+        + moveLeft(offset: double)
+        + getLookAt(): Vec3
+        + rotateVertical(angleRadians: double)
+        + rotateHorizontal(angleRadians: double)
+    }
+
+    class SceneKeyListener {
+        + SceneKeyListener(scene: Scene3D)
+        + update()
+    }
+
+    class SceneMouseListener {
+        + SceneMouseListener(scene: Scene3D)
+    }
+
+    Object3D "*" --o Scene3D
+    Renderable <|.. Object3D
+    Renderable <|.. Ground
+    Scene3D o--"*" Renderable: renderables
+    Scene3D --> "1" Camera: camera
+    SceneKeyListener - Scene3D
+    SceneMouseListener - Scene3D
+    SceneKeyListener --> "1" Camera
+
+}
+
+package Common {
+    class Position {
+        - horizontalAngle: double
+        - verticalAngle: double
+        + Position(x: double, y: double, z: double, horizontalAngle: double, verticalAngle: double)
+        + translate(translation: Vec3)
+        + rotate(hAngle: double, vAngle: double)
+        + clone(): Position
+    }
+
+    class Shape {
+        + Shape()
+        + Shape(vertices: List<Vec3>)
+        # addSquare(a: Vec3, b: Vec3, c: Vec3, d: Vec3)
+    }
+  
+  interface Positionnable
+}
+
+Object3D --> "1" Shape
+Object3D --> "1" Position
+Scene3D --> "1" Position
+Camera --> "1" Position
+Camera ..|> Positionnable
+@enduml

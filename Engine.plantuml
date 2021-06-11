@@ -1,0 +1,64 @@
+@startuml
+
+title 7Physics
+
+package Engine {
+    class World {
+        - gravityEnabled: boolean
+        + World()
+        - doCollisions(po: PhysicObject, index: int)
+        - doCollisions(a: PhysicObject, b: PhysicObject): Vec3
+    }
+
+    class PhysicObject {
+        + PhysicObject(Shape shape, Position position, seedInit: Vec3)
+        + update(time: double)
+        + addForce(f: Vec3)
+        + calculatePosition(time: double): Position
+        + calculateSpeed(time: double): Vec3
+    }
+}
+
+
+package Common {
+    class Position {
+        - horizontalAngle: double
+        - verticalAngle: double
+        + Position(x: double, y: double, z: double, horizontalAngle: double, verticalAngle: double)
+        + translate(translation: Vec3)
+        + rotate(hAngle: double, vAngle: double)
+        + clone(): Position
+    }
+
+    class Shape {
+        + Shape()
+        + Shape(vertices: List<Vec3>)
+        # addSquare(a: Vec3, b: Vec3, c: Vec3, d: Vec3)
+    }
+
+    class Vec3 {
+        - x: double
+        - y: double
+        - z: double
+        + Vec3(x: double, y: double, z: double)
+        + multiply(other: Vec3): Vec3
+        + minus(other: Vec3): Vec3
+        + add(vec3: Vec3): Vec3
+        + scale(factor: double): Vec3
+        + clone(): Vec3
+    }
+
+    interface Positionnable {
+
+    }
+}
+
+
+PhysicObject --> Vec3: speed
+PhysicObject o--"*" Vec3: forces
+PhysicObject *-- "1" Position
+PhysicObject *-- "1" Shape
+World o--"*" PhysicObject: physicObjects
+World --> Vec3: gravity
+PhysicObject ..|> Positionnable
+@enduml

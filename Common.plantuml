@@ -1,0 +1,110 @@
+@startuml
+
+title 7Physics
+
+
+interface Cloneable
+
+package Common {
+    class Position {
+        - horizontalAngle: double
+        - verticalAngle: double
+        + Position(x: double, y: double, z: double, horizontalAngle: double, verticalAngle: double)
+        + translate(translation: Vec3)
+        + rotate(hAngle: double, vAngle: double)
+        + clone(): Position
+    }
+
+    class Shape {
+        + Shape()
+        + Shape(vertices: List<Vec3>)
+        # addSquare(a: Vec3, b: Vec3, c: Vec3, d: Vec3)
+    }
+
+    class Vec3 {
+        - x: double
+        - y: double
+        - z: double
+        + Vec3(x: double, y: double, z: double)
+        + multiply(other: Vec3): Vec3
+        + minus(other: Vec3): Vec3
+        + add(vec3: Vec3): Vec3
+        + scale(factor: double): Vec3
+        + clone(): Vec3
+    }
+
+
+    class Cuboid {
+        + Cuboid(width: double, length: double, height: double)
+    }
+
+    class Pyramid {
+        + Pyramid(width: double, length: double, height: double)
+        + Pyramid(side: double, height: double)
+    }
+    abstract RoundedFace {
+        # pointOnCircle(pointOnSquare : Vec3, radius: double): Vec3
+        # findMiddle(a: Vec3, b:Vec3): Vec3
+    }
+
+    class Sphere {
+        - radius: double
+        + Sphere(radius: double, nbIt:int)
+        # pointOnCircle(pointOnCube : Vec3, radius: double): Vec3
+        - findPoints(a: Vec3, b: Vec3, c: Vec3, d: Vec3, nbIt: int): List<Vec3>
+    }
+
+    class Cylinder {
+        + Cylinder(radius: double, height: double)
+        - findPoints(a: Vec3, b: Vec3, e: Vec3, f: Vec3, nbIt: int): List<Vec3>
+    }
+
+    class Cone {
+        + Cone(radius: double, height: double)
+        - findPoints(a: Vec3, b: Vec3, nbIt: int): List<Vec3>
+    }
+
+    class BoundingBox {
+        - minX: double
+        - maxX: double
+        - minY: double
+        - maxY: double
+        - minZ: double
+        - maxZ: double
+        + BoundingBox(minX: double, maxX: double, minY: double, maxY: double, minZ: double, maxZ: double)
+        + addPoint(point: Vec3)
+        + intersect(other BonndingBox): boolean
+        + containsPoint(point: Vec3): boolean
+        + translate(translation: Vec3): BoundingBox
+        + clone(): Vec3
+    }
+  
+    class Logger {
+        + warn(warning: String)
+        + debug(debug: String)
+        + error(error: String)
+        + info(info: String)
+    }
+
+    interface Positionnable {
+
+    }
+
+    Vec3 "*" --o Position : coords
+    Shape "*" o- Vec3: vertices
+    BoundingBox "1"-* Shape
+    Shape  <|-- Cuboid
+    Shape  <|-- Pyramid
+    Shape  <|-- RoundedFace
+    RoundedFace  <|-- Sphere
+    RoundedFace  <|-- Cone
+    RoundedFace  <|-- Cylinder
+
+}
+
+
+
+Cloneable <|.. Vec3
+Cloneable <|.. BoundingBox
+Cloneable <|.. Position
+@enduml
