@@ -39,12 +39,14 @@ package Engine {
 
     World o--"*" PhysicObject: physicObjects
     World --> Vec3: gravity
+    
+    PhysicObject --> Vec3: speed
+    PhysicObject o--"*" Vec3: forces
+    PhysicObject *-- "1" Position
+    PhysicObject *-- "1" Shape
+
 }
 
-PhysicObject --> Vec3: speed
-PhysicObject o--"*" Vec3: forces
-PhysicObject *-- "1" Position
-PhysicObject *-- "1" Shape
 
 package Renderer {
     class Scene3D {
