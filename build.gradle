@@ -22,9 +22,9 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
     implementation group: 'org.jogamp.jogl', name: 'jogl-all-main', version: '2.3.2'
     implementation group: 'org.jogamp.gluegen', name: 'gluegen-rt-main', version: '2.3.2'
-    implementation 'com.github.7Physics:Renderer:e88ee5f81a'
+    implementation 'com.github.7Physics:Renderer:7c49574f9b'
     implementation 'com.github.7Physics:Common:5a9772f2e9'
-    implementation 'com.github.7Physics:Engine:63389819f7'
+    implementation 'com.github.7Physics:Engine:0800231372'
 }
 
 test {

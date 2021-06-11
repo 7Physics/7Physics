@@ -11,16 +11,9 @@ import fr.setphysics.engine.World;
 
 public class SimulationHandler implements ActionListener {
 	private World world;
-	private Timer timer;
-	
+
 	public SimulationHandler(World world) {
 		this.world = world;
-		this.timer = new Timer(1000 / 60, new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent event) {
-				world.step(1000/60);
-			}
-		});
 	}
 
 	@Override
@@ -29,10 +22,10 @@ public class SimulationHandler implements ActionListener {
 
 		if (actionComm.equals("play")) {
 			Logger.info("Lancement de la simulation. Rafraichissement: 60FPS");
-			timer.restart();
+			world.startStepLoop(60);
 		} else if (actionComm.equals("stop")) {
 			Logger.info("Arrêt de la simulation.");
-			timer.stop();
+			world.stopStepLoop();
 			world.reset();
 		} else {
 			Logger.error("L'action " + actionComm + " n'est pas permise.");
