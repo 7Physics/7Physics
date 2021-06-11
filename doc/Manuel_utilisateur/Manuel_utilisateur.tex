@@ -48,6 +48,24 @@ Les principales fonctionnalités du moteur 3D sont:
         \item L'animation des différentes formes contenues dans la scène 3D.
 \end{itemize}
 
+\chapter{Installation/Utilisation de l'application}
+
+Pour pouvoir utiliser l'application, vous devez posséder Java8.
+Voici comment installer cette version de Java :
+\begin{itemize}
+  \item Supprimer java de son système : sudo apt list --installed | grep jdk
+  \item sudo apt remove (des résultats de la commande précèdente (ex: sudo apt remove openjdk-11-jdk))
+  \item Installer java8 : sudo apt install openjdk-8-jdk
+  \item Vérifier avec la commande : java -version\newline
+\end{itemize}
+
+Par la suite, pour exécuter le fichier .jar exécutable de l'application, il faut :
+\begin{itemize}
+  \item Pour Linux : java -jar file.jar
+  \item Pour Windows : double-click sur le fichier
+  \item Pour MacOS : java -jar file.jar\newline
+\end{itemize}
+
 \chapter{Présentation générale de l'application}
 
 Voici l'interface de l'application :
@@ -214,6 +232,16 @@ Afin de lancer la simulation, vous pouvez simplement appuyer sur le bouton Play 
   \caption{Lancement de la simulation}
 \end{figure}
 
+\section{Arrêter la simulation}
+
+Afin d'arrêter la simulation, vous pouvez simplement appuyer sur le bouton Stop disponible dans la partie inférieure de l'interface.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=16cm]{./btn_stop.png}
+  \caption{Arrêt de la simulation}
+\end{figure}
+
 \chapter{Importer et exporter un projet 3D}
 
 Il est possible d'enregistre un projet 3D en cours sous forme d'un fichier pour le continuer plus tard à l'aide de 
@@ -223,6 +251,7 @@ la fonctionnalité importer un projet 3D. Cet import peut aussi être fait à pa
 
 Pour importer un projet, il suffit d'ouvrir le menu déroulant en haut à gauche de l'écran et de sélectionner \flqq\ Importer un projet \frqq.
 Une fenêtre de navigation de fichier s'ouvrira et vous pourrez ainsi choisir le fichier à importer.
+Il est possible qu'une erreur apparaisse lors de l'importation pour cause d'une extension de fichier non valide (extension différente de \flqq\ .obj \frqq).
 
 \begin{figure}[h]
   \centering
@@ -232,8 +261,14 @@ Une fenêtre de navigation de fichier s'ouvrira et vous pourrez ainsi choisir le
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=15cm]{./nav_fichier.png}
+  \includegraphics[scale=0.83]{./nav_fichier_imp.png}
   \caption{Navigateur de fichier permettant de sélectionner un fichier}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{./error_imp.png}
+  \caption{Erreur lors de l'importation d'un fichier}
 \end{figure}
 
 
@@ -241,11 +276,24 @@ Une fenêtre de navigation de fichier s'ouvrira et vous pourrez ainsi choisir le
 
 De la meme manière, pour exporter la projet en cours et créer un fichier, on utilise le menu déroulant. 
 En sélectionnant \flqq\ Exporter un projet \frqq, une fenêtre s'ouvrira pour choisir l'emplacement et le nom du fichier à enregistrer.
+Il est possible qu'une erreur apparaisse lors de l'exportation pour cause de la scène 3D vide.
 
 \begin{figure}[h]
   \centering
   \includegraphics{./menu_exp.png}
   \caption{Sélection de l'exportation sur le menu déroulant}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.83]{./nav_fichier_exp.png}
+  \caption{Navigateur de fichier permettant de sauvegarder un fichier}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics{./error_exp.png}
+  \caption{Erreur lors de l'exportation d'un fichier}
 \end{figure}
 
 
