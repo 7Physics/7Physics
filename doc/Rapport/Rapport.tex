@@ -11,6 +11,7 @@
 \usepackage{awesomebox}
 \usepackage{fontawesome5}
 \usepackage{hyperref}
+\usepackage{minted}
 \setmainfont{Liberation Serif}
 
 \titleformat{\chapter}[display]{\Huge}{\thechapter. #1}{20pt}{\small}
@@ -154,7 +155,7 @@ Une fois ce bouton pressé, nous demandons 60 fois par secondes à tous les obje
 \section{Sprint 3}
 
 L'objectif de ce dernier sprint a été de finaliser le projet en ajoutant les dernières fonctionnalités réalisables dans le temps imparti : l'ajout de nouvelles formes prédéfinies, la prévisualisation d'un objet 3D, l'importation et l'exportation d'un projet \textit{*.obj} et la détection de collisions. 
-
+\newpage
 \subsection{Ajout de nouvelles formes prédéfinies}
 Afin de proposer à l'utilisateur un panel un peu plus large de formes 3D, l'ajout de nouvelles formes a été réalisé.
 En plus du cube et de la sphère, il est maintenant possible d'ajouter une pyramide (à base carré ou triangulaire), un cône et un cylindre à la scène 3D.
@@ -182,7 +183,7 @@ Une fonctionnalité importante d'un moteur 3D est la détection des collisions. 
 \chapter{Découpage de l'application}
 
 \hypertarget{découpage}{Afin} de séparer les rôles le plus possibles et permettre l'utilisation, à termes, de parties de l'application
-indépendamment, nous avons commencer par créer 4 répertoires git différent. Cela permet alors de n'utiliser que
+indépendamment, nous avons commencer par créer 4 répertoires git différents. Cela permet alors de n'utiliser que
 les fonctions de rendus dans une librairie minimaliste si besoin et de même pour la partie simulation physique.\newline
 
 Dans chaque répertoire était alors développée une des 4 briques de l'application finale:\newline
@@ -200,8 +201,10 @@ Dans chaque répertoire était alors développée une des 4 briques de l'applica
         créées par l'utilisateur.\newline
   \item \textbf{Engine}: Répertoire permettant la simulation physique. Ce répertoire ne nécessite que l'utilsiation
         de Common pour fonctionner. En effet, tout comme Renderer, il est tout à fait pensable de n'utiliser que ce répertoire
-        comme une librairie de calcul physique simple.\newline
+        comme une librairie de calcul physique simple permettant les calculs de position, de vitesse et de collisions.\newline
 \end{itemize}
+
+
 
 \chapter{Architecture de l'application}
 
@@ -297,6 +300,9 @@ Nous avons utilisé l'outil plantuml pour créer ce diagramme ce qui nous a perm
 
 \section{Réalisation}
 
+Comme nous l'avons évoqué dans la partie concernant le découpage de l'application, nous avons choisi de réaliser cette application au travers de 4 répertoires git différents. Cette décision a été prise dans l'objectif de fournir 2 librairies indépendantes tout en ayant le code commun nécessaire à ces 2 librairies non dupliqué.\newline
+
+
 \section{Problèmes rencontrés et solutions apportées}
 
 \subsection{Rafraîchissement du rendu graphique}
@@ -326,6 +332,8 @@ référentiels de temps absolus. Nous avons donc utilisé, dans nos équations, 
 de temps, le temps écoulé depuis le début de la simulation. Cependant, cela avait pour effet lors de la modification de forces lors d'une
 simulation, de téléporter les objets à la position obtenue si la force avait été présente depuis le début de la simulation.
 
+Pour corriger ce problème, nous avons alors changé la façon de réaliser les calculs de cinétique en nous basant désormais sur un référentiel de temps relatif. Chaque position était alors calculée via la dernière position enregistrée et le temps écoulé depuis le calcul de celle-ci.
+
 \chapter{Organisation de l'équipe et mise en oeuvre des méthodes agiles}
 
 \section{Mise en place du projet}
@@ -335,7 +343,23 @@ les outils à utiliser concernant la gestion de projet, la gestion du code et la
 Pour finir, le projet a été structuré en différents répertoires au sein de l'organisation GitHub créée pour le projet long
 et l'environnement de travail a été configuré pour chaque membre de l'équipe.\newline
 
-Une fois cela fait, nous avons pu commencer à réaliser les premières User Stories.
+Une fois cela fait, nous avons pu commencer à réaliser les premières User Stories après les avoir estimer en termes de points d'efforts et de valeur métier.
+
+\section{Estimation des points d'efforts et de valeur métier}
+
+\subsection{Points d'efforts}
+
+Afin d'estimer au mieux les points d'efforts, nous nous sommes réunis et avons procédé à un planning poker. Le déroulement de ce planning poker était alors le suivant:
+
+\begin{enumerate}
+  \item L'un d'entre nous lisait l'énoncé de la user story que nous devions estimer
+  \item Chacun d'entre nous réfléchissait alors de ce qu'il pensait de cette tâche et préparait alors une estimation
+  \item Pour finir, nous discutions de ces estimations et nous mettions d'accord sur la valeur finale à accorder à cette tâche.
+\end{enumerate}
+
+\subsection{Points de valeur métier}
+
+Une fois cela fait pour chaque User Story, nous nous sommes penchés sur les points de valeur métier. Pour cela, nous avons procédé d'une façon similaire. Nous avons commencé par attribuer un nombre total de valeur métier à obtenir puis avons partagé ce total et attribué des points de valeur métier en fonction de l'importance des fonctionnalités à nos yeux.
 
 \section{Utilisation des cérémonies agiles}
 
@@ -377,5 +401,38 @@ Cette cérémonie était importante car elle nous permettait notamment de discut
 \subsection{Retrospective}
 
 Enfin, l'équipe se réunissait une dernière fois dans le sprint pour analyser le déroulement du sprint. Cette analyse permet d'avoir le ressenti réel de chaque membre de l'équipe sur le projet. Cette réunion faisait ressortir les défauts du sprint réalisé afin de tenter de les corriger lors du prochain.
+
+\section{Choix des tâches à réaliser}
+
+Afin de choisir au mieux les tâches à effectuer lors de chaque sprint, nous nous sommes basés sur les estimations de valeur métier et de points d'efforts que nous avons évoqués précédemment ainsi que sur notre vélocité. Nous avions alors une vélocité relativement constante de 80 points d'efforts par sprint.\newline
+
+Puisque nous avions donc les estimations fixées pour chaque tâche et une vélocité donnée, notre façon de procédé était la suivante, les tâches à réaliser étaient les suivantes:
+\begin{itemize}
+  \item La tâche doit être \textbf{réalisable} (pas de dépendances avec une tâche pas encore effectuée).
+  \item La tâche doit avoir une \textbf{valeur métier élevée} autant que possible.
+  \item La \textbf{somme des points d'efforts} doit être environ \textbf{égale à notre vélocité} calculée.\newline
+\end{itemize}
+
+Grâce à cette ligne directrice, nous avons pu mettre en place des fonctionnalités clés du projet sans problèmes liés à la gestion du projet en lui-même.
+
+\chapter{Conclusion}
+
+En conclusion, nous avons, pendant ces trois semaines de projet, tenté de réaliser un moteur physique 3D simpliste qui permet à un utilisateur de modéliser des formes simplistes par le biais de l'interface que nous avons créé, aussi bien que des projets complexes exportées au format .obj. Ces formes une fois placées dans une scène 3D peuvent alors êtres déplacées par le biais de forces qui leurs seront appliquées.\newline
+
+Afin de réaliser ce projet nous avons utilisé les méthodes agiles au travers de 3 sprints distincts d'une durée d'une semaine. Sprints durant lesquels nous avons mis en place plusieurs cérémonies permettant d'avancer efficacement tout en maintenant une bonne cohésion d'équipe.\newline
+
+\begin{minted}{bash}
+# Supprimer java de son système
+sudo apt list --installed | grep jdk
+
+# Supprimer les résultats de la commande précèdente
+sudo apt remove #
+
+# Installer java8
+sudo apt install openjdk-8-jdk
+
+# Vérifier avec la commande
+java -version
+\end{minted}
 
 \end{document}

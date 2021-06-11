@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Supprimer java de son système}
+sudo apt list \PYGZhy{}\PYGZhy{}installed \PYG{p}{|} grep jdk
+
+\PYG{c+c1}{\PYGZsh{} Supprimer les résultats de la commande précèdente}
+sudo apt remove \PYG{c+c1}{\PYGZsh{}}
+
+\PYG{c+c1}{\PYGZsh{} Installer java8}
+sudo apt install openjdk\PYGZhy{}8\PYGZhy{}jdk
+
+\PYG{c+c1}{\PYGZsh{} Vérifier avec la commande}
+java \PYGZhy{}version
+\end{Verbatim}
