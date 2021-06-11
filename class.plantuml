@@ -8,40 +8,53 @@ package 7Physics {
     }
 
     class GUI {
+        + {static} getInstance(): GUI
+        - GUI()
+        + close()
     }
+
+    class ObjectListPanel
+
+    class EnvPanel
+
+    GUI o-- "1" ObjectListPanel: contentBottomPanelLeft
+    GUI o-- "1" EnvPanel: ongletsBottom
 }
 
 package Engine {
     class World {
-
+        - gravityEnabled: boolean
+        + World()
+        - doCollisions(po: PhysicObject, index: int)
+        - doCollisions(a: PhysicObject, b: PhysicObject): Vec3
     }
 
-    abstract PhysicBody {
-        - shape: Shape
-        + getPosition(): Position
+    class PhysicObject {
+        + PhysicObject(Shape shape, Position position, seedInit: Vec3)
+        + update(time: double)
+        + addForce(f: Vec3)
+        + calculatePosition(time: double): Position
+        + calculateSpeed(time: double): Vec3
     }
 
-    class Force {
-        - intensity: double
-    }
-
-    World --> "*" PhysicBody
-    PhysicBody o- "*" Force
+    World o--"*" PhysicObject: physicObjects
+    World --> Vec3: gravity
 }
+
+PhysicObject --> Vec3: speed
+PhysicObject o--"*" Vec3: forces
+PhysicObject *-- "1" Position
+PhysicObject *-- "1" Shape
 
 package Renderer {
     class Scene3D {
         - glu: GLU
-        - rotateZ: float
-        + Scene3D(camera: Camera)
+        - fpsAnimator: FPSAnimator
+        + Scene3D(camera: Camera, ground: Ground)
+        + startAnimation()
         + init(drawable: GLAutoDrawable)
-        + dispose(drawable: GLAutoDrawable)
         + display(drawable: GLAutoDrawable)
-        + reshape(drawable: GLAutoDrawable, x: int, y: int, width: int, height: int)
-        + keyPressed(e: KeyEvent)
-        + keyReleased(e: KeyEvent)
-        + keyTyped(e: KeyEvent)
-        + addObject(object3D: Object3D)
+        + iterator(): Iterator<Object3D>
     }
 
     interface Renderable {
@@ -50,9 +63,6 @@ package Renderer {
 
     class Object3D {
         - color: Color
-        - edgeColor: Color
-        + getShape(): Shape
-        + getColor(): Color
         + render(gl: GL2)
         + Object3D(position: Position, shape: Shape, color: Color, edgeColor: Color)
         + Object3D(position: Position, shape: Shape)
@@ -66,52 +76,64 @@ package Renderer {
     }
 
     class Camera {
-        - zoomFactor: double
-        + getPosition(): Position
+        - fov: double
         + zoom()
         + dezoom()
-        + setZoomFactor(zoomFactor: double)
-        + getZoomFactor(): double
+        + moveForward(offset: double)
+        + moveBackward(offset: double)
+        + moveRight(offset: double)
+        + moveLeft(offset: double)
+        + getLookAt(): Vec3
+        + rotateVertical(angleRadians: double)
+        + rotateHorizontal(angleRadians: double)
     }
+
+    class SceneKeyListener {
+        + SceneKeyListener(scene: Scene3D)
+        + update()
+    }
+
+    class SceneMouseListener {
+        + SceneMouseListener(scene: Scene3D)
+    }
+
     Object3D "*" --o Scene3D
     Renderable <|.. Object3D
     Renderable <|.. Ground
     Scene3D o--"*" Renderable: renderables
     Scene3D --> "1" Camera: camera
+    Scene3D - SceneKeyListener
+    SceneMouseListener - Scene3D
+    SceneKeyListener --> "1" Camera
+
 }
 
 package Common {
     class Position {
         - horizontalAngle: double
         - verticalAngle: double
-        + setCoords(coords: Vec3)
-        + getCoords(): Vec3
-        + setAngles(horizontalAngle: double, verticalAngle: double)
-        + getHorizontalAngle(): double
-        + getVerticalAngle(): double
+        + Position(x: double, y: double, z: double, horizontalAngle: double, verticalAngle: double)
         + translate(translation: Vec3)
         + rotate(hAngle: double, vAngle: double)
-        + Position(coords: Vec3, horizontalAngle: double, verticalAngle: double)
-        + Position(coords: Vec3)
-        + Position(x: double, y: double, z: double)
-        + Position(x: double, y: double, z: double, horizontalAngle: double, verticalAngle: double)
+        + clone(): Position
     }
 
     class Shape {
-        + addVertex(vertex: Vec3)
-        + getVertices(): List<Vec3>
         + Shape()
         + Shape(vertices: List<Vec3>)
+        # addSquare(a: Vec3, b: Vec3, c: Vec3, d: Vec3)
     }
 
     class Vec3 {
         - x: double
         - y: double
         - z: double
+        + Vec3(x: double, y: double, z: double)
+        + multiply(other: Vec3): Vec3
+        + minus(other: Vec3): Vec3
         + add(vec3: Vec3): Vec3
         + scale(factor: double): Vec3
         + clone(): Vec3
-        + Vec3(x: double, y: double, z: double)
     }
 
     class Logger {
@@ -125,23 +147,63 @@ package Common {
         + Cuboid(width: double, length: double, height: double)
     }
 
-    class Sphere {
-        - radius: double
-        - pointOnSphere(pointOnCube: Vec3): Vec3
-        - findPoints(a: Vec3, b: Vec3, c: Vec3, d: Vec3, nbIt: int): List<Vec3>
-        + Sphere(radius: double, nbIt:int)
+    class Pyramid {
+        + Pyramid(width: double, length: double, height: double)
+        + Pyramid(side: double, height: double)
+    }
+    abstract RoundedFace {
+        # pointOnCircle(pointOnSquare : Vec3, radius: double): Vec3
+        # findMiddle(a: Vec3, b:Vec3): Vec3
     }
 
-    Position o-- "*" Vec3: coords
-    Shape "*" o-- Vec3: vertices
+    class Sphere {
+        - radius: double
+        + Sphere(radius: double, nbIt:int)
+        # pointOnCircle(pointOnCube : Vec3, radius: double): Vec3
+        - findPoints(a: Vec3, b: Vec3, c: Vec3, d: Vec3, nbIt: int): List<Vec3>
+    }
+
+    class Cylinder {
+        + Cylinder(radius: double, height: double)
+        - findPoints(a: Vec3, b: Vec3, e: Vec3, f: Vec3, nbIt: int): List<Vec3>
+    }
+
+    class Cone {
+        + Cone(radius: double, height: double)
+        - findPoints(a: Vec3, b: Vec3, nbIt: int): List<Vec3>
+    }
+
+    class BonndingBox {
+        - minX: double
+        - maxX: double
+        - minY: double
+        - maxY: double
+        - minZ: double
+        - maxZ: double
+        + BoundingBox(minX: double, maxX: double, minY: double, maxY: double, minZ: double, maxZ: double)
+        + addPoint(point: Vec3)
+        + intersect(other BonndingBox): boolean
+        + containsPoint(point: Vec3): boolean
+        + translate(translation: Vec3): BoundingBox
+        + clone(): Vec3
+    }
+
+    interface Positionnable {
+
+    }
+
+    Position o- "*" Vec3: coords
+    Shape "*" o- Vec3: vertices
+    Shape *--"1" BonndingBox
     Shape  <|-- Cuboid
-    Shape  <|-- Sphere
+    Shape  <|-- Pyramid
+    Shape  <|-- RoundedFace
+    RoundedFace  <|-- Sphere
+    RoundedFace  <|-- Cone
+    RoundedFace  <|-- Cylinder
 
 }
 
-PhysicBody *-- "1" Position
-PhysicBody *-- "1" Shape
-Force --> "1" Vec3: direction
 
 MainFrame --> World
 MainFrame --> Scene3D
