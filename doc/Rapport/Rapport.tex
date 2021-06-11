@@ -56,7 +56,7 @@ Puisque nous avions du temps après la mise en place du projet, nous avons pu
 mettre en place des fonctionnalités basiques permettant la compréhension
 de ce que nous allions développé par la suite. Nous avons donc cherché à pouvoir nous repérer dans l'espace.
 
-\subsection{Afficher une scène 3D}
+\subsection{Affichage d'une scène 3D}
 
 Une des premières fonctionnalités à implanter a été la création d'une scène 3D. 
 Cette scène 3D est constituée d'un sol représentant une grille blanche sur fond gris et d'un ciel bleu.
@@ -78,7 +78,7 @@ aux raccourcis clavier que nous avions définis.
 L'objectif du sprint 1 a été de fournir une première version de l'interface utilisateur lui permettant
 d'ajouter des formes 3D prédéfinies à la scène et de les visualiser sous différents angles facilement et intuitivement.
 
-\subsection{Ajouter un objet 3D}
+\subsection{Ajout d'un objet 3D}
 
 Tout d'abord, nous avons rendu possible l'ajout de 2 formes prédéfinies que sont le cube et la sphère.
 
@@ -105,8 +105,7 @@ puisse facilement ajouter des formes ou manipuler la caméra.
 
 \section{Sprint 2}
 
-L'objectif de ce sprint a été de faire bouger les objets en ajoutant les fonctionnalités liées au moteur physique. Pour cela,
-nous avons modéliser les concepts de force, d'objets et de monde physique.
+L'objectif de ce sprint a été de faire bouger les objets en ajoutant les fonctionnalités liées au moteur physique. Pour cela, nous avons modéliser les concepts de force, d'objets et de monde physique.
 
 \subsection{Création des principes de base du moteur 3D}
 
@@ -131,8 +130,7 @@ la position de tous les objets 3D en fonction du temps. Puisque nous réaffichon
 
 \subsection{Ajout d'une possibilité de sélection des objets}
 
-Afin de manipuler les objets plus facilement, nous avons ajouté, dans l'interface, une liste de boutons. Chacun de ces boutons
-sont liés à un objet et nous permettent de les sélectionner pour ensuite les manipuler. L'affichage ainsi réalisé est le suivant:
+Afin de manipuler les objets plus facilement, nous avons ajouté, dans l'interface, une liste de boutons. Chacun de ces boutons est lié à un objet et nous permet de le sélectionner pour ensuite le manipuler. L'affichage ainsi réalisé est le suivant:
 
 % Ajouter la photo
 
@@ -142,10 +140,7 @@ Puisque nous pouvons désormais sélectionner une table, il nous faut désormais
 
 \subsection{Manipulation des forces dans l'interface graphique}
 
-Nous avons donc cherché à rendre la manipulation de forces (création et suppression notamment) possible depuis l'interface graphique
-de notre application. Ainsi, une fois l'objet sélectionné grâce à la fonctionnalité du point précédent, nous affichons les détails
-de la forme dans l'interface avec la possibilité d'ajouter une force sur l'objet sélectionné. Toutes les forces sont affichées
-et elles-mêmes sélectionnables, nous avons donc rajouté un bouton permettant la suppression de la force actuellement sélectionné.
+Nous avons donc cherché à rendre la manipulation de forces (création et suppression notamment) possible depuis l'interface graphique de notre application. Ainsi, une fois l'objet sélectionné grâce à la fonctionnalité du point précédent, nous affichons les détails de la forme dans l'interface avec la possibilité d'ajouter une force sur l'objet sélectionné. Toutes les forces sont affichées et elles-mêmes sélectionnables, nous avons donc rajouté un bouton permettant la suppression de la force actuellement sélectionné.
 
 \awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
 
@@ -155,6 +150,34 @@ Pour finir, toujours dans le but de permettre aux objets de se déplacer, nous a
 Une fois ce bouton pressé, nous demandons 60 fois par secondes à tous les objets physiques de mettre leurs positions à jour.
 
 \awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
+
+\section{Sprint 3}
+
+L'objectif de ce dernier sprint a été de finaliser le projet en ajoutant les dernières fonctionnalités réalisables dans le temps imparti : l'ajout de nouvelles formes prédéfinies, la prévisualisation d'un objet 3D, l'importation et l'exportation d'un projet \textit{*.obj} et la détection de collisions. 
+
+\subsection{Ajout de nouvelles formes prédéfinies}
+Afin de proposer à l'utilisateur un panel un peu plus large de formes 3D, l'ajout de nouvelles formes a été réalisé.
+En plus du cube et de la sphère, il est maintenant possible d'ajouter une pyramide (à base carré ou triangulaire), un cône et un cylindre à la scène 3D.
+
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
+
+\subsection{Prévisualisation d'un objet 3D}
+Nous avons ensuite voulu enrichir l'expérience utilisateur en mettant en place la prévisualisation d'un objet 3D avant de valider l'ajout ou non de l'objet à la scène.
+
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
+
+\subsection{Importation et exportation d'un projet \textit{*.obj}}
+En prenant en compte toutes les fonctionnalités précédentes, le choix des formes était donc restreint aux formes prédéfinies présentes sur l'interface. Afin d'accroître le champ des possibles, nous avons ajouter la possibilité d'importer un projet \textit{*.obj}. Grâce à cette fonctionnalité, l'utilisateur a plus de liberté et peut ajouter de nouvelles formes qu'il a préalablement créé dans un logiciel de modélisation 3D.\newline
+
+Nous avons ensuite implanter la possibilité d'exporter un projet \textit{*.obj}. L'utilisateur peut donc à tout moment sauvegarder sont projet afin de le récupérer et de continuer ses expérimentations plus tard.
+
+\awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
+
+\subsection{Détection des collisions}
+Une fonctionnalité importante d'un moteur 3D est la détection des collisions. Des recherches ont été éffectuées mais la complexité de cette fonctionnalité ne nous a pas permis de réaliser une première version stable. Toutefois, une première version expérimentale a été implantée.
+
+\warningbox{Cette fonctionalité n'a pas pu être complètement réalisée. Une version expérimentale est cependant proposée à l'utilisateur (cf.Manuel utilisateur).}
+
 
 \chapter{Découpage de l'application}
 
@@ -307,8 +330,6 @@ Cette cérémonie était importante car elle nous permettait notamment de discut
 
 \subsection{Retrospective}
 
-Enfin, l'équipe se réuni une dernière fois dans le sprint pour analyser le déroulement du sprint. Cette analyse permet d'avoir
-le ressenti réel de chaque membre de l'équipe sur le projet. Cette réunion nous a permis de définir les défauts du sprint réalisé
-et de tenter de les corriger lors du prochain.
+Enfin, l'équipe se réunissait une dernière fois dans le sprint pour analyser le déroulement du sprint. Cette analyse permet d'avoir le ressenti réel de chaque membre de l'équipe sur le projet. Cette réunion faisait ressortir les défauts du sprint réalisé afin de tenter de les corriger lors du prochain.
 
 \end{document}
