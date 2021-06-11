@@ -174,9 +174,9 @@ Nous avons ensuite implanter la possibilité d'exporter un projet \textit{*.obj}
 \awesomebox{\faCheckCircle}{3pt}{green}{Cette fonctionalité a été complètement réalisée durant cette itération.}
 
 \subsection{Détection des collisions}
-Une fonctionnalité importante d'un moteur 3D est la détection des collisions. Des recherches ont été éffectuées mais la complexité de cette fonctionnalité ne nous a pas permis de réaliser une première version stable. Toutefois, une première version expérimentale a été implantée.
+Une fonctionnalité importante d'un moteur 3D est la détection des collisions. Des recherches ont été éffectuées mais la complexité de cette fonctionnalité ne nous a pas permis de réaliser une version complètement finalisée et stable. Toutefois, une première version expérimentale a été implantée.
 
-\warningbox{Cette fonctionalité n'a pas pu être complètement réalisée. Une version expérimentale est cependant proposée à l'utilisateur (cf.Manuel utilisateur).}
+\warningbox{Cette fonctionalité n'a pas pu être complètement finalisée. Une première version est cependant proposée à l'utilisateur (cf.Manuel utilisateur).}
 
 
 \chapter{Découpage de l'application}
@@ -209,25 +209,71 @@ Dans chaque répertoire était alors développée une des 4 briques de l'applica
   \includegraphics[width=18cm]{./diagramme_classe.png}
 \end{center}
 
-\section{GUI}
+\section{7Physics}
 
-\subsection{}
+Ce répertoire est composé de deux packages : \textit{gui} et \textit{file} ainsi que de la classe \textit{Main.java} permettant de lancer l'application.
+
+\subsection{GUI}
+Dans ce répertoire, on retrouve le package \textit{gui} composé de la classe \textit{GUI.java} qui représente la fenêtre principale de l'application. Elle hérite donc de \textit{JFrame}, le composant \textit{SWING} permettant la création d'une fenêtre principale avec une bordure et une barre de titre.
+
+C'est donc dans cette classe que l'interface principale est définie avec les différents conteneurs (\textit{JPanel}, \textit{JMenu}) contenant d'autres composants (\textit{JButton}, \textit{ImageIcon}, \textit{JMenuItem}, ...).
+
+Dans cette classe, le patron de conception \textit{Singleton} a été implanté. En effet, nous souhaitions nous assurer qu'une seule fenêtre principale ne puisse exister et donc qu'un unique point d'accès soit possible.
+
+Afin de séparer le code, certains composants ont été séparés de la classe \textit{GUI}. Les différents \textit{JPanel} utilisés pour l'ajout des formes prédéfinies ont été créés dans des classes séparées. De même concernant certains \textit{ActionListener}, les interfaces "auditrices" pour différents types d'évènements à traiter.
+
+
+\subsection{Files}
+Dans ce même répertoire, on retrouve aussi le package \textit{file}. Ce package contient la classe \textit{OBJFile.java} qui permet de manipuler des fichiers \textit{*.obj}. Elle permet de fournir une méthode permettant d'extraire le contenu d'un fichier \textit{*.obj} et de faire le traitement nécessaire afin de fournir les formes à afficher à la scène 3D.
+Elle permet aussi la création d'un fichier \textit{*.obj} à partir du contenu de la scène 3D courante.
+
+\subsection{Tests}
+
+Une classe de test a été réalisée afin de tester la classe \textit{OBJFile} avec différents fichiers \textit{*.obj} (taille et contenu différent).
 
 \section{Common}
+Le répertoire \textit{Common} est composé de deux packages : \textit{logger} et \textit{geom}.
+
+\subsection{Logger}
+Dans le package \textit{logger}, la classe \textit{Logger} représente la classe utilitaire gérant les logs du projet.
 
 \subsection{Types utilitaires}
+Dans le package \textit{geom}, il y a différentes classes définissant des types utilitaires. Nous avons par exemple, la classe \textit{Vec3} qui représente un vecteur à trois dimensions, la classe \textit{Position} représentant une position et la classe \textit{Shape} représentant une forme en trois dimensions.
 
 \subsection{Formes prédéfinies}
+Dans le package \textit{geom}, nous avons un nouveau package \textit{shape} représentant les différentes formes prédéfinies tels que le cone, le cube, la pyramide, la sphere, ...
+
+\subsection{Tests}
+Une classe de test a été réalisée afin de tester avec différents formes 3D (cube et sphère), la classe \textit{BoundingBox} qui représente les bordures des objets 3D.
 
 \section{Engine}
+Ce répertoire est composé de plusieurs classes : \textit{PhysicObject}, \textit{World}.
 
-\subsection{Calcul de position et vitesse}
+\subsection{PhysicObject}
+La classe \textit{PhysicObject} représente un objet 3D dans l'environnement ayant des caractéristiques physiques.
 
-\subsection{Detection des collisions}
+Un \textit{PhysicObject} est créé à partir d'une \textit{Shape}, d'une \textit{Position} et d'une vitesse initiale.
+Nous pouvons lui ajouter/supprimer des forces, mettre à jour sa position et sa vitesse en fonction des forces appliquées.
+
+\subsection{World}
+La classe \textit{World} représente un monde 3D avec un sol d'une certaine dimension. Il est possible d'ajouter un \textit{PhysicObject}, d'appliquer la gravité au monde 3D, de gérer les collisions.
+
+\subsection{Tests}
+Deux classes de test ont été définies : \textit{TestCollisions}, \textit{TestPhysicBody} afin de vérifier l'effet des collisions et les résultats obtenus après application de plusieurs forces sur un \textit{PhysicObjetc}, . 
 
 \section{Renderer}
+Ce dernier répertoire est composé d'éléments permettant le rendu graphique 3D.
 
 \subsection{Camera}
+
+\subsection{Object3D}
+
+\subsection{Scene3D}
+
+\subsection{Ground}
+
+\subsection{Tests}
+Des tests graphiques ont été réalisés afin de vérifier visuellement la suppresion d'un objet de la scène par exemple.
 
 \subsection{Interaction avec OpenGL}
 
