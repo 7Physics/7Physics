@@ -77,6 +77,7 @@ public class EnvPanel extends JTabbedPane {
                 double tempValue = ((JSlider)e.getSource()).getValue();
                 finalValueSlider[0] = tempValue/100;
                 valueSlider.setText(finalValueSlider[0] + " m/s²");
+                world.setGravity(new Vec3(0, -finalValueSlider[0], 0));
             }
         });
         sliderGravityPanel.add(gravitySlider);
@@ -95,7 +96,6 @@ public class EnvPanel extends JTabbedPane {
 			public void actionPerformed(ActionEvent event) {
 				EnvPanel.this.isGravity = !EnvPanel.this.isGravity;
 				if (EnvPanel.this.isGravity) {
-				    world.deleteGravity();
 				    revalidate();
 					world.setGravity(new Vec3(0, -finalValueSlider[0], 0));
                     System.out.println(-finalValueSlider[0]);
