@@ -1,6 +1,7 @@
 package fr.setphysics.setphysics.gui.components;
 
 import fr.setphysics.engine.PhysicObject;
+import fr.setphysics.engine.World;
 import fr.setphysics.renderer.Object3D;
 import fr.setphysics.renderer.Scene3D;
 import fr.setphysics.setphysics.gui.GUI;
@@ -18,7 +19,7 @@ public class ObjectPanel extends JButton {
     private String nameShape;
 
 
-    public ObjectPanel(Scene3D scene, Object3D object, PhysicObject body, String name) {
+    public ObjectPanel(Scene3D scene, World world, Object3D object, PhysicObject body, String name) {
         this.object = object;
         this.body = body;
 
@@ -87,7 +88,7 @@ public class ObjectPanel extends JButton {
         /* ********************************** *
          * Gestion de l'affichage de l'onglet *
          * ********************************** */
-        currentObjectPane = new ObjectDetails(nameShape, this, scene, object, body);
+        currentObjectPane = new ObjectDetails(nameShape, this, scene, world, object, body);
         GUI.getInstance().getOngletsBottom().getOngletObjet().add(currentObjectPane, nameShape);
         final CardLayout cl = (CardLayout) GUI.getInstance().getOngletsBottom().getOngletObjet().getLayout();
         this.addActionListener(new ActionListener() {

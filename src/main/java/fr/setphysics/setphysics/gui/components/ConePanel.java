@@ -179,7 +179,7 @@ public class ConePanel extends JPanel {
                 scene.addObject(cone);
                 world.addPhysicObject(po);
 
-                ObjectPanel objectPanel = new ObjectPanel(scene, cone, null, "");
+                ObjectPanel objectPanel = new ObjectPanel(scene, world, cone, po, "");
 
                 GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
             }

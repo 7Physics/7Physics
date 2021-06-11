@@ -33,7 +33,7 @@ public class SimulationHandler implements ActionListener {
 		} else if (actionComm.equals("stop")) {
 			Logger.info("Arrêt de la simulation.");
 			timer.stop();
-			//world.reset();
+			world.reset();
 		} else {
 			Logger.error("L'action " + actionComm + " n'est pas permise.");
 		}

@@ -97,7 +97,7 @@ public class EnvPanel extends JTabbedPane {
 				if (EnvPanel.this.isGravity) {
 				    world.deleteGravity();
 				    revalidate();
-					world.addGravity(new Vec3(0, -finalValueSlider[0], 0));
+					world.setGravity(new Vec3(0, -finalValueSlider[0], 0));
                     System.out.println(-finalValueSlider[0]);
 				} else {
 					world.deleteGravity();

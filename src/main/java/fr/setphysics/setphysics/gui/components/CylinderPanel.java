@@ -171,7 +171,7 @@ public class CylinderPanel extends JPanel {
                 scene.addObject(cylinder);
                 world.addPhysicObject(po);
 
-                ObjectPanel objectPanel = new ObjectPanel(scene, cylinder, null, "");
+                ObjectPanel objectPanel = new ObjectPanel(scene, world, cylinder, po, "");
 
                 GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
             }
