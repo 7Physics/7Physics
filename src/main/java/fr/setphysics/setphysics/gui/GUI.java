@@ -35,6 +35,7 @@ public class GUI extends JFrame {
     // Définition des ImageIcon
     public static final ImageIcon ICONPROJET = new ImageIcon(GUI.class.getResource("/images/projet.png"));
     public static final ImageIcon PLAY = new ImageIcon(GUI.class.getResource("/images/play.png"));
+    public static final ImageIcon STOP = new ImageIcon(GUI.class.getResource("/images/stop.png"));
     public static final ImageIcon PLUS = new ImageIcon(GUI.class.getResource("/images/plus.png"));
     public static final ImageIcon MINUS = new ImageIcon(GUI.class.getResource("/images/minus.png"));
     public static final ImageIcon TRASH = new ImageIcon(GUI.class.getResource("/images/trash.png"));
@@ -51,6 +52,7 @@ public class GUI extends JFrame {
     public static final ImageIcon BIGCONE = new ImageIcon(GUI.class.getResource("/images/big-cone.png"));
     public static final ImageIcon CYLINDER = new ImageIcon(GUI.class.getResource("/images/cylinder.png"));
     public static final ImageIcon BIGCYLINDER = new ImageIcon(GUI.class.getResource("/images/big-cylinder.png"));
+
 
 
     /* *************************** *

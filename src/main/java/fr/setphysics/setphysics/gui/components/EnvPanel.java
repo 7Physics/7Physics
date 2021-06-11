@@ -77,6 +77,7 @@ public class EnvPanel extends JTabbedPane {
                 double tempValue = ((JSlider)e.getSource()).getValue();
                 finalValueSlider[0] = tempValue/100;
                 valueSlider.setText(finalValueSlider[0] + " m/s²");
+                world.setGravity(new Vec3(0, -finalValueSlider[0], 0));
             }
         });
         sliderGravityPanel.add(gravitySlider);
@@ -96,7 +97,8 @@ public class EnvPanel extends JTabbedPane {
 				EnvPanel.this.isGravity = !EnvPanel.this.isGravity;
 				if (EnvPanel.this.isGravity) {
 				    revalidate();
-					world.addGravity(new Vec3(0, -finalValueSlider[0], 0));
+					world.setGravity(new Vec3(0, -finalValueSlider[0], 0));
+                    System.out.println(-finalValueSlider[0]);
 				} else {
 					world.deleteGravity();
 				}
@@ -120,6 +122,7 @@ public class EnvPanel extends JTabbedPane {
 	}
 
 
+
     /**
      * Renvoie le Panel "ongletObjet"
      * @return JPanel
@@ -127,7 +130,9 @@ public class EnvPanel extends JTabbedPane {
     public JPanel getOngletObjet() {
         return ongletObjet;
     }
-    
+
+
+
     /**
      * Indique si la gravité est présente ou non
      * @return true si la gravité est activée.

@@ -63,7 +63,7 @@ public class FileImportation implements ActionListener {
 				Object3D obj = new Object3D(s, pos).setColor(colors[0], colors[1]);
 				scene.addObject(obj);
 				world.addPhysicObject(po);
-				ObjectPanel objectPanel = new ObjectPanel(scene, obj, po, sh);
+				ObjectPanel objectPanel = new ObjectPanel(scene, world, obj, po, sh);
 
 				GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
 			}

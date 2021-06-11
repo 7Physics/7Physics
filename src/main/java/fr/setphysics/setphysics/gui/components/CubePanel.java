@@ -67,7 +67,7 @@ public class CubePanel extends JPanel {
          * ************* */
         JLabel textParamCubeX = new JLabel("x :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeX);
-        JTextField paramCubeX = new JTextField();
+        JSpinner paramCubeX = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramCubeX.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeX);
 
@@ -78,7 +78,7 @@ public class CubePanel extends JPanel {
          * ************* */
         JLabel textParamCubeY = new JLabel("y :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeY);
-        JTextField paramCubeY = new JTextField();
+        JSpinner paramCubeY = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramCubeY.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeY);
 
@@ -89,7 +89,7 @@ public class CubePanel extends JPanel {
          * ************* */
         JLabel textParamCubeZ = new JLabel("z :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeZ);
-        JTextField paramCubeZ = new JTextField();
+        JSpinner paramCubeZ = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramCubeZ.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeZ);
 
@@ -100,7 +100,7 @@ public class CubePanel extends JPanel {
          * ******************* */
         JLabel textParamCubeWidth = new JLabel("Largeur :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeWidth);
-        JTextField paramCubeWidth = new JTextField();
+        JSpinner paramCubeWidth = new JSpinner(new SpinnerNumberModel(0, 0, 20, 0.1));
         paramCubeWidth.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeWidth);
 
@@ -111,7 +111,7 @@ public class CubePanel extends JPanel {
          * ******************** */
         JLabel textParamCubeLength = new JLabel("Longueur :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeLength);
-        JTextField paramCubeLength = new JTextField();
+        JSpinner paramCubeLength = new JSpinner(new SpinnerNumberModel(0, 0, 20, 0.1));
         paramCubeLength.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeLength);
 
@@ -122,7 +122,7 @@ public class CubePanel extends JPanel {
          * ******************* */
         JLabel textParamCubeHeight = new JLabel("Hauteur :", SwingConstants.RIGHT);
         cubePaneLeft.add(textParamCubeHeight);
-        JTextField paramCubeHeight = new JTextField();
+        JSpinner paramCubeHeight = new JSpinner(new SpinnerNumberModel(0, 0, 20, 0.1));
         paramCubeHeight.setPreferredSize(new Dimension(50, 20));
         cubePaneLeft.add(paramCubeHeight);
 
@@ -178,12 +178,12 @@ public class CubePanel extends JPanel {
          * ********************* */
         addCubeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                double x = Double.parseDouble(paramCubeX.getText());
-                double y = Double.parseDouble(paramCubeY.getText());
-                double z = Double.parseDouble(paramCubeZ.getText());
-                double w = Double.parseDouble(paramCubeWidth.getText());
-                double l = Double.parseDouble(paramCubeLength.getText());
-                double h = Double.parseDouble(paramCubeHeight.getText());
+                double x = (double) paramCubeX.getValue();
+                double y = (double) paramCubeY.getValue();
+                double z = (double) paramCubeZ.getValue();
+                double w = (double) paramCubeWidth.getValue();
+                double l = (double) paramCubeLength.getValue();
+                double h = (double) paramCubeHeight.getValue();
                 
                 Logger.info("Création d'un cube. X: " + x + ", Y: " + y + ", Z: " + z
                 		+ ", Width: " + w + ", Length: " + l + ", Height: " + h);
@@ -200,7 +200,7 @@ public class CubePanel extends JPanel {
                 scene.addObject(obj);
                 world.addPhysicObject(po);
 
-                ObjectPanel objectPanel = new ObjectPanel(scene, obj, po, "");
+                ObjectPanel objectPanel = new ObjectPanel(scene, world ,obj, po, "");
 
                 GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
             }

@@ -159,7 +159,16 @@ public class OBJFile {
 			}
 			offset += vertices.size();
 		}
+		
+		if (cpt == 0) {
+			JOptionPane optionPane = new JOptionPane("Impossible d'exporter une scène vide.", JOptionPane.ERROR_MESSAGE);
+			JDialog dialog = optionPane.createDialog("Exportation impossible");
+			dialog.setAlwaysOnTop(true);
+			dialog.setVisible(true);
+			return;
+		}
 		byte[] b = fileContent.getBytes();
+		
 		try {
 			// Ecriture du contenu du fichier
 			Files.write(path, b);

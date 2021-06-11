@@ -7,11 +7,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import fr.setphysics.common.geom.Position;
@@ -67,7 +63,7 @@ public class ConePanel extends JPanel {
          * ************* */
         JLabel textParamConeX = new JLabel("x :", SwingConstants.RIGHT);
         conePaneLeft.add(textParamConeX);
-        JTextField paramConeX = new JTextField();
+        JSpinner paramConeX = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramConeX.setPreferredSize(new Dimension(50, 20));
         conePaneLeft.add(paramConeX);
 
@@ -78,7 +74,7 @@ public class ConePanel extends JPanel {
          * ************* */
         JLabel textParamConeY = new JLabel("y :", SwingConstants.RIGHT);
         conePaneLeft.add(textParamConeY);
-        JTextField paramConeY = new JTextField();
+        JSpinner paramConeY = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramConeY.setPreferredSize(new Dimension(50, 20));
         conePaneLeft.add(paramConeY);
 
@@ -89,7 +85,7 @@ public class ConePanel extends JPanel {
          * ************* */
         JLabel textParamConeZ = new JLabel("z :", SwingConstants.RIGHT);
         conePaneLeft.add(textParamConeZ);
-        JTextField paramConeZ = new JTextField();
+        JSpinner paramConeZ = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramConeZ.setPreferredSize(new Dimension(50, 20));
         conePaneLeft.add(paramConeZ);
 
@@ -100,7 +96,7 @@ public class ConePanel extends JPanel {
          * ***************** */
         JLabel textParamConeRadius = new JLabel("Rayon :", SwingConstants.RIGHT);
         conePaneLeft.add(textParamConeRadius);
-        JTextField paramConeRadius = new JTextField();
+        JSpinner paramConeRadius = new JSpinner(new SpinnerNumberModel(0, 0, 20, 0.1));
         paramConeRadius.setPreferredSize(new Dimension(50, 20));
         conePaneLeft.add(paramConeRadius);
 
@@ -111,7 +107,7 @@ public class ConePanel extends JPanel {
          * ******************* */
         JLabel textParamConeHeight = new JLabel("Hauteur :", SwingConstants.RIGHT);
         conePaneLeft.add(textParamConeHeight);
-        JTextField paramConeHeight = new JTextField();
+        JSpinner paramConeHeight = new JSpinner(new SpinnerNumberModel(0, 0, 20, 0.1));
         paramConeHeight.setPreferredSize(new Dimension(50, 20));
         conePaneLeft.add(paramConeHeight);
 
@@ -165,11 +161,11 @@ public class ConePanel extends JPanel {
          * ********************* */
         addConeButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                double x = Double.parseDouble(paramConeX.getText());
-                double y = Double.parseDouble(paramConeY.getText());
-                double z = Double.parseDouble(paramConeZ.getText());
-                double r = Double.parseDouble(paramConeRadius.getText());
-                double h = Double.parseDouble(paramConeHeight.getText());
+                double x = (double) paramConeX.getValue();
+                double y = (double) paramConeY.getValue();
+                double z = (double) paramConeZ.getValue();
+                double r = (double) paramConeRadius.getValue();
+                double h = (double) paramConeHeight.getValue();
 
                 Logger.info("Création d'une cone. X: " + x + ", Y: " + y + ", Z: " + z
                 		+ ", Rayon: " + r + ", Height: " + h);
@@ -185,7 +181,7 @@ public class ConePanel extends JPanel {
                 scene.addObject(cone);
                 world.addPhysicObject(po);
 
-                ObjectPanel objectPanel = new ObjectPanel(scene, cone, null, "");
+                ObjectPanel objectPanel = new ObjectPanel(scene, world, cone, po, "");
 
                 GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
             }

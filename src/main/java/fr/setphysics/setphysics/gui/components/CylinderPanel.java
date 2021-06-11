@@ -59,7 +59,7 @@ public class CylinderPanel extends JPanel {
          * ************* */
         JLabel textParamCylinderX = new JLabel("x :", SwingConstants.RIGHT);
         cylinderPaneLeft.add(textParamCylinderX);
-        JTextField paramCylinderX = new JTextField();
+        JSpinner paramCylinderX = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramCylinderX.setPreferredSize(new Dimension(50, 20));
         cylinderPaneLeft.add(paramCylinderX);
 
@@ -70,7 +70,7 @@ public class CylinderPanel extends JPanel {
          * ************* */
         JLabel textParamCylinderY = new JLabel("y :", SwingConstants.RIGHT);
         cylinderPaneLeft.add(textParamCylinderY);
-        JTextField paramCylinderY = new JTextField();
+        JSpinner paramCylinderY = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramCylinderY.setPreferredSize(new Dimension(50, 20));
         cylinderPaneLeft.add(paramCylinderY);
 
@@ -81,7 +81,7 @@ public class CylinderPanel extends JPanel {
          * ************* */
         JLabel textParamCylinderZ = new JLabel("z :", SwingConstants.RIGHT);
         cylinderPaneLeft.add(textParamCylinderZ);
-        JTextField paramCylinderZ = new JTextField();
+        JSpinner paramCylinderZ = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramCylinderZ.setPreferredSize(new Dimension(50, 20));
         cylinderPaneLeft.add(paramCylinderZ);
 
@@ -92,7 +92,7 @@ public class CylinderPanel extends JPanel {
          * ***************** */
         JLabel textParamCylinderRadius = new JLabel("Rayon :", SwingConstants.RIGHT);
         cylinderPaneLeft.add(textParamCylinderRadius);
-        JTextField paramCylinderRadius = new JTextField();
+        JSpinner paramCylinderRadius = new JSpinner(new SpinnerNumberModel(0, 0, 20, 0.1));
         paramCylinderRadius.setPreferredSize(new Dimension(50, 20));
         cylinderPaneLeft.add(paramCylinderRadius);
 
@@ -103,7 +103,7 @@ public class CylinderPanel extends JPanel {
          * ******************* */
         JLabel textParamCylinderHeight = new JLabel("Hauteur :", SwingConstants.RIGHT);
         cylinderPaneLeft.add(textParamCylinderHeight);
-        JTextField paramCylinderHeight = new JTextField();
+        JSpinner paramCylinderHeight = new JSpinner(new SpinnerNumberModel(0, 0, 20, 0.1));
         paramCylinderHeight.setPreferredSize(new Dimension(50, 20));
         cylinderPaneLeft.add(paramCylinderHeight);
 
@@ -158,11 +158,11 @@ public class CylinderPanel extends JPanel {
          * ********************* */
         addCylinderButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                double x = Double.parseDouble(paramCylinderX.getText());
-                double y = Double.parseDouble(paramCylinderY.getText());
-                double z = Double.parseDouble(paramCylinderZ.getText());
-                double r = Double.parseDouble(paramCylinderRadius.getText());
-                double h = Double.parseDouble(paramCylinderHeight.getText());
+                double x = (double) paramCylinderX.getValue();
+                double y = (double) paramCylinderY.getValue();
+                double z = (double) paramCylinderZ.getValue();
+                double r = (double) paramCylinderRadius.getValue();
+                double h = (double) paramCylinderHeight.getValue();
 
                 Logger.info("Création d'une cylinder. X: " + x + ", Y: " + y + ", Z: " + z
                         + ", Rayon: " + r + ", Height: " + h);
@@ -178,7 +178,7 @@ public class CylinderPanel extends JPanel {
                 scene.addObject(cylinder);
                 world.addPhysicObject(po);
 
-                ObjectPanel objectPanel = new ObjectPanel(scene, cylinder, null, "");
+                ObjectPanel objectPanel = new ObjectPanel(scene, world, cylinder, po, "");
 
                 GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
             }

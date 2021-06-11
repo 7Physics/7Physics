@@ -7,11 +7,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import fr.setphysics.common.geom.Position;
@@ -67,7 +63,7 @@ public class SpherePanel extends JPanel {
          * ************* */
         JLabel textParamSphereX = new JLabel("x :", SwingConstants.RIGHT);
         spherePaneLeft.add(textParamSphereX);
-        JTextField paramSphereX = new JTextField();
+        JSpinner paramSphereX = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramSphereX.setPreferredSize(new Dimension(50, 20));
         spherePaneLeft.add(paramSphereX);
 
@@ -78,7 +74,7 @@ public class SpherePanel extends JPanel {
          * ************* */
         JLabel textParamSphereY = new JLabel("y :", SwingConstants.RIGHT);
         spherePaneLeft.add(textParamSphereY);
-        JTextField paramSphereY = new JTextField();
+        JSpinner paramSphereY = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramSphereY.setPreferredSize(new Dimension(50, 20));
         spherePaneLeft.add(paramSphereY);
 
@@ -89,7 +85,7 @@ public class SpherePanel extends JPanel {
          * ************* */
         JLabel textParamSphereZ = new JLabel("z :", SwingConstants.RIGHT);
         spherePaneLeft.add(textParamSphereZ);
-        JTextField paramSphereZ = new JTextField();
+        JSpinner paramSphereZ = new JSpinner(new SpinnerNumberModel(0, -20, 20, 0.1));
         paramSphereZ.setPreferredSize(new Dimension(50, 20));
         spherePaneLeft.add(paramSphereZ);
 
@@ -100,7 +96,7 @@ public class SpherePanel extends JPanel {
          * ***************** */
         JLabel textParamSphereRadius = new JLabel("Rayon :", SwingConstants.RIGHT);
         spherePaneLeft.add(textParamSphereRadius);
-        JTextField paramSphereRadius = new JTextField();
+        JSpinner paramSphereRadius = new JSpinner(new SpinnerNumberModel(0, 0, 20, 0.1));
         paramSphereRadius.setPreferredSize(new Dimension(50, 20));
         spherePaneLeft.add(paramSphereRadius);
 
@@ -156,10 +152,10 @@ public class SpherePanel extends JPanel {
          * ********************* */
         addSphereButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                double x = Double.parseDouble(paramSphereX.getText());
-                double y = Double.parseDouble(paramSphereY.getText());
-                double z = Double.parseDouble(paramSphereZ.getText());
-                double r = Double.parseDouble(paramSphereRadius.getText());
+                double x = (double) paramSphereX.getValue();
+                double y = (double) paramSphereY.getValue();
+                double z = (double) paramSphereZ.getValue();
+                double r = (double) paramSphereRadius.getValue();
 
                 Logger.info("Création d'une sphere. X: " + x + ", Y: " + y + ", Z: " + z
                 		+ ", Rayon: " + r);
@@ -177,7 +173,7 @@ public class SpherePanel extends JPanel {
                 scene.addObject(sphere);
                 world.addPhysicObject(po);
 
-                ObjectPanel objectPanel = new ObjectPanel(scene, sphere, po, "");
+                ObjectPanel objectPanel = new ObjectPanel(scene, world, sphere, po, "");
 
                 GUI.getInstance().getObjectListPanel().addObjectPanel(objectPanel);
             }
