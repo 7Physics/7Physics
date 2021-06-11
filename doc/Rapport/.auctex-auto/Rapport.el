@@ -29,6 +29,7 @@
     "inputenc"
     "awesomebox"
     "fontawesome5"
-    "hyperref"))
+    "hyperref"
+    "rotating"))
  :latex)
 

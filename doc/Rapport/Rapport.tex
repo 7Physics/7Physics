@@ -11,6 +11,7 @@
 \usepackage{awesomebox}
 \usepackage{fontawesome5}
 \usepackage{hyperref}
+\usepackage{rotating}
 \setmainfont{Liberation Serif}
 
 \titleformat{\chapter}[display]{\Huge}{\thechapter. #1}{20pt}{\small}
@@ -130,9 +131,7 @@ la position de tous les objets 3D en fonction du temps. Puisque nous réaffichon
 
 \subsection{Ajout d'une possibilité de sélection des objets}
 
-Afin de manipuler les objets plus facilement, nous avons ajouté, dans l'interface, une liste de boutons. Chacun de ces boutons est lié à un objet et nous permet de le sélectionner pour ensuite le manipuler. L'affichage ainsi réalisé est le suivant:
-
-% Ajouter la photo
+Afin de manipuler les objets plus facilement, nous avons ajouté, dans l'interface, une liste de boutons. Chacun de ces boutons est lié à un objet et nous permet de le sélectionner pour ensuite le manipuler.
 
 Puisque nous pouvons désormais sélectionner une table, il nous faut désormais rendre l'ajout des forces à un objet donné possible.
 
@@ -176,9 +175,9 @@ Nous avons ensuite implanter la possibilité d'exporter un projet \textit{*.obj}
 \subsection{Détection des collisions}
 Une fonctionnalité importante d'un moteur 3D est la détection des collisions. Des recherches ont été éffectuées mais la complexité de cette fonctionnalité ne nous a pas permis de réaliser une version poussée, finalisée et stable. Toutefois, une première version simpliste a été implantée.
 
-Cette v1 est basée sur l'algorithme de détection AABB (Axis-Aligned Bounding Boxes) qui est le plus rapide pour détecter si deux entités sont en collision. Il consiste à vérifier si les boîte englobant deux objets 3D sont alignées sur les trois axes X, Y et Z. Si c'est le cas on considère que les objets sont en collision.
+Cette v1 est basée sur \textit{l'algorithme de détection AABB} (\textit{Axis-Aligned Bounding Boxes}) qui est le plus rapide pour détecter si deux entités sont en collision. Cet algorithme consiste à vérifier si les boîtes englobant deux objets 3D sont alignées sur les trois axes X, Y et Z. Si c'est le cas on considère que les objets sont en collision.
 
-\warningbox{Ce système de détection de collision n'est basée que sur la boîte englobant un objet 3D. Ainsi un cône, une sphère ou un cube auront tous une boîte de collision en forme de pavé droit. Leur forme réelle n'est pas prise en compte dans le calcul.}
+\warningbox{Ce système de détection de collision n'est basée que sur la boîte englobant un objet 3D. Ainsi un cône, une sphère ou un cube auront tous une boîte de collision en forme de pavé droit. Leur forme réelle n'est donc pas prise en compte dans le calcul.}
 
 
 \chapter{Découpage de l'application}
@@ -209,9 +208,7 @@ Dans chaque répertoire était alors développée une des 4 briques de l'applica
 
 \chapter{Architecture de l'application}
 
-\begin{center}
-  \includegraphics[width=18cm]{./diagramme_classe.png}
-\end{center}
+\notebox{Vous pourrez retrouver l'intégralité des diagrammes de classes dans \hyperlink{annexe}{\color{blue}l'annexe A.}}
 
 \section{7Physics}
 
@@ -220,7 +217,7 @@ Ce répertoire est composé de deux packages : \textit{gui} et \textit{file} ain
 \subsection{GUI}
 Dans ce répertoire, on retrouve le package \textit{gui} composé de la classe \textit{GUI.java} qui représente la fenêtre principale de l'application. Elle hérite donc de \textit{JFrame}, le composant \textit{SWING} permettant la création d'une fenêtre principale avec une bordure et une barre de titre.
 
-C'est donc dans cette classe que l'interface principale est définie avec les différents conteneurs (\textit{JPanel}, \textit{JMenu}) contenant d'autres composants (\textit{JButton}, \textit{ImageIcon}, \textit{JMenuItem}, ...).
+C'est donc dans cette classe que l'interface principale est définie avec les différents conteneurs (\textit{JPanel}, \textit{JMenu}) contenant d'autres composants (\textit{JButton}, \textit{ImageIcon}, \textit{JMenuItem}, \ldots).
 
 Dans cette classe, le patron de conception \textit{Singleton} a été implanté. En effet, nous souhaitions nous assurer qu'une seule fenêtre principale ne puisse exister et donc qu'un unique point d'accès soit possible.
 
@@ -236,34 +233,40 @@ Elle permet aussi la création d'un fichier \textit{*.obj} à partir du contenu 
 Une classe de test a été réalisée afin de tester la classe \textit{OBJFile} avec différents fichiers \textit{*.obj} (taille et contenu différent).
 
 \section{Common}
-Le répertoire \textit{Common} est composé de deux packages : \textit{logger} et \textit{geom}.
+Le répertoire \textit{Common} est composé de deux packages: \textit{logger} et \textit{geom}. Ces deux packages ayant un but commun de définition des comportements communs à toutes les parties du code.
 
 \subsection{Logger}
 Dans le package \textit{logger}, la classe \textit{Logger} représente la classe utilitaire gérant les logs du projet. Elle est utilisée pour afficher et conserver les messages de log (type debug, info, warning, error) dans un fichier.
 
 \subsection{Types utilitaires}
-Dans le package \textit{geom}, il y a différentes classes définissant des types utilitaires. Nous avons par exemple, la classe \textit{Vec3} qui représente un vecteur à trois dimensions, la classe \textit{Position} représentant une position et la classe \textit{Shape} représentant une forme en trois dimensions. La classe \textit{Positionable} représente un objet positionnable (possédant une position). Cette classe a pour but de simplifier la manipulation des objets. Elle permet de leur appliquer des méthodes de déplacement directement plutôt que de devoir passer par leur méthode \textit{getPosition} à chaque fois. C'est du sucre syntaxique.
+Dans le package \textit{geom}, il y a différentes classes définissant des types utilitaires. Nous avons par exemple, la classe \textit{Vec3} qui représente un vecteur à trois dimensions, la classe \textit{Position} représentant une position et la classe \textit{Shape} représentant une forme en trois dimensions. La classe \textit{Positionable} représente un objet positionnable (possédant une position). Cette classe a pour but de simplifier la manipulation des objets. Elle permet de leur appliquer directement des méthodes de déplacement plutôt que de devoir passer par leur méthode \textit{getPosition} à chaque fois. C'est du sucre syntaxique.
 
 \subsection{Formes prédéfinies}
-Dans le package \textit{geom}, nous avons un nouveau package \textit{shape} représentant les différentes formes prédéfinies tels que le cone, le cube, la pyramide, la sphere, ...
+Dans le package \textit{geom}, nous avons un nouveau package \textit{shape} représentant les différentes formes prédéfinies tels que le cone, le cube, la pyramide, la sphere, etc.
+Chacune de ces classes hérite de \textit{Shape} et contient le code nécessaire au calcul des coordonnées de chaque sommet utile au rendu 3D.
 
 \subsection{Tests}
-Une classe de test a été réalisée afin de tester avec différents formes 3D (cube et sphère), la classe \textit{BoundingBox} qui représente la bôite englobant un objet 3D.
+Dans l'objectif de tester le bon fonctionnement des collisions, une classe de test a été réalisée afin de tester avec différents formes 3D (cube et sphère), la classe \textit{BoundingBox} qui représente la bôite englobant un objet 3D.
 
 \section{Engine}
-Ce répertoire est composé de plusieurs classes : \textit{PhysicObject}, \textit{World}.
+Ce répertoire de calcul physique est composé de deux classes: \textit{PhysicObject} et \textit{World}.
 
 \subsection{PhysicObject}
-La classe \textit{PhysicObject} représente un objet 3D dans l'environnement ayant des caractéristiques physiques.
+La classe \textit{PhysicObject} représente un objet 3D et plus particulièrement ses caractéristiques physiques (vitesse, position, accélération).
 
 Un \textit{PhysicObject} est créé à partir d'une \textit{Shape}, d'une \textit{Position} et d'une vitesse initiale.
 Nous pouvons lui ajouter/supprimer des forces, mettre à jour sa position et sa vitesse en fonction des forces appliquées.
+Ces fonctionnalités permettent l'application des équations cinématiques à un objet lui permettant ainsi de se déplacer dans l'espace.
 
 \subsection{World}
-La classe \textit{World} représente un monde 3D avec un sol d'une certaine dimension. Il est possible d'ajouter un \textit{PhysicObject}, d'appliquer la gravité au monde 3D, de gérer les collisions.
+La classe \textit{World} représente un monde 3D composé d'un sol d'une certaine dimension. Il est possible d'ajouter un ou plusieurs \textit{PhysicObject}, d'appliquer la gravité au monde 3D, de gérer les collisions entre plusieurs objets physiques.
 
 \subsection{Tests}
-Deux classes de test ont été définies : \textit{TestCollisions}, \textit{TestPhysicBody} afin de vérifier l'effet des collisions et les résultats obtenus après application de plusieurs forces sur un \textit{PhysicObject}, .
+Deux classes de test ont été définies:
+\begin{itemize}
+  \item \textit{TestCollisions} afin de vérifier l'effet des collisions
+  \item\textit{TestPhysicBody} dans l'objectif de valider les résultats obtenus après application de plusieurs forces sur un \textit{PhysicObject}.
+\end{itemize}
 
 \section{Renderer}
 Ce dernier répertoire est composé d'éléments permettant le rendu graphique 3D.
@@ -278,39 +281,39 @@ La classe \textit{Camera} contient les informations indiquant comment la scène 
 
 \subsection{Object3D}
 
-Un \textit{Object3D} correspond à une \textit{Shape} affichable dans une \textit{Scene3D}. On lui précise donc obligatoirement une \textit{Shape} : la forme à afficher. On peut également lui donner une position pour préciser où elle doit être affichée dans la scène, ainsi que des couleurs. Un \textit{Object3D} possède trois couleurs distinctes : une qui est appliquée au haut de la forme, une au bas de la forme et une qui est appliquée aux arêtes (celle-ci pouvant être \textit{null}, auquel cas les arêtes ne seront pas affichées). A noter qu'OpenGL fait automatiquement un joli dégradé entre la couleur du haut et celle du bas.
+Un \textit{Object3D} correspond à une \textit{Shape} affichable dans une \textit{Scene3D}. On lui précise donc obligatoirement une \textit{Shape}: la forme à afficher. On peut également lui donner une position pour préciser où elle doit être affichée dans la scène, ainsi que des couleurs. Un \textit{Object3D} possède trois couleurs distinctes: une qui est appliquée au haut de la forme, une au bas de la forme et une qui est appliquée aux arêtes (celle-ci pouvant être \textit{null}, auquel cas les arêtes ne seront pas affichées). A noter qu'OpenGL fait automatiquement un dégradé entre la couleur du haut et celle du bas.
 
 \subsection{Ground}
 
-Le \textit{Ground} correspond au sol d'une \textit{Scene3D}. Le sol est un quadrillage de forme carrée dont on peut préciser la longueur du côté. On peut également indiquer la distance qui sépare les lignes du quadrillage.
+Le \textit{Ground} correspond au sol d'une \textit{Scene3D}. Le sol est un quadrillage de forme carrée dont on peut préciser la longueur du côté. On peut également indiquer la distance qui sépare les lignes du quadrillage. Ce sol permet alors à l'utilisateur de se rendre compte de l'orientation de la caméra et des formes.
 
 \subsection{Tests}
-Des tests graphiques ont été réalisés afin de vérifier visuellement la suppresion d'un objet de la scène par exemple.
+Des tests graphiques ont été réalisés afin de vérifier visuellement le bon fonctionnement de l'ajout et de la suppresion d'un objet de la scène par exemple.
 
 \subsection{Interaction avec OpenGL}
 
-Pour effectuer les rendus graphiques nous avons décidé d'utiliser la bibliothèque OpenGL car elle est très populaire. De par la contrainte de temps qui nous a été imposée nous avons décidé d'utiliser cette bilibothèque dans son \href{https://stackoverflow.com/a/6734071/15223555}{\color{blue}mode immédiat} (à l'opposé du mode utilisant les shaders) car c'est le plus simple d'utilisation. Il a cependant le défaut d'être peu performant et contre-indiqué par le groupe Khronos, créateur de la spécification OpenGL.
+Pour effectuer les rendus graphiques nous avons décidé d'utiliser la bibliothèque \textit{OpenGL} car elle est très populaire, multi-plateforme et open source. De par la contrainte de temps qui nous a été imposée, nous avons décidé d'utiliser cette bilibothèque dans son \href{https://stackoverflow.com/a/6734071/15223555}{\color{blue}mode immédiat} (à l'opposé du mode utilisant les shaders) car c'est le plus simple d'utilisation. Il a cependant le défaut d'être peu performant et contre-indiqué par le groupe \textit{Khronos}, créateur de la spécification \textit{OpenGL}.
 
 
 Le rendu d'une frame se fait en deux temps :
 
 \begin{enumerate}
   \item L'initialisation : effacement de la frame précédente avec une couleur prédéfinie, mise en place de la perspective et du point de vue de la caméra.
-  \item Le rendu des objets : on itère à travers tous les objets \textit{Renderable} contenu dans la scène et on appelle leur méthode \textit{render} avec le contexte OpenGL en paramètre. Ces \textit{Renderable} gère ensuite leur propre rendu.
+  \item Le rendu des objets : itération sur tous les objets \textit{Renderable} contenu dans la scène et invocation de leur méthode \textit{render} avec le contexte \textit{OpenGL} en paramètre. Ces \textit{Renderable} gère ensuite leur propre rendu.
 \end{enumerate}
 
 Tous les objets affichés sur l'écran (excepté le sol) sont des \textit{Object3D}.
 
 Le rendu d'un \textit{Object3D} se fait en quatre étapes :
 \begin{enumerate}
-    \item Puisque les \textit{Object3D} sont créés de sorte à ce que leurs sommets forment des triangles, on démarre le rendu en appelant la procédure \textit{glBegin} d'OpenGL avec le paramètre \textit{GL\_TRIANGLES}.
+    \item Puisque les \textit{Object3D} sont créés de sorte à ce que leurs sommets forment des triangles, on démarre le rendu en appelant la procédure \textit{glBegin} d'\textit{OpenGL} avec le paramètre \textit{GL\_TRIANGLES}.
 
-    \item On récupère tous les sommets de la forme à afficher. Pour chacun de ces sommets on commence par lui définir une couleur en fonction de sa hauteur dans la forme. Par exemple un objet situé à mi-hauteur aura une couleur correspondant à 50\% de la couleur attribuée au haut de la forme et 50\% de la couleur attribué au bas. Cela permet de donner de la profondeur à l'objet. La couleur est modifiée avec la procédure \textit{glColor4d}.
+    \item On récupère tous les sommets de la forme à afficher et pour chacun de ces sommets on définit une couleur en fonction de sa hauteur dans la forme. Par exemple, un sommet situé à mi-hauteur aura une couleur correspondant à 50\% de la couleur attribuée au haut de la forme et 50\% de la couleur attribuée au bas de celle-ci. Cela permet de donner de la profondeur à l'objet. La couleur est modifiée avec la procédure \textit{glColor4d}.
 
     Le sommet est ensuite cloné puis translaté par la position de l'\textit{Object3D} pour être à la bonne position. Il est ensuite affiché avec la procédure \textit{glVertex3d}.
 
-    \item On passe à un mode de rendu différent. \textit{glBegin} est cette fois-ci appelé avec le paremètre \textit{GL\_LINES} car on souhaite dessiner des ligne, et que la couleur n'est attribuée qu'une seule fois, dès le départ, car elle ne change pas en fonction de la hauteur du sommet.
-    \item Par un procédé semblable à la première étape, on affiche les arêtes de l'objet (si la couleur attribuée aux arêtes n'est pas nulle). Les sommets sont affichés un à un. Leur position diffère un peu de l'étape précédente car il est nécessaire de les afficher un peu en avant de la forme afin d'éviter le \href{https://www.google.com/search?q=z-fighting&oq=z-f&aqs=chrome.2.69i57j0l2j46i175i199j0l6.2593j0j4&sourceid=chrome&ie=UTF-8}{\color{blue}Z-fighting}.
+    \item Puis on passe à un mode de rendu différent. \textit{glBegin} est cette fois-ci appelé avec le paramètre \textit{GL\_LINES} car on souhaite dessiner des lignes. Nous pouvons noter que la couleur n'est attribuée qu'une seule fois (dès le départ) et ne changera pas en fonction de la hauteur d'un sommet.
+    \item Enfin, à l'aide d'un procédé semblable à la première étape, on affiche les arêtes de l'objet si la couleur des arêtes a été définie. Les sommets sont affichés un à un. Leur position diffère un peu de l'étape précédente car il est nécessaire de les afficher un peu décaler par rapport à la forme afin d'éviter le \href{https://www.google.com/search?q=z-fighting&oq=z-f&aqs=chrome.2.69i57j0l2j46i175i199j0l6.2593j0j4&sourceid=chrome&ie=UTF-8}{\color{blue}Z-fighting}.
 \end{enumerate}
 
 \chapter{Principaux choix}
@@ -365,7 +368,7 @@ référentiels de temps absolus. Nous avons donc utilisé, dans nos équations, 
 de temps, le temps écoulé depuis le début de la simulation. Cependant, cela avait pour effet lors de la modification de forces lors d'une
 simulation, de téléporter les objets à la position obtenue si la force avait été présente depuis le début de la simulation.
 
-Pour corriger ce problème, nous avons alors changé la façon de réaliser les calculs de cinétique en nous basant désormais sur un référentiel de temps relatif. Chaque position était alors calculée via la dernière position enregistrée et le temps écoulé depuis le calcul de celle-ci.
+Pour corriger ce problème, nous avons alors changé la façon de réaliser les calculs de cinématique en nous basant désormais sur un référentiel de temps relatif. Chaque position était alors calculée via la dernière position enregistrée et le temps écoulé depuis le calcul de celle-ci.
 
 \chapter{Organisation de l'équipe et mise en oeuvre des méthodes agiles}
 
@@ -392,11 +395,11 @@ Afin d'estimer au mieux les points d'efforts, nous nous sommes réunis et avons 
 
 \subsection{Points de valeur métier}
 
-Une fois cela fait pour chaque User Story, nous nous sommes penchés sur les points de valeur métier. Pour cela, nous avons procédé d'une façon similaire. Nous avons commencé par attribuer un nombre total de valeur métier à obtenir puis avons partagé ce total et attribué des points de valeur métier en fonction de l'importance des fonctionnalités à nos yeux.
+Une fois cela fait pour chaque User Story, nous nous sommes occupés des points de valeur métier. Pour cela, nous avons procédé d'une façon similaire. Nous avons commencé par attribuer un nombre total de valeur métier à obtenir puis avons partagé ce total et attribué des points de valeur métier en fonction de l'importance des fonctionnalités à nos yeux.
 
 \section{Utilisation des cérémonies agiles}
 
-Lors du déroulement du projet, nous avons mis en place 4 types de cérémonies des méthodes agiles.
+Lors du déroulement du projet, nous avons mis en place 5 types de cérémonies des méthodes agiles.
 
 \subsection{Sprint planning}
 
@@ -437,21 +440,49 @@ Enfin, l'équipe se réunissait une dernière fois dans le sprint pour analyser 
 
 \section{Choix des tâches à réaliser}
 
-Afin de choisir au mieux les tâches à effectuer lors de chaque sprint, nous nous sommes basés sur les estimations de valeur métier et de points d'efforts que nous avons évoqués précédemment ainsi que sur notre vélocité. Nous avions alors une vélocité relativement constante de 80 points d'efforts par sprint.\newline
+Afin de choisir au mieux les user stories à effectuer lors de chaque sprint, nous nous sommes basés sur les estimations de valeur métier et de points d'efforts ainsi que sur notre vélocité. N'ayant pas eu de vélocité représentative à l'issue du sprint 0, nous nous sommes mis d'accord sur une charge de travail qui nous semblait alors réalisable. Lors du sanity check du sprint 1, cette estimation nous a semblé réalisable, ce qui s'est confirmé lors de la sprint review. Cette vélocité s'est alors révélée être la vélocité de l'équipe tout au long du projet.\newline
 
-Puisque nous avions donc les estimations fixées pour chaque tâche et une vélocité donnée, notre façon de procédé était la suivante, les tâches à réaliser étaient les suivantes:
+Dans l'objectif de sélectionner les tâches à réaliser lors d'un sprint donné, nous nous sommes appuyés sur les règles suivantes:
 \begin{itemize}
   \item La tâche doit être \textbf{réalisable} (pas de dépendances avec une tâche pas encore effectuée).
-  \item La tâche doit avoir une \textbf{valeur métier élevée} autant que possible.
+  \item La tâche doit avoir une \textbf{valeur métier} la plus élevée possible.
   \item La \textbf{somme des points d'efforts} doit être environ \textbf{égale à notre vélocité} calculée.\newline
 \end{itemize}
 
-Grâce à cette ligne directrice, nous avons pu mettre en place des fonctionnalités clés du projet sans problèmes liés à la gestion du projet en lui-même.
+Grâce à cette ligne directrice, nous avons pu mettre en place les fonctionnalités clés du projet et n'avons pas eu de problèmes concernant l'organisation des tâches à effectuer.
 
 \chapter{Conclusion}
 
-En conclusion, nous avons, pendant ces trois semaines de projet, tenté de réaliser un moteur physique 3D simpliste qui permet à un utilisateur de modéliser des formes simplistes par le biais de l'interface que nous avons créé, aussi bien que des projets complexes exportées au format .obj. Ces formes une fois placées dans une scène 3D peuvent alors êtres déplacées par le biais de forces qui leurs seront appliquées.\newline
+En conclusion, nous avons, pendant ces trois semaines de projet, tenté de réaliser un moteur physique 3D simpliste qui permet à un utilisateur de modéliser des formes basiques (Pavé droit, Sphère, cylindre, Cône, etc.) par le biais de l'interface que nous avons créé ainsi que des projets plus complexes exportés au format \textit{.obj}. Ces formes une fois placées dans une scène 3D peuvent alors être animées par le biais de forces qui leurs seront appliquées et de collisions avec leur environnement.\newline
 
 Afin de réaliser ce projet nous avons utilisé les méthodes agiles au travers de 3 sprints distincts d'une durée d'une semaine. Sprints durant lesquels nous avons mis en place plusieurs cérémonies permettant d'avancer efficacement tout en maintenant une bonne cohésion d'équipe.\newline
+
+Cependant, ce projet possède encore de nombreuses perspectives d'améliorations. Il serait par exemple possible d'améliorer le système de collision afin de permettre des interactions plus réalistes et plus naturelles (rebonds, propulsions, rotations,\ldots) ou bien encore d'améliorer le rendu visuel en ajoutant des ombres ou textures aux formes présentes dans la scène.
+
+\hypertarget{annexe}{\chapter{Annexe A: Diagrammes de classe}}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[scale=0.75]{./Engine.png}
+  \caption{Diagramme de classe Engine}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[angle=90, width=15cm]{./Renderer.png}
+  \caption{Diagramme de classe Renderer}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[angle=90, width=15cm]{./Common.png}
+  \caption{Diagramme de classe Common}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[angle=90, height=25cm]{./7Physics.png}
+  \caption{Diagramme de classe 7Physics}
+\end{figure}
 
 \end{document}

@@ -33,9 +33,9 @@
 \BOOKMARK [2][-]{subsection.4.3.2}{World}{section.4.3}% 33
 \BOOKMARK [2][-]{subsection.4.3.3}{Tests}{section.4.3}% 34
 \BOOKMARK [1][-]{section.4.4}{Renderer}{chapter.4}% 35
-\BOOKMARK [2][-]{subsection.4.4.1}{Camera}{section.4.4}% 36
-\BOOKMARK [2][-]{subsection.4.4.2}{Object3D}{section.4.4}% 37
-\BOOKMARK [2][-]{subsection.4.4.3}{Scene3D}{section.4.4}% 38
+\BOOKMARK [2][-]{subsection.4.4.1}{Scene3D}{section.4.4}% 36
+\BOOKMARK [2][-]{subsection.4.4.2}{Camera}{section.4.4}% 37
+\BOOKMARK [2][-]{subsection.4.4.3}{Object3D}{section.4.4}% 38
 \BOOKMARK [2][-]{subsection.4.4.4}{Ground}{section.4.4}% 39
 \BOOKMARK [2][-]{subsection.4.4.5}{Tests}{section.4.4}% 40
 \BOOKMARK [2][-]{subsection.4.4.6}{Interaction\040avec\040OpenGL}{section.4.4}% 41
@@ -62,3 +62,4 @@
 \BOOKMARK [2][-]{subsection.6.3.5}{Retrospective}{section.6.3}% 62
 \BOOKMARK [1][-]{section.6.4}{Choix des tâches à réaliser}{chapter.6}% 63
 \BOOKMARK [0][-]{chapter.7}{Conclusion}{}% 64
+\BOOKMARK [0][-]{chapter.8}{Annexe\040A:\040Diagrammes\040de\040classe}{}% 65
